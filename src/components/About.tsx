@@ -1,5 +1,6 @@
 import React from "react";
 import BackgroundAnimation from "./BackgroundAnimation";
+import Image from "next/image";
 
 const images = {
   first: "/hg.jpg",
@@ -23,11 +24,23 @@ const AboutSection = () => {
         style={{ zIndex: 1 }}
       >
         <div className="flex flex-col md:flex-row items-center my-10">
-          <img
-            src={images.first}
-            alt="Innovative Software Solutions"
-            className="circular-image opacity-75"
-          />
+          <div
+            style={{
+              position: "relative",
+              width: "1000px", // Adjust as needed
+              height: "400px", // Adjust as needed
+              borderRadius: "20%", // Make the div circular
+              overflow: "hidden", // Ensure the image doesn't overflow the circular shape
+            }}
+          >
+            <Image
+              src={images.first}
+              alt="Innovative Software Solutions"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+
           <div className="md:w-2/2 w-full md:ml-10 text-center md:text-left">
             <h2 className="text-3xl font-arialBlack text-center mb-6">
               Innovative Software Solutions
@@ -49,18 +62,41 @@ const AboutSection = () => {
               into realities.
             </p>
           </div>
-          <img
-            src={images.second}
-            alt="Our Mission"
-            className="circular-image opacity-75 md:order-2"
-          />
+          <div
+            style={{
+              position: "relative",
+              width: "1000px", // Adjust as needed
+              height: "400px", // Adjust as needed
+              borderRadius: "20%", // Make the div circular
+              overflow: "hidden", // Ensure the image doesn't overflow the circular shape
+            }}
+          >
+            <Image
+              src={images.second}
+              alt="Our Mission"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
         </div>
         <div className="flex flex-col md:flex-row items-center my-10">
-          <img
-            src={images.third}
-            alt="Our Values"
-            className=" opacity-75 circular-image"
-          />
+          <div
+            style={{
+              position: "relative",
+              width: "1000px", // Adjust as needed
+              height: "400px", // Adjust as needed
+              borderRadius: "20%", // Make the div circular
+              overflow: "hidden", // Ensure the image doesn't overflow the circular shape
+            }}
+          >
+            <Image
+              src={images.third}
+              alt="Foundations of Success"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+
           <div className="md:w-2/2 w-full md:ml-10 text-center md:text-left">
             <h2 className="text-3xl mb-6 text-center font-arialBlack ">
               Foundations of Success

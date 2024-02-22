@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 
 const CursorCanvas = () => {
   const canvasRef = useRef(null);
-  let animationFrameId;
+  const animationFrameId = useRef();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -81,7 +81,7 @@ const CursorCanvas = () => {
       ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
       ctx.stroke();
 
-      animationFrameId = requestAnimationFrame(animate);
+      animationFrameId.current = requestAnimationFrame(animate);
     };
 
     const resizeCanvas = () => {
@@ -91,14 +91,14 @@ const CursorCanvas = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    animationFrameId = requestAnimationFrame(animate);
+    animationFrameId.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("click", updateMousePosition);
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("touchmove", updateMousePosition);
       window.removeEventListener("resize", resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(animationFrameId.current);
     };
   }, []);
 
