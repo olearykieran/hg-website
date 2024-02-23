@@ -69,7 +69,7 @@ const ContactForm = () => {
         <div className="contact-form-footer">
           <p>Questions or Comments?</p>
           <p>
-            We know that our clients have unique needs. Send us a message, and we will get
+            We want to hear about your next big idea. Send us a message, and we will get
             back to you soon!
           </p>
         </div>

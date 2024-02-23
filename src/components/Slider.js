@@ -6,16 +6,20 @@ import { faArrowCircleRight, faArrowCircleLeft } from "@fortawesome/free-solid-s
 
 export const slides = [
   {
-    background: "vdp2.png",
-    text: "Vet Logistics Solutions",
+    background: "avp.png",
+    text: "Mixed Reality Apps and Games",
   },
   {
-    background: "vbm.png",
-    text: "Video Bookmark App",
+    background: "webapp.png",
+    text: "Web Applications",
   },
   {
     background: "ff.png",
-    text: "Forever Friends Website",
+    text: "Website Creation and Design",
+  },
+  {
+    background: "VidBM.png",
+    text: "Mobile Apps",
   },
 ];
 
@@ -65,7 +69,7 @@ class Slider extends React.Component {
   render() {
     return (
       <div id="our-work" className="bg-black">
-        <h1 className="text-6xl text-center mt-32 font-arialBlack">Our Work</h1>
+        <h1 className="text-5xl text-center mt-32 font-arialBlack">What We Do</h1>
         <div id="slide" className="container-fluid">
           {this.props.slides.map((slide, index) => (
             <Slide

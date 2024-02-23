@@ -116,9 +116,9 @@ canvas#bg {
   position: absolute;
   z-index: 200;
   transition: all 0.5s ease-in-out;
-  color: rgba(125, 125, 125, 0.8);
+  color: rgba(231, 212, 85, 0.8);
   &:hover {
-    color: rgba(231, 212, 85, 0.8);
+    color: rgba(251, 255, 0, 0.9);
     transform: scale(1.1);
   }
 }
@@ -129,9 +129,9 @@ canvas#bg {
   position: absolute;
   z-index: 200;
   transition: all 0.5s ease-in-out;
-  color: rgba(126, 126, 126, 0.8);
+  color: rgba(231, 212, 85, 0.8);
   &:hover {
-    color: rgba(231, 212, 85, 0.8);
+    color: rgba(251, 255, 0, 0.9);
     transform: scale(1.1);
   }
 }
@@ -145,7 +145,7 @@ canvas#bg {
 
 .slider__slide__text {
   position: absolute;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   top: 20px;
   left: 20px;
   padding: 20px;
