@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
+const images = {
+  first: "/graal.png",
+};
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [navbarStyle, setNavbarStyle] = useState({
@@ -55,12 +59,12 @@ function Navbar() {
             Holy Grail Studio
           </span>
         </Link>
-        <div className="relative font-arialBlack sm:hidden">
+        <div className="relative text-2xl  font-arialBlack sm:hidden">
           <button onClick={() => setIsOpen(!isOpen)}>
             <span>Menu</span> {/* Consider replacing with an icon */}
           </button>
           <div
-            className={`absolute top-full flex flex-row right-14 gap-8 mt-6 shadow-md ${
+            className={`absolute top-full flex flex-row right-0 bg-transparent px-2  border-4 gap-8 mt-6 shadow-md ${
               isOpen ? "block" : "hidden"
             }`}
           >
@@ -81,7 +85,7 @@ function Navbar() {
             </Link>
           </div>
         </div>
-        <div className="hidden sm:flex flex-row">
+        <div className="hidden text-2xl sm:flex flex-row">
           <Link href="#about" passHref>
             <span className="px-4 font-arialBlack cursor-pointer">About</span>
           </Link>

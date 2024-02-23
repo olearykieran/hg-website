@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Holy Grail Studio - Divine Software",
   description: "Handcrated software for growing businesses",
+  icons: {
+    icon: "/fav.png",
+  },
 };
 
 export default function RootLayout({
