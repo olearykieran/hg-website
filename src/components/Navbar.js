@@ -51,24 +51,45 @@ function Navbar() {
     >
       <div className="flex justify-between items-center px-4 mx-auto sm:px-8 max-w-screen-xl">
         <Link href="/" passHref>
-          <span className="text-2xl cursor-pointer font-arialBlack ">
+          <span className="text-2xl cursor-pointer font-arialBlack">
             Holy Grail Studio
           </span>
         </Link>
-        <div className="font-arialBlack  sm:hidden">
+        <div className="relative font-arialBlack sm:hidden">
           <button onClick={() => setIsOpen(!isOpen)}>
             <span>Menu</span> {/* Consider replacing with an icon */}
           </button>
+          <div
+            className={`absolute top-full flex flex-row right-14 gap-8 mt-6 shadow-md ${
+              isOpen ? "block" : "hidden"
+            }`}
+          >
+            <Link href="#about" passHref>
+              <span className="block sm:px-4 py-2 font-arialBlack cursor-pointer">
+                About
+              </span>
+            </Link>
+            <Link href="#our-work" passHref>
+              <span className="block sm:px-4 py-2 font-arialBlack cursor-pointer">
+                Projects
+              </span>
+            </Link>
+            <Link href="#contact" passHref>
+              <span className="block sm:px-4 py-2 font-arialBlack cursor-pointer">
+                Contact
+              </span>
+            </Link>
+          </div>
         </div>
-        <div className={`flex-row sm:flex ${isOpen ? "block" : "hidden"} sm:block`}>
+        <div className="hidden sm:flex flex-row">
           <Link href="#about" passHref>
-            <span className="block px-4 font-arialBlack  cursor-pointer">About</span>
+            <span className="px-4 font-arialBlack cursor-pointer">About</span>
           </Link>
           <Link href="#our-work" passHref>
-            <span className="block px-4 font-arialBlack  cursor-pointer">Our Work</span>
+            <span className="px-4 font-arialBlack cursor-pointer">Projects</span>
           </Link>
           <Link href="#contact" passHref>
-            <span className="block px-4 font-arialBlack cursor-pointer">Contact</span>
+            <span className="px-4 font-arialBlack cursor-pointer">Contact</span>
           </Link>
         </div>
       </div>

@@ -28,7 +28,8 @@ const AboutSection = () => {
           <div
             style={{
               position: "relative",
-              width: "800px", // Adjust as needed
+              width: "100%", // Use 100% width for responsiveness
+              maxWidth: "400px", // Max width to match your design
               height: "400px", // Adjust as needed
               borderRadius: "50%", // Make the div circular
               overflow: "hidden", // Ensure the image doesn't overflow the circular shape
@@ -45,7 +46,7 @@ const AboutSection = () => {
             />
           </div>
 
-          <div className="md:w-2/2 w-full md:ml-10 text-center md:text-left">
+          <div className="md:w-2/2 w-full md:ml-10 text-center md:text-left  mt-10 md:mt-0">
             <h2 className="text-3xl font-arialBlack text-center mb-6">Custom Software</h2>
             <p className="font-sans text-xl text-center">
               Pioneering the digital frontier, Holy Grail Studio offers trendsetting
@@ -55,9 +56,10 @@ const AboutSection = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center my-10">
-          <div className="md:w-2/2 w-full md:mr-10 text-center md:text-right">
-            <h2 className="text-4xl mb-6 text-center font-arialBlack ">Mission</h2>
+        {/* Mission section with responsive adjustments */}
+        <div className="flex flex-col-reverse md:flex-row items-center my-10">
+          <div className="md:w-2/2 w-full md:mr-10 text-center md:text-right mt-10 md:mt-0">
+            <h2 className="text-4xl mb-6 text-center font-arialBlack">Mission</h2>
             <p className="font-sans text-xl text-center">
               Our mission is to drive innovation with exceptional software services, from
               web to immersive experiences, pushing boundaries to turn visionary ideas
@@ -67,13 +69,15 @@ const AboutSection = () => {
           <div
             style={{
               position: "relative",
-              width: "800px", // Adjust as needed
+              width: "100%", // Use 100% width for responsiveness
+              maxWidth: "400px", // Max width to match your design
               height: "400px", // Adjust as needed
               borderRadius: "50%", // Make the div circular
               overflow: "hidden", // Ensure the image doesn't overflow the circular shape
               boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)", // Add shadow (adjust as needed)
               backgroundColor: "rgba(255, 255, 255, 0.2)", // Add transparency (adjust color and alpha as needed)
               opacity: 0.5,
+              margin: "0 auto", // Center the image on smaller screens
             }}
           >
             <Image
@@ -88,7 +92,8 @@ const AboutSection = () => {
           <div
             style={{
               position: "relative",
-              width: "800px", // Adjust as needed
+              width: "100%", // Use 100% width for responsiveness
+              maxWidth: "400px", // Max width to match your design
               height: "400px", // Adjust as needed
               borderRadius: "50%", // Make the div circular
               overflow: "hidden", // Ensure the image doesn't overflow the circular shape
@@ -105,7 +110,7 @@ const AboutSection = () => {
             />
           </div>
 
-          <div className="md:w-2/2 w-full md:ml-10 text-center md:text-left">
+          <div className="md:w-2/2 w-full md:ml-10 text-center md:text-left  mt-10 md:mt-0">
             <h2 className="text-4xl mb-6 text-center font-arialBlack ">
               Foundations of Success
             </h2>
