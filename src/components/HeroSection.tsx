@@ -1,60 +1,27 @@
-"use client";
-
 // components/HeroSection.tsx
-import React, { useRef, useEffect } from "react";
+import React from "react";
+import Image from "next/image"; // Importing Image component from next/image
 import Link from "next/link";
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.playbackRate = 0.8; // Slows down the video
-    }
-    // Assuming the loop with edited video that includes reverse playback
-  }, []);
-
   return (
     <div className="relative w-full h-[800px] overflow-hidden font-garamond">
-      {" "}
-      {/* Use Tailwind class for EB Garamond */}
-      <video
-        ref={videoRef}
-        src="/holy-grail.mp4"
-        className="absolute z-0 w-auto min-w-full min-h-full max-w-none opacity-80"
-        style={{
-          width: "50%",
-
-          objectFit: "cover",
-          transform: "translate(-50%)",
-
-          left: "50%",
-        }}
-        autoPlay
-        muted
-        loop
-      />
+      {/* Replace video with Image component */}
+      <div className="absolute z-0 w-full h-full" style={{ opacity: 0.7 }}>
+        <Image
+          src="/minimalist-office-space.png"
+          alt="Hero Image"
+          fill // Adjusted for the new approach
+          style={{ objectFit: "cover" }} // Ensure this complies with the latest handling by Next.js
+        />
+      </div>
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white mt-80">
         <h1 className="text-6xl font-arialBlack">Modern Software Solutions</h1>
-        <p className="text-xl my-4 font-sans font-roboto">
-          {" "}
-          {/* Use Tailwind class for Roboto */}
+        <p className="text-xl text-black font-sans my-4">
           Discover innovative technology for your business needs.
         </p>
         <Link href="#about" passHref>
-          <button
-            style={{
-              width: "fit-content",
-              backgroundColor: "rgba(0,0,0,0.1)",
-              color: "white",
-              border: "2px solid white",
-              borderRadius: "0.25rem",
-              padding: "0.75rem",
-              cursor: "pointer",
-            }}
-            className="font-arialBlack"
-          >
+          <button className="font-arialBlack bg-transparent border-2 border-white text-white rounded py-2 px-4 hover:bg-white hover:text-black transition duration-300 ease-in-out">
             Learn More
           </button>
         </Link>

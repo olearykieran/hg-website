@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const images = {
-  first: "/graal.png",
+  first: "/logoo.png",
 };
 
 function Navbar() {
@@ -53,11 +54,22 @@ function Navbar() {
       className="bg-light-black py-4 font-light"
       style={{ ...navbarStyle, fontFamily: "EB Garamond" }}
     >
-      <div className="flex justify-between items-center px-4 mx-auto sm:px-8 max-w-screen-xl">
+      <div className="flex justify-between items-center px-4 mx-auto cursor-pointer sm:px-8 max-w-screen-xl">
         <Link href="/" passHref>
-          <span className="text-2xl cursor-pointer font-arialBlack">
-            Holy Grail Studio
-          </span>
+          <div className="flex items-center cursor-pointer">
+            <div
+              className="relative h-8 w-8 mr-2"
+              style={{ opacity: 0.8, borderRadius: "10%" }}
+            >
+              <Image
+                src={images.first}
+                alt="Logo"
+                fill // Adjusted for the new approach, ensuring the image fills the container
+                style={{ objectFit: "contain", borderRadius: "20%" }} // Applied via a wrapping div or directly if compliant
+              />
+            </div>
+            <span className="text-2xl font-arialBlack">Holy Grail Studio</span>
+          </div>
         </Link>
         <div className="relative text-2xl  font-arialBlack sm:hidden">
           <button onClick={() => setIsOpen(!isOpen)}>

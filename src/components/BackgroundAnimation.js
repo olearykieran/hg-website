@@ -19,7 +19,7 @@ const Plane = () => {
       uniforms: {
         T: { value: 0 },
         R: { value: viewport.height },
-        opacity: { value: 0.05 }, // Ensure this is the desired opacity level
+        opacity: { value: 0.03 }, // Ensure this is the desired opacity level
       },
       vertexShader: `
       varying vec2 vUv;

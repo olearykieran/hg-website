@@ -3,9 +3,9 @@ import BackgroundAnimation from "./BackgroundAnimation";
 import Image from "next/image";
 
 const images = {
-  first: "/code.png",
-  second: "/table.jpeg",
-  third: "/hg.jpg",
+  first: "/logoo.png",
+  second: "/comp.png",
+  third: "/people.png",
 };
 
 const AboutSection = () => {
@@ -35,7 +35,7 @@ const AboutSection = () => {
               overflow: "hidden", // Ensure the image doesn't overflow the circular shape
               boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)", // Add shadow (adjust as needed)
               backgroundColor: "rgba(255, 255, 255, 0.2)", // Add transparency (adjust color and alpha as needed)
-              opacity: 0.5,
+              opacity: 0.8,
             }}
           >
             <Image
@@ -76,7 +76,7 @@ const AboutSection = () => {
               overflow: "hidden", // Ensure the image doesn't overflow the circular shape
               boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)", // Add shadow (adjust as needed)
               backgroundColor: "rgba(255, 255, 255, 0.2)", // Add transparency (adjust color and alpha as needed)
-              opacity: 0.5,
+              opacity: 0.8,
               margin: "0 auto", // Center the image on smaller screens
             }}
           >
@@ -99,7 +99,7 @@ const AboutSection = () => {
               overflow: "hidden", // Ensure the image doesn't overflow the circular shape
               boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)", // Add shadow (adjust as needed)
               backgroundColor: "rgba(255, 255, 255, 0.2)", // Add transparency (adjust color and alpha as needed)
-              opacity: 0.5,
+              opacity: 0.8,
             }}
           >
             <Image
