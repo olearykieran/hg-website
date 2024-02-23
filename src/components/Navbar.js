@@ -85,7 +85,7 @@ function Navbar() {
             </Link>
           </div>
         </div>
-        <div className="hidden text-2xl sm:flex flex-row">
+        <div className="hidden sm:flex flex-row ">
           <Link href="#about" passHref>
             <span className="px-4 font-arialBlack cursor-pointer">About</span>
           </Link>
