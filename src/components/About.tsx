@@ -46,7 +46,7 @@ const AboutSection = () => {
           </div>
 
           <div className="md:w-2/2 w-full md:ml-10 text-center md:text-left">
-            <h2 className="text-3xl font-arialBlack text-center mb-6">Modern Software</h2>
+            <h2 className="text-3xl font-arialBlack text-center mb-6">Custom Software</h2>
             <p className="font-sans text-xl text-center">
               Pioneering the digital frontier, Holy Grail Studio offers trendsetting
               software and design solutions. From apps and websites to XR and gaming, we

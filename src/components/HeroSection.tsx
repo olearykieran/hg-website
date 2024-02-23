@@ -36,7 +36,7 @@ const HeroSection = () => {
         loop
       />
       <div className="relative z-10 flex flex-col items-center justify-center text-center text-white mt-80">
-        <h1 className="text-6xl font-arialBlack">Custom Software Solutions</h1>
+        <h1 className="text-6xl font-arialBlack">Modern Software Solutions</h1>
         <p className="text-xl my-4 font-sans font-roboto">
           {" "}
           {/* Use Tailwind class for Roboto */}
