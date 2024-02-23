@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react"; // Import useState
 import db from "../../firebase"; // Import the database reference
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -19,11 +19,13 @@ const ContactForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const submission = {
+      ...formData,
+      createdAt: serverTimestamp(), // Add createdAt field with serverTimestamp
+    };
     try {
-      // Add a new document with a generated id
-      await addDoc(collection(db, "contacts"), formData);
+      await addDoc(collection(db, "contacts"), submission);
       alert("Message sent successfully!");
-      // Clear the form
       setFormData({ name: "", email: "", project: "" });
     } catch (error) {
       console.error("Error writing document: ", error);
