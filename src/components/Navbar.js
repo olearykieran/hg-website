@@ -54,7 +54,7 @@ function Navbar() {
       className="bg-light-black py-4 font-light"
       style={{ ...navbarStyle, fontFamily: "EB Garamond" }}
     >
-      <div className="flex justify-between items-center px-4 mx-auto cursor-pointer sm:px-8 max-w-screen-xl">
+      <div className="flex justify-between items-center px-4 mx-auto sm:px-8 max-w-screen-xl">
         <Link href="/" passHref>
           <div className="flex items-center cursor-pointer">
             <div

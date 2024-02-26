@@ -236,3 +236,16 @@ canvas#bg {
     font-size: 10px; /* Adjust text size for better readability on mobile */
   }
 }
+
+.imageContainer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transform: skewY(-10deg);
+  z-index: -1;
+}

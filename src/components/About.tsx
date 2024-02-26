@@ -28,13 +28,13 @@ const AboutSection = () => {
           <div
             style={{
               position: "relative",
-              width: "100%", // Use 100% width for responsiveness
-              maxWidth: "400px", // Max width to match your design
-              height: "400px", // Adjust as needed
-              borderRadius: "50%", // Make the div circular
-              overflow: "hidden", // Ensure the image doesn't overflow the circular shape
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)", // Add shadow (adjust as needed)
-              backgroundColor: "rgba(255, 255, 255, 0.2)", // Add transparency (adjust color and alpha as needed)
+              width: "100%",
+              maxWidth: "400px",
+              height: "400px",
+              transform: "skewY(10deg)", // Skew container
+              overflow: "hidden",
+              boxShadow: "0px 4px 8px rgba(255, 255, 255, 0.5)",
+              backgroundColor: "rgba(255, 255, 255, 1)",
               opacity: 0.8,
             }}
           >
@@ -42,7 +42,7 @@ const AboutSection = () => {
               src={images.first}
               alt="Innovative Software Solutions"
               fill
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", transform: "skewY(-10deg)" }} // Reverse skew for image
             />
           </div>
 
@@ -69,22 +69,21 @@ const AboutSection = () => {
           <div
             style={{
               position: "relative",
-              width: "100%", // Use 100% width for responsiveness
-              maxWidth: "400px", // Max width to match your design
-              height: "400px", // Adjust as needed
-              borderRadius: "50%", // Make the div circular
-              overflow: "hidden", // Ensure the image doesn't overflow the circular shape
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)", // Add shadow (adjust as needed)
-              backgroundColor: "rgba(255, 255, 255, 0.2)", // Add transparency (adjust color and alpha as needed)
+              width: "100%",
+              maxWidth: "400px",
+              height: "400px",
+              transform: "skewY(-10deg)", // Skew container
+              overflow: "hidden",
+              boxShadow: "0px 4px 8px rgba(255, 255, 255, 0.5)",
+              backgroundColor: "rgba(255, 255, 255, 1)",
               opacity: 0.8,
-              margin: "0 auto", // Center the image on smaller screens
             }}
           >
             <Image
               src={images.second}
               alt="Our Mission"
               fill
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", transform: "skewY(10deg)" }}
             />
           </div>
         </div>
@@ -92,13 +91,13 @@ const AboutSection = () => {
           <div
             style={{
               position: "relative",
-              width: "100%", // Use 100% width for responsiveness
-              maxWidth: "400px", // Max width to match your design
-              height: "400px", // Adjust as needed
-              borderRadius: "50%", // Make the div circular
-              overflow: "hidden", // Ensure the image doesn't overflow the circular shape
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)", // Add shadow (adjust as needed)
-              backgroundColor: "rgba(255, 255, 255, 0.2)", // Add transparency (adjust color and alpha as needed)
+              width: "100%",
+              maxWidth: "400px",
+              height: "400px",
+              transform: "skewY(10deg)", // Skew container
+              overflow: "hidden",
+              boxShadow: "0px 4px 8px rgba(255, 255, 255, 0.5)",
+              backgroundColor: "rgba(255, 255, 255, 1)",
               opacity: 0.8,
             }}
           >
@@ -106,7 +105,7 @@ const AboutSection = () => {
               src={images.third}
               alt="Foundations of Success"
               fill
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", transform: "skewY(-10deg)" }}
             />
           </div>
 
