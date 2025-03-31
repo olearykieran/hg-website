@@ -1,116 +1,166 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
-const images = {
-  first: "/logoo.png",
+/* AI gradient styles */
+const aiGradientStyle = {
+  background: 'linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)',
+  backgroundSize: '200% auto',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  animation: 'gradientFlow 3s linear infinite'
 };
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [navbarStyle, setNavbarStyle] = useState({
-    opacity: 1,
-    transition: "opacity 0.5s ease",
-    position: "fixed", // Keep navbar fixed at the top of the viewport
-    width: "100%", // Ensure navbar spans the width of the viewport
-    zIndex: 10, // Make sure navbar stays on top of other content
-    backgroundColor: "rgba(255, 255, 255, 0.0)", // Semi-transparent background; adjust as needed
-  });
+const gradientButtonStyle = {
+  background: 'linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)',
+  backgroundSize: '200% auto',
+  animation: 'gradientFlow 3s linear infinite'
+};
+
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // Adjust opacity based on the intersection
-          if (entry.isIntersecting) {
-            setNavbarStyle((prevState) => ({ ...prevState, opacity: 1 }));
-          } else {
-            setNavbarStyle((prevState) => ({ ...prevState, opacity: 0 }));
-          }
-        });
-      },
-      {
-        rootMargin: "0px",
-        threshold: 0.1, // This can be adjusted based on when you want the fade effect to start
-      }
-    );
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
 
-    // Target element for IntersectionObserver
-    const target = document.querySelector("#top-of-page");
-    if (target) {
-      observer.observe(target);
-    }
+      // Update active link based on scroll position
+      const sections = ["solutions", "about", "contact"];
+      const scrollPosition = window.scrollY + 100;
 
-    return () => {
-      if (target) {
-        observer.unobserve(target);
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveLink(sections[i].charAt(0).toUpperCase() + sections[i].slice(1));
+          return;
+        }
       }
+
+      setActiveLink("Home");
     };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Solutions", href: "#solutions" },
+    { name: "About", href: "#about" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
     <nav
-      className="bg-light-black py-4 font-light"
-      style={{ ...navbarStyle, fontFamily: "EB Garamond" }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-sm py-2 md:py-3" : "bg-white py-3 md:py-5"
+      }`}
     >
-      <div className="flex justify-between items-center px-4 mx-auto sm:px-8 max-w-screen-xl">
-        <Link href="/" passHref>
-          <div className="flex items-center cursor-pointer">
-            <div
-              className="relative h-8 w-8 mr-2"
-              style={{ opacity: 0.8, borderRadius: "10%" }}
-            >
-              <Image
-                src={images.first}
-                alt="Logo"
-                fill // Adjusted for the new approach, ensuring the image fills the container
-                style={{ objectFit: "contain", borderRadius: "20%" }} // Applied via a wrapping div or directly if compliant
-              />
-            </div>
-            <span className="text-2xl font-arialBlack">Holy Grail Studio</span>
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <div className="relative h-14 w-14 md:h-20 md:w-20 mr-2">
+            <img
+              src="/hgs_logo.png"
+              alt="Holy Grail Studio"
+              className="w-full h-full object-contain"
+            />
           </div>
+          <span className="text-base md:text-lg font-satoshi-medium tracking-tight">
+            Holy <span style={aiGradientStyle}>Grail</span> Studio
+          </span>
         </Link>
-        <div className="relative text-2xl  font-arialBlack sm:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            <span>Menu</span> {/* Consider replacing with an icon */}
-          </button>
-          <div
-            className={`absolute top-full flex flex-row right-0 bg-transparent px-2  border-4 gap-8 mt-6 shadow-md ${
-              isOpen ? "block" : "hidden"
-            }`}
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-10">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-satoshi-medium text-gray-700 hover:text-black transition-colors duration-200"
+              style={activeLink === link.name ? aiGradientStyle : {}}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            href="#contact"
+            className="rounded-full text-sm font-satoshi-medium px-6 py-2 text-white"
+            style={gradientButtonStyle}
           >
-            <Link href="#about" passHref>
-              <span className="block sm:px-4 py-2 font-arialBlack cursor-pointer">
-                About
-              </span>
+            Get Started
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-foreground p-2"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {mobileMenuOpen ? (
+              <path
+                d="M18 6L6 18M6 6L18 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            ) : (
+              <path
+                d="M4 6H20M4 12H20M4 18H20"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-sm transition-all duration-300 overflow-hidden ${
+          mobileMenuOpen ? "max-h-screen" : "max-h-0"
+        }`}
+      >
+        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-satoshi-medium py-3 border-b border-gray-100"
+              style={activeLink === link.name ? aiGradientStyle : {}}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
             </Link>
-            <Link href="#our-work" passHref>
-              <span className="block sm:px-4 py-2 font-arialBlack cursor-pointer">
-                Projects
-              </span>
-            </Link>
-            <Link href="#contact" passHref>
-              <span className="block sm:px-4 py-2 font-arialBlack cursor-pointer">
-                Contact
-              </span>
+          ))}
+          <div className="pt-2">
+            <Link
+              href="#contact"
+              className="rounded-full py-3 text-center font-satoshi-medium w-full text-white"
+              style={gradientButtonStyle}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get Started
             </Link>
           </div>
-        </div>
-        <div className="hidden sm:flex flex-row ">
-          <Link href="#about" passHref>
-            <span className="px-4 font-arialBlack cursor-pointer">About</span>
-          </Link>
-          <Link href="#our-work" passHref>
-            <span className="px-4 font-arialBlack cursor-pointer">Projects</span>
-          </Link>
-          <Link href="#contact" passHref>
-            <span className="px-4 font-arialBlack cursor-pointer">Contact</span>
-          </Link>
         </div>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

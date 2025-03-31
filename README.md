@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-firebase deploy --only hosting
+vercel --prod for production
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

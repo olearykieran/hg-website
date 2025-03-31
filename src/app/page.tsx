@@ -1,33 +1,42 @@
-// pages/index.tsx
-import React from "react";
-import Navbar from "../components/Navbar";
-import HeroSection from "../components/HeroSection";
-import About from "../components/About";
-import CursorCanvas from "../components/CursorCanvas";
-import Slider, { slides } from "../components/Slider";
-import Contact from "../components/Contact";
+import React, { CSSProperties } from "react";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import Solutions from "@/components/Solutions";
+import About from "@/components/About";
+import Contact from "@/components/Contact";
 
-function Footer() {
-  return (
-    <footer className=" py-4 border-t">
-      <p className="text-center text-sans">
-        © 2024 Holy Grail Studio. All rights reserved.
-      </p>
-    </footer>
-  );
-}
+/* AI gradient styles */
+const aiGradientStyle: CSSProperties = {
+  background: 'linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)',
+  backgroundSize: '200% auto',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  animation: 'gradientFlow 3s linear infinite'
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <div id="top-of-page"></div> {/* Target element for IntersectionObserver */}
-      <CursorCanvas />
+    <main>
       <Navbar />
       <HeroSection />
+      <Solutions />
       <About />
-      <Slider slides={slides} />
       <Contact />
-      <Footer />
-    </div>
+      
+      <footer className="py-8 text-gray-500 text-sm border-t border-gray-100">
+        <div className="w-full flex flex-col items-center justify-center">
+          <div className="mb-4 flex items-center justify-center">
+            <span className="text-base font-satoshi-medium">
+              Holy <span style={aiGradientStyle}>Grail</span> Studio
+            </span>
+          </div>
+          <p className="text-center">&copy; {new Date().getFullYear()} Holy Grail Studio. All rights reserved.</p>
+          <p className="text-center mt-2">
+            <span style={aiGradientStyle}>AI-powered</span> software solutions for modern businesses
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 }

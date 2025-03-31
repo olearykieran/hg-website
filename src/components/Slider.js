@@ -42,21 +42,16 @@ class Slider extends React.Component {
   state = { activeSlide: 0 };
 
   prevSlide = () => {
-    console.log("Prev slide clicked");
     let slide =
       this.state.activeSlide - 1 < 0
         ? this.props.slides.length - 1
         : this.state.activeSlide - 1;
-    this.setState(
-      {
-        activeSlide: slide,
-      },
-      () => console.log(this.state.activeSlide)
-    );
+    this.setState({
+      activeSlide: slide,
+    });
   };
 
   nextSlide = () => {
-    console.log("Next slide clicked");
     let slide =
       this.state.activeSlide + 1 < this.props.slides.length
         ? this.state.activeSlide + 1
@@ -68,8 +63,8 @@ class Slider extends React.Component {
 
   render() {
     return (
-      <div id="our-work" className="bg-black">
-        <h1 className="text-5xl text-center mt-32 font-arialBlack">What We Do</h1>
+      <div id="our-work" className="bg-black py-16 md:py-24">
+        <h1 className="text-3xl md:text-5xl text-center mt-8 md:mt-32 font-arialBlack text-white">What We Do</h1>
         <div id="slide" className="container-fluid">
           {this.props.slides.map((slide, index) => (
             <Slide
@@ -80,11 +75,10 @@ class Slider extends React.Component {
             />
           ))}
           <div className="leftArrow" onClick={this.nextSlide}>
-            <FontAwesomeIcon icon={faArrowCircleRight} size="4x" />
+            <FontAwesomeIcon icon={faArrowCircleRight} size="2x" className="md:text-4xl" />
           </div>
           <div className="rightArrow" onClick={this.prevSlide}>
-            {" "}
-            <FontAwesomeIcon icon={faArrowCircleLeft} size="4x" />
+            <FontAwesomeIcon icon={faArrowCircleLeft} size="2x" className="md:text-4xl" />
           </div>
         </div>
       </div>
