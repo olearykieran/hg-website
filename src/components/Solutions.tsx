@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, CSSProperties, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type SolutionKey = "web" | "mobile" | "ai";
 
@@ -95,14 +96,14 @@ const Solutions = () => {
   const tabs = Object.keys(solutions) as SolutionKey[];
 
   return (
-    <div className="bg-white py-16 md:py-32" id="solutions">
+    <div className="bg-white dark:bg-[#1e1e2e] py-16 md:py-32" id="solutions">
       {/* Solutions Header - Completely separate */}
       <div className="w-full flex flex-col items-center justify-center mb-16 md:mb-40">
         <div className="text-center w-full max-w-3xl mx-auto px-4 md:px-6">
-          <h2 className="display-text mb-6 md:mb-8 text-center">
+          <h2 className="display-text mb-6 md:mb-8 text-center text-gray-900 dark:text-gray-100">
             <span style={aiGradientStyle}>Innovative</span> Solutions
           </h2>
-          <p className="subtitle text-lg md:text-xl text-center">
+          <p className="subtitle text-lg md:text-xl text-center text-gray-600 dark:text-gray-300">
             Intelligent software that helps businesses <span style={aiGradientStyle}>innovate</span> and grow.
           </p>
         </div>
@@ -115,14 +116,14 @@ const Solutions = () => {
             {/* Left column - Tabs */}
             <div className="lg:col-span-3">
               <div className="lg:sticky lg:top-32">
-                <h3 className="text-lg md:text-xl font-satoshi-medium mb-6 md:mb-10 text-gray-500 text-center">
+                <h3 className="text-lg md:text-xl font-satoshi-medium mb-6 md:mb-10 text-gray-500 dark:text-gray-400 text-center">
                   Our Offerings
                 </h3>
                 {/* Mobile dropdown for solutions */}
                 <div className="lg:hidden mb-8" ref={dropdownRef}>
                   <div className="relative">
                     <button
-                      className="w-full px-4 py-3 rounded-xl text-lg font-satoshi-medium bg-gray-50 text-gray-700 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black flex justify-between items-center"
+                      className="w-full px-4 py-3 rounded-xl text-lg font-satoshi-medium bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-300 flex justify-between items-center"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
                       <span>{solutions[activeTab].title}</span>
@@ -138,14 +139,14 @@ const Solutions = () => {
                     </button>
                     
                     {isDropdownOpen && (
-                      <div className="absolute z-10 mt-1 w-full bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                      <div className="absolute z-10 mt-1 w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
                         {tabs.map((tab) => (
                           <button
                             key={tab}
                             className={`w-full text-left px-4 py-3 text-lg font-satoshi-medium transition-colors ${
                               activeTab === tab
-                                ? "bg-gray-100 text-black"
-                                : "text-gray-700 hover:bg-gray-50"
+                                ? "bg-gray-100 dark:bg-gray-700 text-black dark:text-white"
+                                : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                             }`}
                             onClick={() => {
                               setActiveTab(tab);
@@ -167,8 +168,8 @@ const Solutions = () => {
                       key={tab}
                       className={`text-left px-6 py-4 rounded-xl text-lg font-satoshi-medium transition-all duration-300 ${
                         activeTab === tab
-                          ? "bg-black text-white"
-                          : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                          ? "bg-gray-800 dark:bg-gray-700 text-white"
+                          : "bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                       }`}
                       onClick={() => setActiveTab(tab)}
                     >
@@ -178,12 +179,12 @@ const Solutions = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-10 md:mt-16 bg-gray-50 p-6 md:p-8 rounded-2xl" style={activeTab === "ai" ? aiGradientBorder : {}}>
-                  <div className={activeTab === "ai" ? "bg-white rounded-xl p-6 md:p-8" : ""}>
-                    <h3 className="text-lg md:text-xl font-satoshi-bold mb-3 md:mb-4">
+                <div className="mt-10 md:mt-16 bg-gray-50 dark:bg-gray-800 p-6 md:p-8 rounded-2xl" style={activeTab === "ai" ? aiGradientBorder : {}}>
+                  <div className={activeTab === "ai" ? "bg-white dark:bg-gray-900 rounded-xl p-6 md:p-8" : ""}>
+                    <h3 className="text-lg md:text-xl font-satoshi-bold mb-3 md:mb-4 text-gray-900 dark:text-gray-100">
                       Ready to transform your business?
                     </h3>
-                    <p className="text-gray-600 mb-4 md:mb-6 font-satoshi-regular text-sm md:text-base">
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 md:mb-6 font-satoshi-regular text-sm md:text-base">
                       Get in touch to discuss how we can help you achieve your goals.
                     </p>
                     <Link
@@ -199,29 +200,31 @@ const Solutions = () => {
 
             {/* Right column - Content */}
             <div className="lg:col-span-9">
-              <div className="bg-gray-50 rounded-3xl p-6 md:p-12" style={activeTab === "ai" ? aiGradientBorder : {}}>
-                <div className={activeTab === "ai" ? "bg-white rounded-2xl p-6 md:p-12" : ""}>
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-6 md:p-12" style={activeTab === "ai" ? aiGradientBorder : {}}>
+                <div className={activeTab === "ai" ? "bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-12" : ""}>
                   <div className="flex flex-col items-center mb-8 md:mb-12">
-                    <h3 className="text-2xl md:text-3xl font-satoshi-bold tracking-tight text-center mb-4">
+                    <h3 className="text-2xl md:text-3xl font-satoshi-bold tracking-tight text-center mb-4 text-gray-900 dark:text-gray-100">
                       {activeTab === "ai" ? (
                         <span style={aiGradientStyle}>{solutions[activeTab].title}</span>
                       ) : (
                         solutions[activeTab].title
                       )}
                     </h3>
-                    <img
+                    <Image
                       src={solutions[activeTab].image}
                       alt={solutions[activeTab].title}
                       className="w-12 h-12 md:w-16 md:h-16 object-contain"
+                      width={64}
+                      height={64}
                     />
                   </div>
 
-                  <p className="text-gray-700 font-satoshi-regular mb-8 md:mb-12 text-lg md:text-xl leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular mb-8 md:mb-12 text-lg md:text-xl leading-relaxed">
                     {solutions[activeTab].description}
                   </p>
 
-                  <div className="border-t border-gray-200 pt-6 md:pt-10">
-                    <h4 className="text-lg md:text-xl font-satoshi-bold mb-6 md:mb-8">
+                  <div className="border-t border-gray-200 dark:border-gray-700 pt-6 md:pt-10">
+                    <h4 className="text-lg md:text-xl font-satoshi-bold mb-6 md:mb-8 text-gray-900 dark:text-gray-100">
                       {activeTab === "ai" ? (
                         <span style={aiGradientStyle}>Key Features</span>
                       ) : (
@@ -233,7 +236,7 @@ const Solutions = () => {
                         (feature: string, index: number) => (
                           <div key={index} className="flex items-start">
                             <div className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0 ${
-                              activeTab === "ai" ? "bg-gradient-to-br from-purple-600 to-blue-500" : "bg-black"
+                              activeTab === "ai" ? "bg-gradient-to-br from-purple-600 to-blue-500" : "bg-gray-800 dark:bg-gray-700"
                             }`} style={activeTab === "ai" ? {
                               background: 'linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)',
                               backgroundSize: '200% auto',
@@ -256,7 +259,7 @@ const Solutions = () => {
                                 />
                               </svg>
                             </div>
-                            <span className="font-satoshi-medium text-gray-800 text-base md:text-lg pt-0 md:pt-1">
+                            <span className="font-satoshi-medium text-gray-800 dark:text-gray-200 text-base md:text-lg pt-0 md:pt-1">
                               {feature}
                             </span>
                           </div>
@@ -268,7 +271,7 @@ const Solutions = () => {
                   <div className="mt-10 md:mt-16">
                     <Link
                       href="#contact"
-                      className="text-black font-satoshi-bold flex items-center group text-base md:text-lg"
+                      className="text-black dark:text-white font-satoshi-bold flex items-center group text-base md:text-lg"
                     >
                       Learn more about {solutions[activeTab].title.toLowerCase()}
                       <svg
@@ -291,23 +294,23 @@ const Solutions = () => {
 
               {/* Case studies teaser */}
               <div className="mt-10 md:mt-16">
-                <h4 className="text-lg md:text-xl font-satoshi-bold mb-4 md:mb-6">
+                <h4 className="text-lg md:text-xl font-satoshi-bold mb-4 md:mb-6 text-gray-900 dark:text-gray-100">
                   Related Case Studies
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                  <div className="bg-white border border-gray-100 rounded-xl p-5 md:p-6 hover:shadow-md transition-shadow">
-                    <span className="text-xs md:text-sm font-satoshi-medium text-gray-500 mb-1 md:mb-2 block">
+                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-md transition-shadow">
+                    <span className="text-xs md:text-sm font-satoshi-medium text-gray-500 dark:text-gray-400 mb-1 md:mb-2 block">
                       Case Study
                     </span>
-                    <h5 className="text-base md:text-lg font-satoshi-bold mb-2 md:mb-3">
+                    <h5 className="text-base md:text-lg font-satoshi-bold mb-2 md:mb-3 text-gray-900 dark:text-gray-100">
                       Transforming customer experience for a fintech startup
                     </h5>
-                    <p className="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
+                    <p className="text-gray-600 dark:text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
                       How we helped increase conversion rates by 43% with <span style={aiGradientStyle}>AI-powered</span> personalization.
                     </p>
                     <Link
                       href="#"
-                      className="text-black font-satoshi-medium inline-flex items-center text-sm md:text-base"
+                      className="text-black dark:text-white font-satoshi-medium inline-flex items-center text-sm md:text-base"
                     >
                       Read more
                       <svg
@@ -326,19 +329,19 @@ const Solutions = () => {
                     </Link>
                   </div>
 
-                  <div className="bg-white border border-gray-100 rounded-xl p-5 md:p-6 hover:shadow-md transition-shadow">
-                    <span className="text-xs md:text-sm font-satoshi-medium text-gray-500 mb-1 md:mb-2 block">
+                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-5 md:p-6 hover:shadow-md transition-shadow">
+                    <span className="text-xs md:text-sm font-satoshi-medium text-gray-500 dark:text-gray-400 mb-1 md:mb-2 block">
                       Case Study
                     </span>
-                    <h5 className="text-base md:text-lg font-satoshi-bold mb-2 md:mb-3">
+                    <h5 className="text-base md:text-lg font-satoshi-bold mb-2 md:mb-3 text-gray-900 dark:text-gray-100">
                       Creating an <span style={aiGradientStyle}>intelligent</span> mobile experience
                     </h5>
-                    <p className="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">
+                    <p className="text-gray-600 dark:text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
                       How our mobile solution improved user engagement by 65%.
                     </p>
                     <Link
                       href="#"
-                      className="text-black font-satoshi-medium inline-flex items-center text-sm md:text-base"
+                      className="text-black dark:text-white font-satoshi-medium inline-flex items-center text-sm md:text-base"
                     >
                       Read more
                       <svg

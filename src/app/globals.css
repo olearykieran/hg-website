@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 :root {
-  --background: 222.2 84% 4.9%;
+  --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
 
   --card: 0 0% 100%;
@@ -38,32 +38,32 @@
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
+  --background: 220 13% 18%; /* Modern dark gray background (similar to ChatGPT) */
   --foreground: 210 40% 98%;
 
-  --card: 222.2 84% 4.9%;
+  --card: 220 13% 23%; /* Slightly lighter gray for cards */
   --card-foreground: 210 40% 98%;
 
-  --popover: 222.2 84% 4.9%;
+  --popover: 220 13% 23%;
   --popover-foreground: 210 40% 98%;
 
   --primary: 210 40% 98%;
   --primary-foreground: 222.2 47.4% 11.2%;
 
-  --secondary: 217.2 32.6% 17.5%;
+  --secondary: 217.2 19% 27%; /* Lighter gray for secondary elements */
   --secondary-foreground: 210 40% 98%;
 
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --muted: 217.2 19% 27%;
+  --muted-foreground: 215 20.2% 75.1%; /* Lighter muted text for better contrast */
 
-  --accent: 217.2 32.6% 17.5%;
+  --accent: 217.2 19% 27%;
   --accent-foreground: 210 40% 98%;
 
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
+  --border: 217.2 19% 27%;
+  --input: 217.2 19% 27%;
   --ring: 212.7 26.8% 83.9%;
 }
 
@@ -113,7 +113,7 @@
   
   .subtitle {
     font-family: 'Satoshi', sans-serif;
-    @apply text-lg text-gray-600 font-normal;
+    @apply text-lg text-gray-600 dark:text-gray-300 font-normal;
   }
   
   /* Satoshi font utility classes */
@@ -157,7 +157,7 @@
   }
   
   .card {
-    @apply bg-card text-gray-800 rounded-xl shadow-sm;
+    @apply bg-card text-gray-800 dark:text-gray-200 rounded-xl shadow-sm;
   }
   
   .btn {
@@ -167,19 +167,19 @@
   }
   
   .btn-primary {
-    @apply bg-black text-white hover:bg-black hover:bg-opacity-90 px-6 py-3;
+    @apply bg-black text-white dark:bg-white dark:text-black hover:bg-black hover:bg-opacity-90 dark:hover:bg-white dark:hover:bg-opacity-90 px-6 py-3;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 text-black hover:bg-gray-200 hover:bg-opacity-80 px-6 py-3;
+    @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200 hover:bg-opacity-80 dark:hover:bg-gray-800 dark:hover:bg-opacity-80 px-6 py-3;
   }
   
   .btn-outline {
-    @apply border border-gray-200 hover:bg-gray-100 hover:text-black px-6 py-3;
+    @apply border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white px-6 py-3;
   }
   
   .glass {
-    @apply bg-white bg-opacity-5 backdrop-blur-md border border-white border-opacity-10 shadow-sm;
+    @apply bg-white bg-opacity-5 dark:bg-black dark:bg-opacity-5 backdrop-blur-md border border-white border-opacity-10 dark:border-black dark:border-opacity-10 shadow-sm;
   }
 }
 
@@ -318,19 +318,19 @@
 }
 
 .btn-primary {
-  @apply bg-black text-white hover:bg-black hover:bg-opacity-90;
+  @apply bg-black text-white dark:bg-white dark:text-black hover:bg-black hover:bg-opacity-90 dark:hover:bg-white dark:hover:bg-opacity-90;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 text-black hover:bg-gray-200 hover:bg-opacity-80;
+  @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200 hover:bg-opacity-80 dark:hover:bg-gray-800 dark:hover:bg-opacity-80;
 }
 
 .btn-outline {
-  @apply border-2 border-gray-300 text-black hover:bg-gray-100 hover:text-black;
+  @apply border-2 border-gray-300 text-black dark:border-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white;
 }
 
 .btn-glass {
-  @apply glass text-white hover:bg-white hover:bg-opacity-20;
+  @apply glass text-white dark:text-black hover:bg-white dark:hover:bg-black hover:bg-opacity-20 dark:hover:bg-opacity-20;
 }
 
 .section {
@@ -338,7 +338,7 @@
 }
 
 .card {
-  @apply bg-card text-gray-800 rounded-xl p-6 shadow-lg;
+  @apply bg-card text-gray-800 dark:text-gray-200 rounded-xl p-6 shadow-lg;
 }
 
 /* Responsive typography */

@@ -43,8 +43,8 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-white z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
+      <div className="absolute inset-0 bg-white dark:bg-[#1e1e2e] z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-[#1e1e2e]"></div>
       </div>
 
       {/* Subtle grid pattern */}
@@ -55,11 +55,11 @@ const HeroSection = () => {
         <div className="flex flex-col items-center">
           {/* Main content - always on top */}
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="display-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-tight">
+            <h1 className="display-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-tight text-gray-900 dark:text-gray-100">
               Software that feels like <span className="font-bold" style={aiGradientStyle}>magic</span>
             </h1>
 
-            <p className="subtitle text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto px-4 md:px-0">
+            <p className="subtitle text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto px-4 md:px-0 text-gray-600 dark:text-gray-300">
               We craft intelligent software solutions that transform how businesses operate
               by leveraging the power of <span className="font-medium">AI</span>
             </p>
@@ -76,28 +76,28 @@ const HeroSection = () => {
 
           {/* Stats - explicitly below main content */}
           <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <div className="text-center bg-white/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
-              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2">98%</h3>
-              <p className="text-xs md:text-sm text-gray-500">Client Satisfaction</p>
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
+              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2 text-gray-900 dark:text-gray-100">98%</h3>
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Client Satisfaction</p>
             </div>
-            <div className="text-center bg-white/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
-              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2">50+</h3>
-              <p className="text-xs md:text-sm text-gray-500">Projects Delivered</p>
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
+              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2 text-gray-900 dark:text-gray-100">50+</h3>
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Projects Delivered</p>
             </div>
-            <div className="text-center bg-white/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
-              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2">12+</h3>
-              <p className="text-xs md:text-sm text-gray-500">Years Experience</p>
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
+              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2 text-gray-900 dark:text-gray-100">12+</h3>
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Years Experience</p>
             </div>
-            <div className="text-center bg-white/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
-              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2">24/7</h3>
-              <p className="text-xs md:text-sm text-gray-500">Support</p>
+            <div className="text-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-4 md:p-6 rounded-lg">
+              <h3 className="text-2xl md:text-4xl font-medium mb-1 md:mb-2 text-gray-900 dark:text-gray-100">24/7</h3>
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Support</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 bg-gradient-to-t from-white dark:from-[#1e1e2e] to-transparent z-10"></div>
     </section>
   );
 };

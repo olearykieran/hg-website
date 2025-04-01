@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const AICapabilities = () => {
   const capabilities = [
@@ -44,10 +45,12 @@ const AICapabilities = () => {
             >
               <div className="flex items-start">
                 <div className="relative w-16 h-16 mr-6 flex-shrink-0">
-                  <img
+                  <Image
                     src={capability.image}
                     alt={capability.title}
                     className="object-contain w-full h-full"
+                    width={64}
+                    height={64}
                   />
                 </div>
                 <div>
@@ -64,7 +67,7 @@ const AICapabilities = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="p-10 lg:p-12 flex flex-col justify-center">
               <h3 className="text-2xl font-medium mb-4">Machine Learning Integration</h3>
-              <img
+              <Image
                 src="/code.png"
                 alt="Machine Learning Integration"
                 width={64}
@@ -94,10 +97,12 @@ const AICapabilities = () => {
               </ul>
             </div>
             <div className="relative h-64 lg:h-auto bg-gray-100">
-              <img
+              <Image
                 src="/code.png"
                 alt="Machine Learning Integration"
                 className="w-full h-full object-cover"
+                width={800}
+                height={600}
               />
             </div>
           </div>

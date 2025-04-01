@@ -17,17 +17,17 @@ const aiGradientStyle: CSSProperties = {
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-white dark:bg-[#1e1e2e] text-gray-900 dark:text-gray-100 min-h-screen">
       <Navbar />
       <HeroSection />
       <Solutions />
       <About />
       <Contact />
       
-      <footer className="py-8 text-gray-500 text-sm border-t border-gray-100">
+      <footer className="py-8 text-gray-500 dark:text-gray-400 text-sm border-t border-gray-100 dark:border-gray-800">
         <div className="w-full flex flex-col items-center justify-center">
           <div className="mb-4 flex items-center justify-center">
-            <span className="text-base font-satoshi-medium">
+            <span className="text-base font-satoshi-medium text-gray-900 dark:text-white">
               Holy <span style={aiGradientStyle}>Grail</span> Studio
             </span>
           </div>
