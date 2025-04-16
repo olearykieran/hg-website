@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   keywords:
     "AI software, software development, artificial intelligence, machine learning, web development, app development",
   icons: {
-    icon: "/hgs_3_logo.png",
+    icon: "/final-logo.png",
   },
 };
 

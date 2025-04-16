@@ -66,9 +66,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <div className="relative h-14 w-14 md:h-20 md:w-20 mr-2">
+          <div className="relative h-16 w-16 md:h-24 md:w-24 mr-2 rounded-full overflow-hidden">
             <Image
-              src="/hgs_3_logo.png"
+              src="/final-logo.png"
               alt="Holy Grail Studio"
               className="w-full h-full object-contain"
               width={80}

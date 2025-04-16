@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-import NoiseEffect from "./NoiseEffect";
+import Image from "next/image";
 
 /* AI magic gradient style */
 const aiGradientStyle = {
@@ -46,9 +46,6 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-white dark:bg-gray-900 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-white to-white dark:from-gray-900 dark:to-gray-900"></div>
       </div>
-
-      {/* Noise Effect */}
-      <NoiseEffect />
 
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center z-0 opacity-5"></div>

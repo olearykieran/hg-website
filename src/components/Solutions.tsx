@@ -2,7 +2,6 @@
 import React, { useState, CSSProperties, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import NoiseEffect from "./NoiseEffect";
 
 type SolutionKey = "web" | "mobile" | "ai";
 
@@ -117,9 +116,6 @@ const Solutions = () => {
           </p>
         </div>
       </div>
-
-      {/* Noise Effect */}
-      <NoiseEffect />
 
       {/* Solutions Content */}
       <div className="container mx-auto px-4 md:px-6">
