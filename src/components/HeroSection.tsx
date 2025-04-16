@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import NoiseEffect from "./NoiseEffect";
 
 /* AI magic gradient style */
 const aiGradientStyle = {
@@ -22,7 +23,6 @@ const HeroSection = () => {
         const heroElement = heroRef.current;
 
         if (heroElement) {
-          // Parallax effect for hero content
           const heroContent = heroElement.querySelector(".hero-content") as HTMLElement;
           if (heroContent) {
             heroContent.style.transform = `translateY(${scrollY * 0.2}px)`;
@@ -43,9 +43,12 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-white dark:bg-[#1c1a18] z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-[#1c1a18] dark:to-[#6e6c68]"></div>
+      <div className="absolute inset-0 bg-white dark:bg-[#6e6c68] z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-white dark:from-[#6e6c68] dark:to-[#6e6c68]"></div>
       </div>
+
+      {/* Noise Effect */}
+      <NoiseEffect />
 
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center z-0 opacity-5"></div>
@@ -120,9 +123,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 bg-gradient-to-t from-white dark:from-[#6e6c68] to-transparent z-10"></div>
     </section>
   );
 };

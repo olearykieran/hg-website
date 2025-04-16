@@ -2,6 +2,7 @@
 import React, { useState, CSSProperties, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import NoiseEffect from "./NoiseEffect";
 
 type SolutionKey = "web" | "mobile" | "ai";
 
@@ -96,7 +97,7 @@ const Solutions = () => {
   const tabs = Object.keys(solutions) as SolutionKey[];
 
   return (
-    <div className="relative bg-white dark:bg-[#6e6c68] py-16 md:py-32" id="solutions">
+    <div className="bg-white dark:bg-[#6e6c68] py-16 md:py-32" id="solutions">
       {/* Dark mode blurred background */}
       <div className="absolute inset-0 -z-10 hidden dark:block bg-[url('/download.jpeg')] bg-cover bg-center blur-sm"></div>
 
@@ -113,7 +114,10 @@ const Solutions = () => {
         </div>
       </div>
 
-      {/* Solutions Content - Completely separate section */}
+      {/* Noise Effect */}
+      <NoiseEffect />
+
+      {/* Solutions Content */}
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
@@ -127,7 +131,7 @@ const Solutions = () => {
                 <div className="lg:hidden mb-8" ref={dropdownRef}>
                   <div className="relative">
                     <button
-                      className="w-full px-4 py-3 rounded-xl text-lg font-satoshi-medium bg-gray-50 dark:bg-neutral-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-300 flex justify-between items-center"
+                      className="w-full px-4 py-3 rounded-xl text-lg font-satoshi-medium bg-transparent hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-300 flex justify-between items-center transition-all duration-300"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
                       <span>{solutions[activeTab].title}</span>
@@ -150,7 +154,7 @@ const Solutions = () => {
                     </button>
 
                     {isDropdownOpen && (
-                      <div className="absolute z-10 mt-1 w-full bg-white dark:bg-neutral-800 rounded-xl shadow-lg border border-gray-200 dark:border-neutral-600 overflow-hidden">
+                      <div className="absolute z-10 mt-1 w-full bg-transparent hover:bg-white dark:hover:bg-neutral-800 rounded-xl shadow-lg border border-gray-200 dark:border-neutral-600 overflow-hidden transition-all duration-300">
                         {tabs.map((tab) => (
                           <button
                             key={tab}
@@ -180,7 +184,7 @@ const Solutions = () => {
                       className={`text-left px-6 py-4 rounded-xl text-lg font-satoshi-medium transition-all duration-300 ${
                         activeTab === tab
                           ? "bg-neutral-800 dark:bg-neutral-600 text-white"
-                          : "bg-gray-50 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-700"
+                          : "bg-transparent hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-700 dark:text-gray-300"
                       }`}
                       onClick={() => setActiveTab(tab)}
                     >
@@ -190,144 +194,120 @@ const Solutions = () => {
                 </div>
 
                 {/* CTA */}
-                <div
-                  className="mt-10 md:mt-16 bg-gray-50 dark:bg-neutral-800 p-6 md:p-8 rounded-2xl"
-                  style={activeTab === "ai" ? aiGradientBorder : {}}
-                >
-                  <div
-                    className={
-                      activeTab === "ai"
-                        ? "bg-white dark:bg-[#1c1a18] rounded-xl p-6 md:p-8"
-                        : ""
-                    }
+                <div className="mt-10 md:mt-16 bg-transparent hover:bg-gray-50 dark:hover:bg-neutral-800 p-6 md:p-8 rounded-2xl transition-all duration-300">
+                  <h3 className="text-lg md:text-xl font-satoshi-bold mb-3 md:mb-4 text-gray-900 dark:text-gray-100">
+                    Ready to transform your business?
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 md:mb-6 font-satoshi-regular text-sm md:text-base">
+                    Get in touch to discuss how we can help you achieve your goals.
+                  </p>
+                  <Link
+                    href="#contact"
+                    className="btn btn-primary rounded-full px-6 py-2 md:px-8 md:py-3 inline-block font-satoshi-medium text-sm md:text-base"
                   >
-                    <h3 className="text-lg md:text-xl font-satoshi-bold mb-3 md:mb-4 text-gray-900 dark:text-gray-100">
-                      Ready to transform your business?
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 md:mb-6 font-satoshi-regular text-sm md:text-base">
-                      Get in touch to discuss how we can help you achieve your goals.
-                    </p>
-                    <Link
-                      href="#contact"
-                      className="btn btn-primary rounded-full px-6 py-2 md:px-8 md:py-3 inline-block font-satoshi-medium text-sm md:text-base"
-                    >
-                      Get Started
-                    </Link>
-                  </div>
+                    Get Started
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* Right column - Content */}
             <div className="lg:col-span-9">
-              <div
-                className="bg-gray-50 dark:bg-neutral-800 rounded-3xl p-6 md:p-12"
-                style={activeTab === "ai" ? aiGradientBorder : {}}
-              >
-                <div
-                  className={
-                    activeTab === "ai"
-                      ? "bg-white dark:bg-[#1c1a18] rounded-2xl p-6 md:p-12"
-                      : ""
-                  }
-                >
-                  <div className="flex flex-col items-center mb-8 md:mb-12">
-                    <h3 className="text-2xl md:text-3xl font-satoshi-bold tracking-tight text-center mb-4 text-gray-900 dark:text-gray-100">
-                      {activeTab === "ai" ? (
-                        <span style={aiGradientStyle}>{solutions[activeTab].title}</span>
-                      ) : (
-                        solutions[activeTab].title
-                      )}
-                    </h3>
-                    <Image
-                      src={solutions[activeTab].image}
-                      alt={solutions[activeTab].title}
-                      className="w-12 h-12 md:w-16 md:h-16 object-contain"
-                      width={64}
-                      height={64}
-                    />
-                  </div>
+              <div className="bg-gray-50/80 dark:bg-neutral-800/50 hover:bg-gray-50 dark:hover:bg-neutral-800/80 rounded-3xl p-6 md:p-12 transition-all duration-300">
+                <div className="flex flex-col items-center mb-8 md:mb-12">
+                  <h3 className="text-2xl md:text-3xl font-satoshi-bold tracking-tight text-center mb-4 text-gray-900 dark:text-gray-100">
+                    {activeTab === "ai" ? (
+                      <span style={aiGradientStyle}>{solutions[activeTab].title}</span>
+                    ) : (
+                      solutions[activeTab].title
+                    )}
+                  </h3>
+                  <Image
+                    src={solutions[activeTab].image}
+                    alt={solutions[activeTab].title}
+                    className="w-12 h-12 md:w-16 md:h-16 object-contain"
+                    width={64}
+                    height={64}
+                  />
+                </div>
 
-                  <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular mb-8 md:mb-12 text-lg md:text-xl leading-relaxed">
-                    {solutions[activeTab].description}
-                  </p>
+                <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular mb-8 md:mb-12 text-lg md:text-xl leading-relaxed">
+                  {solutions[activeTab].description}
+                </p>
 
-                  <div className="border-t border-gray-200 dark:border-neutral-600 pt-6 md:pt-10">
-                    <h4 className="text-lg md:text-xl font-satoshi-bold mb-6 md:mb-8 text-gray-900 dark:text-gray-100">
-                      {activeTab === "ai" ? (
-                        <span style={aiGradientStyle}>Key Features</span>
-                      ) : (
-                        "Key Features"
-                      )}
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-4 md:gap-y-6">
-                      {solutions[activeTab].features.map(
-                        (feature: string, index: number) => (
-                          <div key={index} className="flex items-start">
-                            <div
-                              className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0 ${
-                                activeTab === "ai"
-                                  ? ""
-                                  : "bg-gray-800 dark:bg-neutral-700"
-                              }`}
-                              style={
-                                activeTab === "ai"
-                                  ? {
-                                      background:
-                                        "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
-                                      backgroundSize: "200% auto",
-                                      animation: "gradientFlow 3s linear infinite",
-                                    }
-                                  : {}
-                              }
+                <div className="pt-6 md:pt-10">
+                  <h4 className="text-lg md:text-xl font-satoshi-bold mb-6 md:mb-8 text-gray-900 dark:text-gray-100">
+                    {activeTab === "ai" ? (
+                      <span style={aiGradientStyle}>Key Features</span>
+                    ) : (
+                      "Key Features"
+                    )}
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-4 md:gap-y-6">
+                    {solutions[activeTab].features.map(
+                      (feature: string, index: number) => (
+                        <div key={index} className="flex items-start">
+                          <div
+                            className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0 ${
+                              activeTab === "ai" ? "" : "bg-gray-800 dark:bg-neutral-700"
+                            }`}
+                            style={
+                              activeTab === "ai"
+                                ? {
+                                    background:
+                                      "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
+                                    backgroundSize: "200% auto",
+                                    animation: "gradientFlow 3s linear infinite",
+                                  }
+                                : {}
+                            }
+                          >
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 14 14"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="md:w-4 md:h-4"
                             >
-                              <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 14 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="md:w-4 md:h-4"
-                              >
-                                <path
-                                  d="M11.6667 3.5L5.25 9.91667L2.33333 7"
-                                  stroke="white"
-                                  strokeWidth="1.5"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                            </div>
-                            <span className="font-satoshi-medium text-gray-800 dark:text-gray-200 text-base md:text-lg pt-0 md:pt-1">
-                              {feature}
-                            </span>
+                              <path
+                                d="M11.6667 3.5L5.25 9.91667L2.33333 7"
+                                stroke="white"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
                           </div>
-                        )
-                      )}
-                    </div>
+                          <span className="font-satoshi-medium text-gray-800 dark:text-gray-200 text-base md:text-lg pt-0 md:pt-1">
+                            {feature}
+                          </span>
+                        </div>
+                      )
+                    )}
                   </div>
+                </div>
 
-                  <div className="mt-10 md:mt-16">
-                    <Link
-                      href="#contact"
-                      className="text-black dark:text-white font-satoshi-bold flex items-center group text-base md:text-lg"
+                <div className="mt-10 md:mt-16">
+                  <Link
+                    href="#contact"
+                    className="text-black dark:text-white font-satoshi-bold flex items-center group text-base md:text-lg"
+                  >
+                    Learn more about {solutions[activeTab].title.toLowerCase()}
+                    <svg
+                      className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      Learn more about {solutions[activeTab].title.toLowerCase()}
-                      <svg
-                        className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </Link>
-                  </div>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </Link>
                 </div>
               </div>
 
@@ -337,7 +317,7 @@ const Solutions = () => {
                   Related Case Studies
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                  <div className="bg-white dark:bg-neutral-800 border border-gray-100 dark:border-neutral-600 rounded-xl p-5 md:p-6 hover:shadow-md transition-shadow">
+                  <div className="bg-gray-50/80 dark:bg-neutral-800/50 hover:bg-gray-50 dark:hover:bg-neutral-800/80 rounded-xl p-5 md:p-6 transition-all duration-300">
                     <span className="text-xs md:text-sm font-satoshi-medium text-gray-500 dark:text-gray-400 mb-1 md:mb-2 block">
                       Case Study
                     </span>
@@ -369,7 +349,7 @@ const Solutions = () => {
                     </Link>
                   </div>
 
-                  <div className="bg-white dark:bg-neutral-800 border border-gray-100 dark:border-neutral-600 rounded-xl p-5 md:p-6 hover:shadow-md transition-shadow">
+                  <div className="bg-gray-50/80 dark:bg-neutral-800/50 hover:bg-gray-50 dark:hover:bg-neutral-800/80 rounded-xl p-5 md:p-6 transition-all duration-300">
                     <span className="text-xs md:text-sm font-satoshi-medium text-gray-500 dark:text-gray-400 mb-1 md:mb-2 block">
                       Case Study
                     </span>

@@ -73,76 +73,81 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-medium;
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
   }
-  
+
   h1 {
     @apply text-4xl font-bold;
     letter-spacing: -0.02em;
   }
-  
+
   h2 {
     @apply text-3xl font-bold;
     letter-spacing: -0.01em;
   }
-  
+
   h3 {
     @apply text-2xl font-medium;
     letter-spacing: -0.01em;
   }
-  
+
   h4 {
     @apply text-xl font-medium;
   }
-  
+
   p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     @apply text-base leading-relaxed;
   }
-  
+
   .display-text {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
     letter-spacing: -0.03em;
   }
-  
+
   .subtitle {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     @apply text-lg text-gray-600 dark:text-gray-300 font-normal;
   }
-  
+
   /* Satoshi font utility classes */
   .font-satoshi {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
   }
-  
+
   .font-satoshi-light {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     font-weight: 300;
   }
-  
+
   .font-satoshi-regular {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     font-weight: 400;
   }
-  
+
   .font-satoshi-medium {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     font-weight: 500;
   }
-  
+
   .font-satoshi-bold {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     font-weight: 700;
   }
-  
+
   .font-satoshi-black {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", sans-serif;
     font-weight: 900;
   }
 }
@@ -151,33 +156,33 @@
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .section {
     @apply py-20 md:py-28;
   }
-  
+
   .card {
     @apply bg-card text-gray-800 dark:text-gray-200 rounded-xl shadow-sm;
   }
-  
+
   .btn {
     @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 
     disabled:pointer-events-none ring-offset-background;
   }
-  
+
   .btn-primary {
     @apply bg-black text-white dark:bg-white dark:text-black hover:bg-black hover:bg-opacity-90 dark:hover:bg-white dark:hover:bg-opacity-90 px-6 py-3;
   }
-  
+
   .btn-secondary {
     @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200 hover:bg-opacity-80 dark:hover:bg-gray-800 dark:hover:bg-opacity-80 px-6 py-3;
   }
-  
+
   .btn-outline {
     @apply border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white px-6 py-3;
   }
-  
+
   .glass {
     @apply bg-white bg-opacity-5 dark:bg-black dark:bg-opacity-5 backdrop-blur-md border border-white border-opacity-10 dark:border-black dark:border-opacity-10 shadow-sm;
   }
@@ -241,34 +246,68 @@
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideInRight {
-  from { transform: translateX(50px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideInLeft {
-  from { transform: translateX(-50px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .animate-on-scroll {
@@ -586,32 +625,33 @@ canvas#bg {
   .section {
     padding: 3rem 0;
   }
-  
+
   /* Ensure images don't overflow on mobile */
   img {
     max-width: 100%;
     height: auto;
   }
-  
+
   /* Improve touch targets on mobile */
-  button, a {
+  button,
+  a {
     min-height: 44px;
     min-width: 44px;
   }
-  
+
   /* Adjust spacing for mobile */
   .mb-40 {
     margin-bottom: 2rem;
   }
-  
+
   .mb-32 {
     margin-bottom: 2rem;
   }
-  
+
   .mb-16 {
     margin-bottom: 1.5rem;
   }
-  
+
   .gap-16 {
     gap: 1rem;
   }
@@ -629,17 +669,17 @@ html {
 
 /* Improve mobile form elements */
 @media (max-width: 768px) {
-  input, 
-  textarea, 
+  input,
+  textarea,
   select {
     font-size: 16px !important; /* Prevent zoom on focus in iOS */
   }
-  
+
   .contact-form input,
   .contact-form textarea {
     padding: 12px;
   }
-  
+
   .send-button {
     width: 100%;
     padding: 14px;
@@ -657,4 +697,44 @@ html {
   background-color: transparent;
   transform: skewY(-10deg);
   z-index: -1;
+}
+
+/* Gradient animation */
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(20px, -20px) rotate(5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 10s ease-in-out infinite;
+  animation-delay: -5s;
 }

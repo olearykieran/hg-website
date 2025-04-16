@@ -59,8 +59,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white dark:bg-[#1c1a18] shadow-sm py-2 md:py-3"
-          : "bg-white dark:bg-[#1c1a18] py-3 md:py-5"
+          ? "bg-white dark:bg-[#1c1a18]/20 dark:backdrop-blur-sm shadow-sm py-2 md:py-3"
+          : "bg-white dark:bg-[#1c1a18]/10 dark:backdrop-blur-sm py-3 md:py-5"
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -144,7 +144,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-[#1c1a18] shadow-sm transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-[#1c1a18]/60 backdrop-blur-md shadow-sm transition-all duration-300 overflow-hidden ${
           mobileMenuOpen ? "max-h-screen" : "max-h-0"
         }`}
       >

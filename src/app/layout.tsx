@@ -36,11 +36,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} dark`}
-    >
-      <body className={inter.className}>
+    <html lang="en" className="dark scroll-smooth">
+      <body className="min-h-screen bg-background font-satoshi antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
