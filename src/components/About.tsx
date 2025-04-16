@@ -88,16 +88,16 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-[#6e6c68] py-16 md:py-32" id="about">
+    <div className="bg-white dark:bg-gray-900 py-16 md:py-32" id="about">
       {/* About Header - Centered above everything */}
       <div className="w-full flex flex-col items-center justify-center mb-16 md:mb-40">
         <div className="text-center w-full max-w-3xl mx-auto px-4 md:px-6">
-          <h2 className="display-text mb-6 md:mb-8 text-center text-gray-900 dark:text-gray-100">
-            About <span style={aiGradientStyle}>Us</span>
+          <h2 className="display-text mb-6 md:mb-8 text-center text-gray-900 dark:text-white">
+            About <span className="text-custom-blue">Us</span>
           </h2>
-          <p className="subtitle text-lg md:text-xl text-center text-gray-600 dark:text-gray-300">
+          <p className="subtitle text-lg md:text-xl text-center text-gray-600 dark:text-gray-400">
             We&apos;re a team of engineers, designers, and{" "}
-            <span style={aiGradientStyle}>AI specialists</span> building intelligent
+            <span className="text-custom-blue">AI specialists</span> building intelligent
             software that solves complex problems with elegant solutions.
           </p>
         </div>
@@ -110,12 +110,12 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-32">
             <div className="lg:col-span-5 space-y-8 md:space-y-12">
               <div
-                className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-10 rounded-3xl"
+                className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-3xl"
                 style={aiGradientBorder}
               >
-                <div className="bg-white dark:bg-[#1c1a18] rounded-2xl p-6 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-gray-100">
-                    Our <span style={aiGradientStyle}>Mission</span>
+                <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8">
+                  <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-white">
+                    Our <span className="text-custom-blue">Mission</span>
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg leading-relaxed">
                     Whether it&apos;s launching your MVP, scaling your platform, or
@@ -125,8 +125,8 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-10 rounded-3xl">
-                <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-gray-100">
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-3xl">
+                <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-white">
                   Our Approach
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg leading-relaxed">
@@ -159,20 +159,20 @@ const About = () => {
 
           {/* Core Values */}
           <div className="mb-16 md:mb-32">
-            <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-gray-100">
+            <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-white">
               Our Values
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {values.map((value, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-8 rounded-3xl hover:shadow-md transition-shadow"
+                  className="bg-gray-50 dark:bg-gray-800 p-6 md:p-8 rounded-3xl hover:shadow-md transition-shadow"
                   style={value.isHighlighted ? aiGradientBorder : {}}
                 >
                   <div
                     className={
                       value.isHighlighted
-                        ? "bg-white dark:bg-[#1c1a18] rounded-2xl p-6 md:p-6"
+                        ? "bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-6"
                         : ""
                     }
                   >
@@ -222,7 +222,7 @@ const About = () => {
                         />
                       </svg>
                     </div>
-                    <h4 className="text-lg md:text-xl font-satoshi-bold mb-3 md:mb-4 text-gray-900 dark:text-gray-100">
+                    <h4 className="text-lg md:text-xl font-satoshi-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
                       {value.isHighlighted ? (
                         <span style={aiGradientStyle}>{value.title}</span>
                       ) : (
@@ -239,9 +239,9 @@ const About = () => {
           </div>
 
           {/* Approach */}
-          <div className="bg-gray-50 dark:bg-neutral-800 rounded-3xl p-8 md:p-16">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 md:p-16">
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-gray-100">
+              <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-white">
                 Our <span style={aiGradientStyle}>Approach</span>
               </h3>
               <div className="space-y-8 md:space-y-12">
@@ -267,7 +267,7 @@ const About = () => {
                       </span>
                     </div>
                     <div>
-                      <h4 className="text-lg md:text-xl font-satoshi-bold mb-2 md:mb-3 text-gray-900 dark:text-gray-100">
+                      <h4 className="text-lg md:text-xl font-satoshi-bold mb-2 md:mb-3 text-gray-900 dark:text-white">
                         {step.number === 3 ? <>Build</> : step.title}
                       </h4>
                       <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg">
@@ -290,11 +290,11 @@ const About = () => {
 
           {/* Team */}
           <div className="mt-16 md:mt-32">
-            <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-gray-100">
+            <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-white">
               Our Team
             </h3>
             <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-2xl mx-auto">
-              <div className="bg-white dark:bg-neutral-800 border border-gray-100 dark:border-neutral-600 rounded-3xl overflow-hidden hover:shadow-md transition-shadow">
+              <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-neutral-600 rounded-3xl overflow-hidden hover:shadow-md transition-shadow">
                 <div
                   className="h-[35rem] md:h-[40rem] overflow-hidden relative"
                   onMouseEnter={() => setIsHovered(true)}
@@ -320,7 +320,7 @@ const About = () => {
                   />
                 </div>
                 <div className="p-6 md:p-8">
-                  <h4 className="text-lg md:text-xl font-satoshi-bold mb-1 text-gray-900 dark:text-gray-100">
+                  <h4 className="text-lg md:text-xl font-satoshi-bold mb-1 text-gray-900 dark:text-white">
                     Kieran O&apos;Leary
                   </h4>
                   <p className="text-gray-500 dark:text-gray-400 font-satoshi-medium mb-3 md:mb-4 text-sm md:text-base">
@@ -339,11 +339,11 @@ const About = () => {
 
               {/* Company Logos */}
               <div className="mt-8 md:mt-12">
-                <h4 className="text-lg md:text-xl font-satoshi-bold text-center mb-6 md:mb-8 text-gray-900 dark:text-gray-100">
+                <h4 className="text-lg md:text-xl font-satoshi-bold text-center mb-6 md:mb-8 text-gray-900 dark:text-white">
                   Ventures & <span style={aiGradientStyle}>Partnerships</span>
                 </h4>
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 items-center justify-items-center">
-                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/shipbob.jpeg"
                       alt="ShipBob"
@@ -352,7 +352,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/RCR2.png"
                       alt="RCR Recording Studio"
@@ -361,7 +361,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/empowered.png"
                       alt="EmpowerEd"
@@ -370,7 +370,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/banya.png"
                       alt="Banya"
@@ -379,7 +379,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/rwprojects.png"
                       alt="RW Projects"
@@ -388,7 +388,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/GBG.png"
                       alt="GoodBuy Gear"

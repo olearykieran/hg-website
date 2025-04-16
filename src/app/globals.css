@@ -15,7 +15,7 @@
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
 
-  --primary: 222.2 47.4% 11.2%;
+  --primary: 189 64% 52%; /* custom-blue */
   --primary-foreground: 210 40% 98%;
 
   --secondary: 210 40% 96.1%;
@@ -24,7 +24,7 @@
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
 
-  --accent: 210 40% 96.1%;
+  --accent: 189 64% 52%; /* custom-blue */
   --accent-foreground: 222.2 47.4% 11.2%;
 
   --destructive: 0 84.2% 60.2%;
@@ -32,31 +32,31 @@
 
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --ring: 189 64% 52%; /* custom-blue */
 
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: 220 13% 18%; /* Modern dark gray background (similar to ChatGPT) */
+  --background: 220 13% 18%;
   --foreground: 210 40% 98%;
 
-  --card: 220 13% 23%; /* Slightly lighter gray for cards */
+  --card: 220 13% 23%;
   --card-foreground: 210 40% 98%;
 
   --popover: 220 13% 23%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
+  --primary: 189 64% 52%; /* custom-blue */
+  --primary-foreground: 210 40% 98%;
 
-  --secondary: 217.2 19% 27%; /* Lighter gray for secondary elements */
+  --secondary: 217.2 19% 27%;
   --secondary-foreground: 210 40% 98%;
 
   --muted: 217.2 19% 27%;
-  --muted-foreground: 215 20.2% 75.1%; /* Lighter muted text for better contrast */
+  --muted-foreground: 215 20.2% 75.1%;
 
-  --accent: 217.2 19% 27%;
+  --accent: 189 64% 52%; /* custom-blue */
   --accent-foreground: 210 40% 98%;
 
   --destructive: 0 62.8% 30.6%;
@@ -64,7 +64,7 @@
 
   --border: 217.2 19% 27%;
   --input: 217.2 19% 27%;
-  --ring: 212.7 26.8% 83.9%;
+  --ring: 189 64% 52%; /* custom-blue */
 }
 
 @layer base {
@@ -172,15 +172,15 @@
   }
 
   .btn-primary {
-    @apply bg-black text-white dark:bg-white dark:text-black hover:bg-black hover:bg-opacity-90 dark:hover:bg-white dark:hover:bg-opacity-90 px-6 py-3;
+    @apply bg-custom-blue text-white dark:bg-custom-blue dark:text-white hover:bg-custom-blue/90 dark:hover:bg-custom-blue/90 px-6 py-3;
   }
 
   .btn-secondary {
-    @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200 hover:bg-opacity-80 dark:hover:bg-gray-800 dark:hover:bg-opacity-80 px-6 py-3;
+    @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200/80 dark:hover:bg-gray-800/80 px-6 py-3;
   }
 
   .btn-outline {
-    @apply border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white px-6 py-3;
+    @apply border-2 border-custom-blue text-custom-blue dark:border-custom-blue dark:text-custom-blue hover:bg-custom-blue/10 dark:hover:bg-custom-blue/10 px-6 py-3;
   }
 
   .glass {
@@ -353,19 +353,19 @@
 }
 
 .btn {
-  @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center;
+  @apply px-6 py-3 rounded-lg bg-custom-blue font-medium transition-all duration-300 inline-flex items-center justify-center;
 }
 
 .btn-primary {
-  @apply bg-black text-white dark:bg-white dark:text-black hover:bg-black hover:bg-opacity-90 dark:hover:bg-white dark:hover:bg-opacity-90;
+  @apply bg-custom-blue text-white dark:bg-custom-blue dark:text-white hover:bg-custom-blue/90 dark:hover:bg-custom-blue/90;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200 hover:bg-opacity-80 dark:hover:bg-gray-800 dark:hover:bg-opacity-80;
+  @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200/80 dark:hover:bg-gray-800/80;
 }
 
 .btn-outline {
-  @apply border-2 border-gray-300 text-black dark:border-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white;
+  @apply border-2 border-custom-blue text-custom-blue dark:border-custom-blue dark:text-custom-blue hover:bg-custom-blue/10 dark:hover:bg-custom-blue/10;
 }
 
 .btn-glass {

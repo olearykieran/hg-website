@@ -43,8 +43,8 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center pt-32 md:pt-20 overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-white dark:bg-[#6e6c68] z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-white dark:from-[#6e6c68] dark:to-[#6e6c68]"></div>
+      <div className="absolute inset-0 bg-white dark:bg-gray-900 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-white dark:from-gray-900 dark:to-gray-900"></div>
       </div>
 
       {/* Noise Effect */}
@@ -58,15 +58,12 @@ const HeroSection = () => {
         <div className="flex flex-col items-center">
           {/* Main content - always on top */}
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="display-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-tight text-gray-900 dark:text-gray-100">
+            <h1 className="display-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-tight text-gray-900 dark:text-white">
               Welcome to Holy Grail Studio — where we don&apos;t just{" "}
-              <span className="font-bold" style={aiGradientStyle}>
-                code
-              </span>
-              ... we vibe
+              <span className="text-custom-blue">code</span>... we vibe
             </h1>
 
-            <p className="subtitle text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto px-4 md:px-0 text-gray-600 dark:text-gray-300">
+            <p className="subtitle text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto px-4 md:px-0 text-gray-600 dark:text-gray-400">
               We specialize in building fast, functional, and beautiful software for
               people who move fast and dream big.
             </p>
@@ -74,13 +71,13 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row font-satoshi-medium items-center justify-center gap-4">
               <Link
                 href="#solutions"
-                className="btn btn-primary rounded-full px-6 py-3 w-full sm:w-auto text-center"
+                className="btn btn-primary rounded-full px-6 py-3 w-full sm:w-auto text-center bg-custom-blue text-white hover:bg-custom-blue/90 transition-colors"
               >
                 Explore Solutions
               </Link>
               <Link
                 href="#contact"
-                className="btn btn-outline rounded-full px-6 py-3 w-full sm:w-auto text-center"
+                className=" btn-outline rounded-full px-6 py-3 w-full sm:w-auto text-center border-2 border-custom-blue bg-white dark:bg-gray-900 dark:text-white hover:bg-custom-blue hover:text-white dark:hover:bg-custom-blue transition-colors"
               >
                 Get in Touch
               </Link>

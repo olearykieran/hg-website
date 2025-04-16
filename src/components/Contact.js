@@ -99,22 +99,22 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section bg-white dark:bg-[#6e6c68] py-16 md:py-24">
+    <section id="contact" className="section bg-white dark:bg-gray-900 py-16 md:py-24">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           {/* Header - Always on top */}
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16 w-full">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 text-gray-900 dark:text-gray-100">
-              Get in <span style={aiGradientStyle}>Touch</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 text-gray-900 dark:text-white">
+              Get in <span className="text-custom-blue">Touch</span>
             </h2>
-            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 px-4 md:px-0">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 px-4 md:px-0">
               Ready to transform your business with{" "}
-              <span style={aiGradientStyle}>intelligent software</span>?
+              <span className="text-custom-blue">intelligent software</span>?
             </p>
           </div>
 
           {/* Form Section */}
-          <div className="max-w-3xl mx-auto w-full">
+          <div className="w-full max-w-2xl mx-auto">
             {formStatus.submitted && formStatus.success ? (
               <div
                 className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-10 rounded-xl text-center"
@@ -209,15 +209,12 @@ const Contact = () => {
             ) : (
               <div style={aiGradientBorder} className="rounded-lg overflow-hidden">
                 <div className="bg-white dark:bg-[#1c1a18] p-6 md:p-10 rounded-xl">
-                  <form
-                    onSubmit={handleSubmit}
-                    className="space-y-4 md:space-y-6 contact-form"
-                  >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+                          className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
                         >
                           Name
                         </label>
@@ -227,16 +224,14 @@ const Contact = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
+                          className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors"
                           required
-                          className="w-full px-4 py-3 bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-300"
-                          placeholder="John Appleseed"
                         />
                       </div>
-
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+                          className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
                         >
                           Email
                         </label>
@@ -246,17 +241,15 @@ const Contact = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
+                          className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors"
                           required
-                          className="w-full px-4 py-3 bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-300"
-                          placeholder="john@example.com"
                         />
                       </div>
                     </div>
-
                     <div>
                       <label
                         htmlFor="company"
-                        className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+                        className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
                         Company
                       </label>
@@ -266,15 +259,13 @@ const Contact = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-300"
-                        placeholder="Your Company"
+                        className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors"
                       />
                     </div>
-
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+                        className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
                         Message
                       </label>
@@ -283,37 +274,18 @@ const Contact = () => {
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors resize-none"
                         required
-                        rows="4"
-                        className="w-full px-4 py-3 bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-neutral-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-300 resize-none"
-                        placeholder="How can we help?"
                       ></textarea>
                     </div>
-
-                    <div>
-                      <div
-                        style={aiGradientBorder}
-                        className="rounded-lg overflow-hidden"
+                    <div className="flex justify-center">
+                      <button
+                        type="submit"
+                        className="btn btn-primary rounded-full px-8 py-3 bg-custom-blue text-white hover:bg-custom-blue/90 transition-colors"
                       >
-                        <button
-                          type="submit"
-                          className="w-full bg-white dark:bg-neutral-800 font-medium py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center space-x-2"
-                        >
-                          <span style={aiGradientStyle}>Send Message</span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            style={aiGradientStyle}
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </button>
-                      </div>
+                        Send Message
+                      </button>
                     </div>
                   </form>
                 </div>

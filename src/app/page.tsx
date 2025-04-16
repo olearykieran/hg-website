@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen">
       {/* Background Layer */}
-      <div className="fixed inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#1e1e2e] dark:to-[#2a2a3a]">
+      <div className="fixed inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
         {/* Animated gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent dark:via-black/5 animate-gradient-x"></div>
       </div>
@@ -33,17 +33,17 @@ export default function Home() {
           <Contact />
         </main>
 
-        <footer className="relative py-8 text-gray-500 dark:text-gray-400 text-sm border-t border-gray-100 dark:border-neutral-700 dark:bg-[#1c1a18]">
+        <footer className="relative py-8 text-gray-600 dark:text-gray-400 text-sm border-t border-gray-100 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
           <div className="w-full flex flex-col items-center justify-center">
             <div className="mb-4 flex items-center justify-center">
-              <span className="text-base font-satoshi-medium text-gray-900 dark:text-white">
+              <span className="text-base font-satoshi-medium text-custom-blue">
                 Holy Grail Studio
               </span>
             </div>
-            <p className="text-center">
+            <p className="text-center text-gray-600 dark:text-gray-400">
               &copy; {new Date().getFullYear()} Holy Grail Studio. All rights reserved.
             </p>
-            <p className="text-center mt-2">
+            <p className="text-center mt-2 text-gray-500 dark:text-gray-500">
               Fast, Functional, Beautiful Software. &ldquo;Code. Ship. Vibe.&rdquo;
             </p>
           </div>
