@@ -54,7 +54,7 @@ const NoiseEffect = () => {
       wHeight = window.innerHeight;
 
       canvas.width = wWidth;
-      canvas.height = wHeight + 100;
+      canvas.height = wHeight + 200;
 
       for (let i = 0; i < 10; i++) {
         createNoise();
@@ -80,7 +80,7 @@ const NoiseEffect = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-[calc(100%+100px)] pointer-events-none opacity-[0.2] mix-blend-overlay z-0"
+      className="fixed inset-0 w-full h-[calc(100%+200px)] pointer-events-none opacity-[0.2] mix-blend-overlay z-0"
       id="noise"
     />
   );
