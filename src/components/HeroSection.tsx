@@ -59,7 +59,7 @@ const HeroSection = () => {
           {/* Main content - always on top */}
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="display-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-tight text-gray-900 dark:text-gray-100">
-              Welcome to Holy Grail Studio — where we don't just{" "}
+              Welcome to Holy Grail Studio — where we don&apos;t just{" "}
               <span className="font-bold" style={aiGradientStyle}>
                 code
               </span>

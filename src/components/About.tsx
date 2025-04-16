@@ -118,9 +118,9 @@ const About = () => {
                     Our <span style={aiGradientStyle}>Mission</span>
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg leading-relaxed">
-                    Whether it's launching your MVP, scaling your platform, or crafting
-                    something never seen before — we're here to ship it clean, and ship it
-                    quick.
+                    Whether it&apos;s launching your MVP, scaling your platform, or
+                    crafting something never seen before — we&apos;re here to ship it
+                    clean, and ship it quick.
                   </p>
                 </div>
               </div>

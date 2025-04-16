@@ -44,7 +44,7 @@ export default function Home() {
               &copy; {new Date().getFullYear()} Holy Grail Studio. All rights reserved.
             </p>
             <p className="text-center mt-2">
-              Fast, Functional, Beautiful Software. "Code. Ship. Vibe."
+              Fast, Functional, Beautiful Software. &ldquo;Code. Ship. Vibe.&rdquo;
             </p>
           </div>
         </footer>
