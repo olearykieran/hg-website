@@ -59,15 +59,16 @@ const HeroSection = () => {
           {/* Main content - always on top */}
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="display-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-tight text-gray-900 dark:text-gray-100">
-              Software that feels like{" "}
+              Welcome to Holy Grail Studio — where we don't just{" "}
               <span className="font-bold" style={aiGradientStyle}>
-                magic
+                code
               </span>
+              ... we vibe
             </h1>
 
             <p className="subtitle text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto px-4 md:px-0 text-gray-600 dark:text-gray-300">
-              We craft intelligent software solutions that transform how businesses
-              operate by leveraging the power of <span className="font-medium">AI</span>
+              We specialize in building fast, functional, and beautiful software for
+              people who move fast and dream big.
             </p>
 
             <div className="flex flex-col sm:flex-row font-satoshi-medium items-center justify-center gap-4">

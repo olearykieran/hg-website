@@ -118,9 +118,9 @@ const About = () => {
                     Our <span style={aiGradientStyle}>Mission</span>
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg leading-relaxed">
-                    To create <span style={aiGradientStyle}>AI-powered</span> software
-                    that enhances human capabilities and transforms how businesses operate
-                    in the digital age.
+                    Whether it's launching your MVP, scaling your platform, or crafting
+                    something never seen before — we're here to ship it clean, and ship it
+                    quick.
                   </p>
                 </div>
               </div>
@@ -130,9 +130,8 @@ const About = () => {
                   Our Approach
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg leading-relaxed">
-                  We combine cutting-edge <span style={aiGradientStyle}>AI research</span>{" "}
-                  with practical software engineering to deliver solutions that are both
-                  innovative and reliable.
+                  Follow us for builds, behind-the-scenes dev flow, and game-changing
+                  product drops.
                 </p>
               </div>
             </div>
@@ -328,13 +327,12 @@ const About = () => {
                     CEO & Founder
                   </p>
                   <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
-                    Serial entrepreneur and technology leader with a proven track record
-                    of building successful ventures. One of the first contributors to
-                    ShipBob (now valued at $4B), founder of RCR Recording Studio, and
-                    founder of EmpowerEd (education advocacy). Co-founder of Banya (a
-                    bathhouse in Chinatown), partner at RW Projects (construction
-                    management), and instrumental in launching a new location for GoodBuy
-                    Gear.
+                    Entrepreneur and technology leader with a proven track record of
+                    building successful ventures. One of the first contributors to ShipBob
+                    (now valued at $4B), founder of RCR Recording Studio, and founder of
+                    EmpowerEd (education advocacy). Co-founder of Banya (a bathhouse in
+                    Chinatown), partner at RW Projects (construction management), and
+                    instrumental in launching a new location for GoodBuy Gear.
                   </p>
                 </div>
               </div>
