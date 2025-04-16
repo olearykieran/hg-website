@@ -40,7 +40,7 @@ const HeroSection = () => {
     <section
       ref={heroRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-32 md:pt-20 overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-white dark:bg-[#6e6c68] z-0">
@@ -54,7 +54,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center z-0 opacity-5"></div>
 
       {/* Hero content */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-content">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-content mt-16 md:mt-0">
         <div className="flex flex-col items-center">
           {/* Main content - always on top */}
           <div className="max-w-4xl mx-auto text-center mb-16">
