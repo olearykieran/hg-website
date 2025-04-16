@@ -144,19 +144,19 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-[#1c1a18]/60 backdrop-blur-md shadow-sm transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-white/80 backdrop-blur-md dark:bg-[#1c1a18]/95 shadow-sm transition-all duration-300 overflow-hidden ${
           mobileMenuOpen ? "max-h-screen" : "max-h-0"
         }`}
       >
-        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4 relative z-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-satoshi-medium py-3 border-b border-gray-100 dark:border-neutral-700 transition-colors duration-200 ${
+              className={`text-sm font-satoshi-medium py-3 border-b border-gray-100/30 dark:border-neutral-700/30 transition-colors duration-200 ${
                 activeLink === link.name
-                  ? "text-black dark:text-white" // Active state color
-                  : "text-gray-700 dark:text-gray-300" // Default state color (no hover needed here typically)
+                  ? "text-black dark:text-white"
+                  : "text-gray-700 dark:text-gray-300"
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -166,7 +166,7 @@ const Navbar = () => {
           <div className="pt-2">
             <Link
               href="#contact"
-              className="rounded-full py-3 text-center font-satoshi-medium w-full text-white"
+              className="inline-block rounded-full text-[10px] py-2.5 px-4 text-center font-satoshi-medium w-auto mx-auto text-white"
               style={gradientButtonStyle}
               onClick={() => setMobileMenuOpen(false)}
             >
