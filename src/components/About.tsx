@@ -5,7 +5,7 @@ import Image from "next/image";
 
 /* AI gradient styles */
 const aiGradientStyle: CSSProperties = {
-  background: "linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)",
+  background: "linear-gradient(135deg, #FFFFFF, #D3D3D3, #A9A9A9, #808080, #696969)",
   backgroundSize: "200% auto",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
@@ -17,7 +17,7 @@ const aiGradientBorder: CSSProperties = {
   position: "relative" as const,
   borderRadius: "1rem",
   padding: "1px",
-  background: "linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)",
+  background: "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
   backgroundSize: "200% auto",
   animation: "gradientFlow 3s linear infinite",
 };
@@ -88,7 +88,7 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-[#1e1e2e] py-16 md:py-32" id="about">
+    <div className="bg-white dark:bg-[#6e6c68] py-16 md:py-32" id="about">
       {/* About Header - Centered above everything */}
       <div className="w-full flex flex-col items-center justify-center mb-16 md:mb-40">
         <div className="text-center w-full max-w-3xl mx-auto px-4 md:px-6">
@@ -110,10 +110,10 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-32">
             <div className="lg:col-span-5 space-y-8 md:space-y-12">
               <div
-                className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-3xl"
+                className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-10 rounded-3xl"
                 style={aiGradientBorder}
               >
-                <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8">
+                <div className="bg-white dark:bg-[#1c1a18] rounded-2xl p-6 md:p-8">
                   <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-gray-100">
                     Our <span style={aiGradientStyle}>Mission</span>
                   </h3>
@@ -125,7 +125,7 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-3xl">
+              <div className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-10 rounded-3xl">
                 <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-gray-100">
                   Our Approach
                 </h3>
@@ -148,7 +148,7 @@ const About = () => {
                     height={600}
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-gray-800 dark:bg-gray-700 text-white py-3 px-5 md:py-4 md:px-8 rounded-xl">
+                <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-gray-800 dark:bg-neutral-700 text-white py-3 px-5 md:py-4 md:px-8 rounded-xl">
                   <p className="font-satoshi-medium text-sm md:text-base">
                     Transforming ideas into{" "}
                     <span style={aiGradientStyle}>intelligent</span> software
@@ -167,27 +167,25 @@ const About = () => {
               {values.map((value, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 dark:bg-gray-800 p-6 md:p-8 rounded-3xl hover:shadow-md transition-shadow"
+                  className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-8 rounded-3xl hover:shadow-md transition-shadow"
                   style={value.isHighlighted ? aiGradientBorder : {}}
                 >
                   <div
                     className={
                       value.isHighlighted
-                        ? "bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-6"
+                        ? "bg-white dark:bg-[#1c1a18] rounded-2xl p-6 md:p-6"
                         : ""
                     }
                   >
                     <div
                       className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-4 md:mb-6 ${
-                        value.isHighlighted
-                          ? "bg-gradient-to-br from-purple-600 to-blue-500"
-                          : "bg-gray-800 dark:bg-gray-700"
+                        value.isHighlighted ? "" : "bg-gray-800 dark:bg-neutral-700"
                       }`}
                       style={
                         value.isHighlighted
                           ? {
                               background:
-                                "linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)",
+                                "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
                               backgroundSize: "200% auto",
                               animation: "gradientFlow 3s linear infinite",
                             }
@@ -242,22 +240,32 @@ const About = () => {
           </div>
 
           {/* Approach */}
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 md:p-16">
+          <div className="bg-gray-50 dark:bg-neutral-800 rounded-3xl p-8 md:p-16">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-gray-100">
                 Our <span style={aiGradientStyle}>Approach</span>
               </h3>
               <div className="space-y-8 md:space-y-12">
-                {approachSteps.map((step) => (
-                  <div key={step.number} className="flex items-start">
+                {approachSteps.map((step, index) => (
+                  <div key={index} className="flex items-start">
                     <div
-                      className={`w-10 h-10 md:w-12 md:h-12 rounded-full text-white flex items-center justify-center mr-4 md:mr-6 flex-shrink-0 font-satoshi-bold text-lg md:text-xl ${
-                        step.isHighlighted
-                          ? "bg-gradient-to-br from-purple-600 to-blue-500"
-                          : "bg-gray-800 dark:bg-gray-700"
+                      className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mr-4 md:mr-6 flex-shrink-0 ${
+                        step.isHighlighted ? "" : "bg-gray-800 dark:bg-neutral-700"
                       }`}
+                      style={
+                        step.isHighlighted
+                          ? {
+                              background:
+                                "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
+                              backgroundSize: "200% auto",
+                              animation: "gradientFlow 3s linear infinite",
+                            }
+                          : {}
+                      }
                     >
-                      {step.number}
+                      <span className="font-satoshi-bold text-lg md:text-xl text-white">
+                        {step.number}
+                      </span>
                     </div>
                     <div>
                       <h4 className="text-lg md:text-xl font-satoshi-bold mb-2 md:mb-3 text-gray-900 dark:text-gray-100">
@@ -287,7 +295,7 @@ const About = () => {
               Our Team
             </h3>
             <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-2xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl overflow-hidden hover:shadow-md transition-shadow">
+              <div className="bg-white dark:bg-neutral-800 border border-gray-100 dark:border-neutral-600 rounded-3xl overflow-hidden hover:shadow-md transition-shadow">
                 <div
                   className="h-[35rem] md:h-[40rem] overflow-hidden relative"
                   onMouseEnter={() => setIsHovered(true)}
@@ -337,7 +345,7 @@ const About = () => {
                   Ventures & <span style={aiGradientStyle}>Partnerships</span>
                 </h4>
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 items-center justify-items-center">
-                  <div className="p-3 bg-gray-50 dark:bg-gray-400 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/shipbob.jpeg"
                       alt="ShipBob"
@@ -346,7 +354,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-400 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/RCR2.png"
                       alt="RCR Recording Studio"
@@ -355,7 +363,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-400 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/empowered.png"
                       alt="EmpowerEd"
@@ -364,7 +372,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-400 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/banya.png"
                       alt="Banya"
@@ -373,7 +381,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-400 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/rwprojects.png"
                       alt="RW Projects"
@@ -382,7 +390,7 @@ const About = () => {
                       height={40}
                     />
                   </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-400 rounded-xl h-16 w-full flex items-center justify-center">
+                  <div className="p-3 bg-gray-50 dark:bg-neutral-700 rounded-xl h-16 w-full flex items-center justify-center">
                     <Image
                       src="/GBG.png"
                       alt="GoodBuy Gear"

@@ -5,15 +5,14 @@ import Solutions from "@/components/Solutions";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 
-/* AI gradient styles */
-const aiGradientStyle: CSSProperties = {
-  background: 'linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)',
-  backgroundSize: '200% auto',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  backgroundClip: 'text',
-  animation: 'gradientFlow 3s linear infinite'
-};
+/* AI gradient styles - Removed as no longer used in this file */
+// const aiGradientStyle: CSSProperties = {
+//   background: "linear-gradient(135deg, #FFFFFF, #D3D3D3, #A9A9A9, #808080, #696969)",
+//   backgroundSize: "200% auto",
+//   padding: "0 0.25em",
+//   borderRadius: "0.25em",
+//   animation: "gradientFlow 3s linear infinite",
+// };
 
 export default function Home() {
   return (
@@ -23,17 +22,19 @@ export default function Home() {
       <Solutions />
       <About />
       <Contact />
-      
-      <footer className="py-8 text-gray-500 dark:text-gray-400 text-sm border-t border-gray-100 dark:border-gray-800">
+
+      <footer className="py-8 text-gray-500 dark:text-gray-400 text-sm border-t border-gray-100 dark:border-neutral-700 dark:bg-[#1c1a18]">
         <div className="w-full flex flex-col items-center justify-center">
           <div className="mb-4 flex items-center justify-center">
             <span className="text-base font-satoshi-medium text-gray-900 dark:text-white">
-              Holy <span style={aiGradientStyle}>Grail</span> Studio
+              Holy Grail Studio
             </span>
           </div>
-          <p className="text-center">&copy; {new Date().getFullYear()} Holy Grail Studio. All rights reserved.</p>
+          <p className="text-center">
+            &copy; {new Date().getFullYear()} Holy Grail Studio. All rights reserved.
+          </p>
           <p className="text-center mt-2">
-            <span style={aiGradientStyle}>AI-powered</span> software solutions for modern businesses
+            AI-powered software solutions for modern businesses
           </p>
         </div>
       </footer>

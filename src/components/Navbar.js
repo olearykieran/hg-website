@@ -4,18 +4,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
 
-/* AI gradient styles */
-const aiGradientStyle = {
-  background: "linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)",
-  backgroundSize: "200% auto",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-  animation: "gradientFlow 3s linear infinite",
-};
+/* AI gradient styles - Removed as no longer used in this file */
+// const aiGradientStyle = {
+//   background: "linear-gradient(135deg, #FFFFFF, #D3D3D3, #A9A9A9, #808080, #696969)",
+//   backgroundSize: "200% auto",
+//   WebkitBackgroundClip: "text",
+//   WebkitTextFillColor: "transparent",
+//   backgroundClip: "text",
+//   animation: "gradientFlow 3s linear infinite",
+// };
 
 const gradientButtonStyle = {
-  background: "linear-gradient(135deg, #9C27B0, #7B1FA2, #673AB7, #3F51B5, #2196F3)",
+  background: "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
   backgroundSize: "200% auto",
   animation: "gradientFlow 3s linear infinite",
 };
@@ -59,8 +59,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white dark:bg-gray-900 shadow-sm py-2 md:py-3"
-          : "bg-white dark:bg-gray-900 py-3 md:py-5"
+          ? "bg-white dark:bg-[#1c1a18] shadow-sm py-2 md:py-3"
+          : "bg-white dark:bg-[#1c1a18] py-3 md:py-5"
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -68,7 +68,7 @@ const Navbar = () => {
         <Link href="/" className="flex items-center">
           <div className="relative h-14 w-14 md:h-20 md:w-20 mr-2">
             <Image
-              src="/hgs3_logo.png"
+              src="/hgs_3_logo.png"
               alt="Holy Grail Studio"
               className="w-full h-full object-contain"
               width={80}
@@ -76,7 +76,7 @@ const Navbar = () => {
             />
           </div>
           <span className="text-base md:text-lg font-satoshi-medium tracking-tight text-gray-900 dark:text-white">
-            Holy <span style={aiGradientStyle}>Grail</span> Studio
+            Holy Grail Studio
           </span>
         </Link>
 
@@ -86,8 +86,11 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200"
-              style={activeLink === link.name ? aiGradientStyle : {}}
+              className={`text-sm font-satoshi-medium transition-colors duration-200 ${
+                activeLink === link.name
+                  ? "text-black dark:text-white" // Active state color
+                  : "text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white" // Default state color
+              }`}
             >
               {link.name}
             </Link>
@@ -141,7 +144,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-sm transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-[#1c1a18] shadow-sm transition-all duration-300 overflow-hidden ${
           mobileMenuOpen ? "max-h-screen" : "max-h-0"
         }`}
       >
@@ -150,8 +153,11 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-satoshi-medium py-3 border-b border-gray-100 dark:border-gray-800 text-gray-700 dark:text-gray-300"
-              style={activeLink === link.name ? aiGradientStyle : {}}
+              className={`text-sm font-satoshi-medium py-3 border-b border-gray-100 dark:border-neutral-700 transition-colors duration-200 ${
+                activeLink === link.name
+                  ? "text-black dark:text-white" // Active state color
+                  : "text-gray-700 dark:text-gray-300" // Default state color (no hover needed here typically)
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}

@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 // Load fonts
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
@@ -25,24 +25,23 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Holy Grail Studio | AI-Powered Software Solutions",
-  description: "Modern software solutions leveraging the power of AI to build and enhance software for businesses of all sizes.",
-  keywords: "AI software, software development, artificial intelligence, machine learning, web development, app development",
+  description:
+    "Modern software solutions leveraging the power of AI to build and enhance software for businesses of all sizes.",
+  keywords:
+    "AI software, software development, artificial intelligence, machine learning, web development, app development",
   icons: {
-    icon: "/logoo.png",
+    icon: "/hgs_3_logo.png",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} dark`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} dark`}
+    >
       <body className={inter.className}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
