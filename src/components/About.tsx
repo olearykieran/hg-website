@@ -279,7 +279,7 @@ const About = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h4 className="text-lg md:text-xl font-mgs2-menu mb-1 text-mgs-white uppercase tracking-wider">
-                        Kieran O'Leary
+                        Kieran O&apos;Leary
                       </h4>
                       <p className="text-mgs-green font-tactical text-sm uppercase">
                         Codename Big Boss
