@@ -16,11 +16,13 @@ import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-mgs-black">
       {/* Background Layer */}
-      <div className="fixed inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent dark:via-black/5 animate-gradient-x"></div>
+      <div className="fixed inset-0 bg-mgs-black mgs-grid-bg">
+        {/* Animated scanline overlay */}
+        <div className="mgs-scanline"></div>
+        {/* Noise texture */}
+        <div className="absolute inset-0 mgs-noise opacity-20"></div>
       </div>
 
       {/* Content Layer */}
@@ -33,18 +35,18 @@ export default function Home() {
           <Contact />
         </main>
 
-        <footer className="relative py-8 text-gray-600 dark:text-gray-400 text-sm border-t border-gray-100 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+        <footer className="relative py-8 text-mgs-white/60 text-sm border-t-2 border-mgs-green bg-mgs-black/90 backdrop-blur-sm">
           <div className="w-full flex flex-col items-center justify-center">
             <div className="mb-4 flex items-center justify-center">
-              <span className="text-base font-satoshi-medium text-custom-blue">
+              <span className="text-base font-mgs2-menu text-mgs-green uppercase tracking-widest">
                 Holy Grail Studio
               </span>
             </div>
-            <p className="text-center text-gray-600 dark:text-gray-400">
-              &copy; {new Date().getFullYear()} Holy Grail Studio. All rights reserved.
+            <p className="text-center text-mgs-white/60 font-tactical">
+              Holy Grail Studio * All rights reserved
             </p>
-            <p className="text-center mt-2 text-gray-500 dark:text-gray-500">
-              Fast, Functional, Beautiful Software. &ldquo;Code. Ship. Vibe.&rdquo;
+            <p className="text-center mt-2 text-mgs-green/60 font-mgs2 text-xs uppercase tracking-wider">
+              [ TACTICAL SOFTWARE DEVELOPMENT ]
             </p>
           </div>
         </footer>

@@ -1,24 +1,5 @@
 "use client";
-import React, { useState, CSSProperties } from "react";
-
-/* AI gradient styles */
-const aiGradientStyle = {
-  background: "linear-gradient(135deg, #FFFFFF, #D3D3D3, #A9A9A9, #808080, #696969)",
-  backgroundSize: "200% auto",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-  animation: "gradientFlow 3s linear infinite",
-};
-
-const aiGradientBorder = {
-  position: "relative",
-  borderRadius: "1rem",
-  padding: "1px",
-  background: "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
-  backgroundSize: "200% auto",
-  animation: "gradientFlow 3s linear infinite",
-};
+import React, { useState, useRef, useEffect } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,6 +14,28 @@ const Contact = () => {
     success: false,
     message: "",
   });
+
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +52,7 @@ const Contact = () => {
     setFormStatus({
       submitted: true,
       success: false,
-      message: "Sending your message...",
+      message: "Establishing secure connection...",
     });
 
     try {
@@ -69,8 +72,7 @@ const Contact = () => {
         setFormStatus({
           submitted: true,
           success: true,
-          message:
-            result.message || "Thanks for reaching out. We'll get back to you shortly.",
+          message: "TRANSMISSION COMPLETE. We'll contact you shortly.",
         });
 
         // Reset form after successful submission
@@ -85,7 +87,7 @@ const Contact = () => {
         setFormStatus({
           submitted: true,
           success: false,
-          message: result.message || "Something went wrong. Please try again.",
+          message: result.message || "TRANSMISSION FAILED. Please try again.",
         });
       }
     } catch (error) {
@@ -93,36 +95,65 @@ const Contact = () => {
       setFormStatus({
         submitted: true,
         success: false,
-        message: "Failed to send message. Please try again later.",
+        message: "CONNECTION LOST. Please try again later.",
       });
     }
   };
 
   return (
-    <section id="contact" className="section bg-white dark:bg-gray-900 py-16 md:py-24">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="relative bg-mgs-black py-16 md:py-32 overflow-hidden"
+    >
+      {/* MGS Grid Background */}
+      <div className="absolute inset-0 mgs-grid-bg opacity-20" />
+      <div className="absolute inset-0 mgs-noise opacity-10" />
+
+      {/* Scanline effect */}
+      <div className="mgs-scanline" />
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center">
-          {/* Header - Always on top */}
-          <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16 w-full">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 md:mb-6 text-gray-900 dark:text-white">
-              Get in <span className="text-custom-blue">Touch</span>
+          {/* Header */}
+          <div
+            className={`max-w-3xl mx-auto text-center mb-10 md:mb-16 w-full transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            {/* MGS Codec Header */}
+            <div className="inline-block mb-8">
+              <div className="mgs-codec px-8 py-4 bg-mgs-black/80 backdrop-blur">
+                <p className="text-mgs-green font-mgs2-menu text-sm tracking-widest uppercase">
+                  Communications Protocol
+                </p>
+                <h2 className="text-mgs-white/60 font-tactical text-xs mt-1 uppercase">
+                  Secure Channel Open
+                </h2>
+              </div>
+            </div>
+
+            <h2 className="display-text mb-6 md:mb-8 text-center text-mgs-white">
+              ESTABLISH <span className="text-mgs-green">CONTACT</span>
             </h2>
-            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 px-4 md:px-0">
-              Ready to transform your business with{" "}
-              <span className="text-custom-blue">intelligent software</span>?
+            <p className="subtitle text-lg md:text-xl text-center">
+              Ready to deploy{" "}
+              <span className="text-mgs-green">tactical software solutions</span>?
             </p>
           </div>
 
           {/* Form Section */}
-          <div className="w-full max-w-2xl mx-auto">
+          <div
+            className={`w-full max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             {formStatus.submitted && formStatus.success ? (
-              <div
-                className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-10 rounded-xl text-center"
-                style={aiGradientBorder}
-              >
-                <div className="bg-white dark:bg-[#1c1a18] rounded-xl p-6 md:p-8">
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-green p-4 sm:p-6 md:p-10 overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green to-transparent animate-pulse" />
+                <div className="text-center">
                   <svg
-                    className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 md:mb-6"
+                    className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 text-mgs-green"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -131,52 +162,44 @@ const Contact = () => {
                       cx="12"
                       cy="12"
                       r="11"
-                      stroke="url(#gradient)"
+                      stroke="currentColor"
                       strokeWidth="2"
                     />
                     <path
                       d="M7 12L10 15L17 8"
-                      stroke="url(#gradient)"
+                      stroke="currentColor"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                    <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#5A5A5A" />
-                        <stop offset="25%" stopColor="#404040" />
-                        <stop offset="50%" stopColor="#2A2A2A" />
-                        <stop offset="75%" stopColor="#1A1A1A" />
-                        <stop offset="100%" stopColor="#0A0A0A" />
-                      </linearGradient>
-                    </defs>
                   </svg>
-                  <h3 className="text-xl md:text-2xl font-medium mb-2 text-gray-900 dark:text-gray-100">
-                    <span style={aiGradientStyle}>Message Sent</span>
+                  <h3 className="text-xl md:text-2xl font-mgs2-menu mb-2 text-mgs-white uppercase tracking-wider">
+                    <span className="text-mgs-green">Mission Success</span>
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">{formStatus.message}</p>
+                  <p className="text-mgs-white/60 font-roboto">{formStatus.message}</p>
+                  <div className="mt-4 text-xs text-mgs-green/60 font-tactical uppercase">
+                    [CODEC FREQUENCY: 140.85]
+                  </div>
                 </div>
               </div>
             ) : formStatus.submitted && !formStatus.success ? (
-              <div
-                className="bg-gray-50 dark:bg-neutral-800 p-6 md:p-10 rounded-xl text-center"
-                style={aiGradientBorder}
-              >
-                <div className="bg-white dark:bg-[#1c1a18] rounded-xl p-6 md:p-8">
-                  {formStatus.message === "Sending your message..." ? (
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-red p-4 sm:p-6 md:p-10 overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-red to-transparent animate-pulse" />
+                <div className="text-center">
+                  {formStatus.message === "Establishing secure connection..." ? (
                     <div className="flex flex-col items-center">
-                      <div className="animate-spin rounded-full h-12 w-12 md:h-16 md:w-16 border-t-2 border-b-2 border-neutral-500 mb-4 md:mb-6"></div>
-                      <h3 className="text-xl md:text-2xl font-medium mb-2 text-gray-900 dark:text-gray-100">
-                        <span style={aiGradientStyle}>Sending Message</span>
+                      <div className="animate-spin rounded-full h-12 w-12 md:h-16 md:w-16 border-t-2 border-b-2 border-mgs-green mb-4 md:mb-6"></div>
+                      <h3 className="text-xl md:text-2xl font-mgs2-menu mb-2 text-mgs-white uppercase tracking-wider">
+                        <span className="text-mgs-green">Transmitting</span>
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-mgs-white/60 font-roboto">
                         {formStatus.message}
                       </p>
                     </div>
                   ) : (
                     <div>
                       <svg
-                        className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 text-red-500"
+                        className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 text-mgs-red"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -188,146 +211,168 @@ const Contact = () => {
                           d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      <h3 className="text-xl md:text-2xl font-medium mb-2 text-red-500">
-                        Error
+                      <h3 className="text-xl md:text-2xl font-mgs2-menu mb-2 text-mgs-red uppercase tracking-wider">
+                        Transmission Error
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-mgs-white/60 font-roboto mb-4">
                         {formStatus.message}
                       </p>
                       <button
                         onClick={() =>
                           setFormStatus({ submitted: false, success: false, message: "" })
                         }
-                        className="mt-4 px-4 py-2 bg-gray-200 dark:bg-neutral-600 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-neutral-500 transition-colors"
+                        className="btn btn-outline"
                       >
-                        Try Again
+                        RETRY TRANSMISSION
                       </button>
                     </div>
                   )}
                 </div>
               </div>
             ) : (
-              <div style={aiGradientBorder} className="rounded-lg overflow-hidden">
-                <div className="bg-white dark:bg-[#1c1a18] p-6 md:p-10 rounded-xl">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
-                        >
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors"
-                          required
-                        />
-                      </div>
-                    </div>
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray p-4 sm:p-6 md:p-10 overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent" />
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label
-                        htmlFor="company"
-                        className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
+                        htmlFor="name"
+                        className="block text-sm font-tactical text-mgs-green/80 mb-2 uppercase"
                       >
-                        Company
+                        Operative Name
                       </label>
                       <input
                         type="text"
-                        id="company"
-                        name="company"
-                        value={formData.company}
+                        id="name"
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all"
+                        placeholder="Enter codename..."
+                        required
                       />
                     </div>
                     <div>
                       <label
-                        htmlFor="message"
-                        className="block text-sm font-satoshi-medium text-gray-700 dark:text-gray-300 mb-2"
+                        htmlFor="email"
+                        className="block text-sm font-tactical text-mgs-green/80 mb-2 uppercase"
                       >
-                        Message
+                        Secure Channel
                       </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
-                        rows={4}
-                        className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-custom-blue focus:border-transparent transition-colors resize-none"
+                        className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all"
+                        placeholder="codec@frequency.com"
                         required
-                      ></textarea>
+                      />
                     </div>
-                    <div className="flex justify-center">
-                      <button
-                        type="submit"
-                        className="btn btn-primary rounded-full px-8 py-3 bg-custom-blue text-white hover:bg-custom-blue/90 transition-colors"
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </form>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-tactical text-mgs-green/80 mb-2 uppercase"
+                    >
+                      Organization
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all"
+                      placeholder="Unit designation..."
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-tactical text-mgs-green/80 mb-2 uppercase"
+                    >
+                      Mission Brief
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all resize-none"
+                      placeholder="Describe your operation..."
+                      required
+                    ></textarea>
+                  </div>
+                  <div className="flex justify-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary px-8 py-3 relative group overflow-hidden"
+                    >
+                      <span className="relative z-10">TRANSMIT MESSAGE</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-mgs-green to-mgs-green-dark transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                    </button>
+                  </div>
+                </form>
+
+                {/* Security Notice */}
+                <div className="mt-6 text-center">
+                  <p className="text-xs text-mgs-white/40 font-tactical uppercase">
+                    All transmissions encrypted • bit tactical encryption
+                  </p>
                 </div>
               </div>
             )}
 
             {/* Contact info cards */}
-            <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center">
-              <div className="bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="text-lg font-medium mb-1 text-gray-900 dark:text-gray-100">
-                  <span style={aiGradientStyle}>Email</span>
+            <div
+              className={`mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center transition-all duration-1000 delay-400 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+            >
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border border-mgs-gray p-4 hover:border-mgs-green transition-all duration-300 group">
+                <h4 className="text-sm font-mgs2-menu mb-2 text-mgs-white uppercase">
+                  <span className="text-mgs-green">CODEC</span>
                 </h4>
                 <a
                   href="mailto:kieran@theholygrailstudio.com"
-                  className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white text-xs transition-colors break-words"
+                  className="text-mgs-white/60 hover:text-mgs-green text-xs font-roboto transition-colors break-words"
                 >
                   kieran@theholygrailstudio.com
                 </a>
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              <div className="bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="text-lg font-medium mb-1 text-gray-900 dark:text-gray-100">
-                  Phone
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border border-mgs-gray p-4 hover:border-mgs-green transition-all duration-300 group">
+                <h4 className="text-xs font-mgs2-menu mb-2 text-mgs-white uppercase">
+                  FREQUENCY
                 </h4>
                 <a
                   href="tel:+5163824166"
-                  className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                  className="text-mgs-white/60 hover:text-mgs-green font-roboto transition-colors"
                 >
                   +1 (516) 382-4166
                 </a>
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              <div className="bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="text-lg font-medium mb-1 text-gray-900 dark:text-gray-100">
-                  <span style={aiGradientStyle}>Location</span>
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border border-mgs-gray p-4 hover:border-mgs-green transition-all duration-300 group">
+                <h4 className="text-sm font-mgs2-menu mb-2 text-mgs-white uppercase">
+                  <span className="text-mgs-green">HQ</span>
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300">New York, NY</p>
+                <p className="text-mgs-white/60 font-roboto">New York, NY</p>
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent" />
     </section>
   );
 };

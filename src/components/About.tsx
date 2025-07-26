@@ -1,285 +1,248 @@
 "use client";
 
-import React, { useState, CSSProperties } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-/* AI gradient styles */
-const aiGradientStyle: CSSProperties = {
-  background: "linear-gradient(135deg, #FFFFFF, #D3D3D3, #A9A9A9, #808080, #696969)",
-  backgroundSize: "200% auto",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-  animation: "gradientFlow 3s linear infinite",
-};
-
-const aiGradientBorder: CSSProperties = {
-  position: "relative" as const,
-  borderRadius: "1rem",
-  padding: "1px",
-  background: "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
-  backgroundSize: "200% auto",
-  animation: "gradientFlow 3s linear infinite",
-};
-
 const About = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const values = [
     {
       title: "Innovation",
+      codename: "FOXPOUND",
       description:
-        "We constantly push boundaries to create solutions that redefine what's possible.",
-      icon: "/icons/innovation.svg",
-      isHighlighted: true,
+        "Pushing boundaries to create solutions that redefine what's possible.",
     },
     {
       title: "Impact",
-      description:
-        "We measure our success by the positive change our work creates for our clients.",
-      icon: "/icons/impact.svg",
-      isHighlighted: true,
+      codename: "OUTER HAVEN",
+      description: "Measuring success by the positive change we create for our clients.",
     },
     {
       title: "Excellence",
-      description:
-        "We hold ourselves to the highest standards in every line of code we write.",
-      icon: "/icons/excellence.svg",
-      isHighlighted: true,
+      codename: "CRYSTAL CATS",
+      description: "Holding ourselves to the highest standards in every line of code.",
     },
     {
       title: "Simplicity",
-      description:
-        "We believe in elegant solutions that hide complexity behind intuitive interfaces.",
-      icon: "/icons/simplicity.svg",
-      isHighlighted: true,
+      codename: "LIQUID LIZARD",
+      description: "Elegant solutions that hide complexity behind intuitive interfaces.",
     },
   ];
 
   const approachSteps = [
     {
-      number: 1,
-      title: "Understand",
+      phase: "PHASE ONE",
+      title: "Reconnaissance",
       description:
-        "We start by deeply understanding your business, users, and challenges.",
-      isHighlighted: false,
+        "Deep intel gathering on your business, users, and operational challenges.",
     },
     {
-      number: 2,
-      title: "Design",
+      phase: "PHASE TWO",
+      title: "Strategic Planning",
       description:
-        "We design elegant solutions that address core needs while planning for future growth.",
-      isHighlighted: false,
+        "Designing tactical solutions that address core objectives and future missions.",
     },
     {
-      number: 3,
-      title: "Build",
+      phase: "PHASE THREE",
+      title: "Deployment",
       description:
-        "We develop with precision, integrating AI capabilities that enhance functionality.",
-      isHighlighted: false,
+        "Precision development with advanced AI capabilities for enhanced operations.",
     },
     {
-      number: 4,
-      title: "Refine",
+      phase: "PHASE FOUR",
+      title: "Optimization",
       description:
-        "We continuously improve based on real-world usage and evolving needs.",
-      isHighlighted: false,
+        "Continuous improvement based on field data and evolving mission parameters.",
     },
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-900 py-16 md:py-32" id="about">
-      {/* About Header - Centered above everything */}
-      <div className="w-full flex flex-col items-center justify-center mb-16 md:mb-40">
-        <div className="text-center w-full max-w-3xl mx-auto px-4 md:px-6">
-          <h2 className="display-text mb-6 md:mb-8 text-center text-gray-900 dark:text-white">
-            About <span className="text-custom-blue">Us</span>
+    <div ref={sectionRef} className="relative bg-mgs-black py-16 md:py-32" id="about">
+      {/* MGS Grid Background */}
+      <div className="absolute inset-0 mgs-grid-bg opacity-20" />
+      <div className="absolute inset-0 mgs-noise opacity-10" />
+
+      {/* About Header */}
+      <div
+        className={`w-full flex flex-col items-center justify-center mb-16 md:mb-24 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        <div className="text-center w-full max-w-5xl mx-auto px-4 md:px-6">
+          {/* MGS Codec Header */}
+          <div className="inline-block mb-8">
+            <div className="mgs-codec px-8 py-4 bg-mgs-black/80 backdrop-blur">
+              <p className="text-mgs-green font-mgs2-menu text-sm tracking-widest uppercase">
+                Unit Information
+              </p>
+              <h2 className="text-mgs-white/60 font-tactical text-xs mt-1 uppercase">
+                Special Operations Unit
+              </h2>
+            </div>
+          </div>
+
+          <h2 className="display-text mb-6 md:mb-8 text-center text-mgs-white">
+            ABOUT <span className="text-mgs-green">HOLY GRAIL</span>
           </h2>
-          <p className="subtitle text-lg md:text-xl text-center text-gray-600 dark:text-gray-400">
-            We&apos;re a team of engineers, designers, and{" "}
-            <span className="text-custom-blue">AI specialists</span> building intelligent
-            software that solves complex problems with elegant solutions.
+          <p className="subtitle text-lg md:text-xl text-center">
+            Elite engineers and{" "}
+            <span className="text-mgs-green">tactical AI specialists</span> executing
+            complex software operations with surgical precision.
           </p>
         </div>
       </div>
 
       {/* About Content */}
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
-          {/* Mission and Image */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-32">
+          {/* Mission and Intel */}
+          <div
+            className={`grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-32 transition-all duration-1000 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             <div className="lg:col-span-5 space-y-8 md:space-y-12">
-              <div
-                className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-3xl"
-                style={aiGradientBorder}
-              >
-                <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-white">
-                    Our <span className="text-custom-blue">Mission</span>
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg leading-relaxed">
-                    Whether it&apos;s launching your MVP, scaling your platform, or
-                    crafting something never seen before — we&apos;re here to ship it
-                    clean, and ship it quick.
-                  </p>
+              {/* Mission Brief */}
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-green p-4 sm:p-6 md:p-8 overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green to-transparent" />
+                <h3 className="text-xl md:text-2xl font-mgs2-menu mb-4 md:mb-6 text-mgs-white uppercase tracking-wider">
+                  Mission <span className="text-mgs-green">Directive</span>
+                </h3>
+                <p className="text-mgs-white/70 font-roboto text-sm md:text-base leading-relaxed">
+                  Whether launching your MVP, scaling your platform, or crafting something
+                  never seen before — we execute with precision and speed.
+                </p>
+                <div className="mt-4 text-xs text-mgs-green/60 font-tactical uppercase">
+                  [CLASSIFIED LEVEL FIVE CLEARANCE]
                 </div>
               </div>
 
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 md:p-10 rounded-3xl">
-                <h3 className="text-xl md:text-2xl font-satoshi-bold mb-4 md:mb-6 text-center text-gray-900 dark:text-white">
-                  Our Approach
+              {/* Tactical Approach */}
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray p-4 sm:p-6 md:p-8">
+                <h3 className="text-xl md:text-2xl font-mgs2-menu mb-4 md:mb-6 text-mgs-white uppercase tracking-wider">
+                  Tactical Protocol
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg leading-relaxed">
-                  Follow us for builds, behind-the-scenes dev flow, and game-changing
-                  product drops.
+                <p className="text-mgs-white/70 font-roboto text-sm md:text-base leading-relaxed">
+                  Follow our operations for builds, behind-the-scenes intel, and
+                  game-changing deployments.
                 </p>
+                <div className="mt-4 flex items-center text-xs">
+                  <div className="w-2 h-2 bg-mgs-green rounded-full animate-pulse mr-2" />
+                  <span className="text-mgs-green/60 font-mgs2-menu uppercase">
+                    Status: Active
+                  </span>
+                </div>
               </div>
             </div>
 
+            {/* Operative Image */}
             <div className="lg:col-span-7 mt-8 lg:mt-0">
               <div className="relative h-full">
-                <div className="rounded-3xl overflow-hidden h-full">
+                <div className="overflow-hidden h-full border-2 border-mgs-gray">
                   <Image
                     src="/aitech.jpeg"
-                    alt="Our team at work"
-                    className="w-full h-full object-cover"
+                    alt="Tactical Operations Center"
+                    className="w-full h-full object-cover filter contrast-125 brightness-90"
                     width={800}
                     height={600}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-mgs-black/60 to-transparent" />
                 </div>
-                <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-gray-800 dark:bg-neutral-700 text-white py-3 px-5 md:py-4 md:px-8 rounded-xl">
-                  <p className="font-satoshi-medium text-sm md:text-base">
-                    Transforming ideas into{" "}
-                    <span style={aiGradientStyle}>intelligent</span> software
+                <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-mgs-black border-2 border-mgs-green py-3 px-5 md:py-4 md:px-8">
+                  <p className="font-mgs2-menu text-sm md:text-base text-mgs-white uppercase tracking-wider">
+                    Transforming intel into{" "}
+                    <span className="text-mgs-green">tactical advantage</span>
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Core Values */}
-          <div className="mb-16 md:mb-32">
-            <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-white">
-              Our Values
+          {/* Core Values - MGS Unit Badges */}
+          <div
+            className={`mb-16 md:mb-32 transition-all duration-1000 delay-400 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <h3 className="text-xl md:text-2xl font-mgs2-menu text-center mb-10 md:mb-16 text-mgs-white uppercase tracking-widest">
+              Unit <span className="text-mgs-green">Specializations</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {values.map((value, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 dark:bg-gray-800 p-6 md:p-8 rounded-3xl hover:shadow-md transition-shadow"
-                  style={value.isHighlighted ? aiGradientBorder : {}}
+                  className="group relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 p-4 sm:p-6 md:p-8 overflow-hidden"
                 >
-                  <div
-                    className={
-                      value.isHighlighted
-                        ? "bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-6"
-                        : ""
-                    }
-                  >
-                    <div
-                      className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-4 md:mb-6 ${
-                        value.isHighlighted ? "" : "bg-gray-800 dark:bg-neutral-700"
-                      }`}
-                      style={
-                        value.isHighlighted
-                          ? {
-                              background:
-                                "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
-                              backgroundSize: "200% auto",
-                              animation: "gradientFlow 3s linear infinite",
-                            }
-                          : {}
-                      }
-                    >
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="md:w-6 md:h-6"
-                      >
-                        <path
-                          d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M12 16V12"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M12 8H12.01"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="text-lg md:text-xl font-satoshi-bold mb-3 md:mb-4 text-gray-900 dark:text-white">
-                      {value.isHighlighted ? (
-                        <span style={aiGradientStyle}>{value.title}</span>
-                      ) : (
-                        value.title
-                      )}
-                    </h4>
-                    <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-sm md:text-base">
-                      {value.description}
-                    </p>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-mgs-green/10 border border-mgs-green/50 flex items-center justify-center mb-4 md:mb-6 group-hover:bg-mgs-green/20 transition-colors duration-300">
+                    <span className="text-mgs-green font-bold text-lg">{index + 1}</span>
                   </div>
+
+                  <h4 className="text-sm md:text-base font-mgs2-menu mb-2 text-mgs-white uppercase">
+                    {value.title}
+                  </h4>
+                  <p className="text-xs text-mgs-green/60 font-tactical uppercase mb-3">
+                    {value.codename}
+                  </p>
+                  <p className="text-mgs-white/60 font-roboto text-sm">
+                    {value.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Approach */}
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 md:p-16">
+          {/* Approach - Mission Phases */}
+          <div
+            className={`bg-mgs-dark-gray/50 backdrop-blur border-2 border-mgs-gray p-8 md:p-16 transition-all duration-1000 delay-600 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-white">
-                Our <span style={aiGradientStyle}>Approach</span>
+              <h3 className="text-xl md:text-2xl font-mgs2-menu text-center mb-10 md:mb-16 text-mgs-white uppercase tracking-widest">
+                Operation <span className="text-mgs-green">Protocol</span>
               </h3>
               <div className="space-y-8 md:space-y-12">
                 {approachSteps.map((step, index) => (
-                  <div key={index} className="flex items-start">
-                    <div
-                      className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mr-4 md:mr-6 flex-shrink-0 ${
-                        step.isHighlighted ? "" : "bg-gray-800 dark:bg-neutral-700"
-                      }`}
-                      style={
-                        step.isHighlighted
-                          ? {
-                              background:
-                                "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
-                              backgroundSize: "200% auto",
-                              animation: "gradientFlow 3s linear infinite",
-                            }
-                          : {}
-                      }
-                    >
-                      <span className="font-satoshi-bold text-lg md:text-xl text-white">
-                        {step.number}
+                  <div key={index} className="flex items-start group">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-mgs-green/10 border border-mgs-green/50 flex items-center justify-center mr-4 md:mr-6 flex-shrink-0 group-hover:bg-mgs-green/20 transition-colors duration-300">
+                      <span className="font-mgs2 text-lg md:text-xl text-mgs-green">
+                        {index + 1}
                       </span>
                     </div>
-                    <div>
-                      <h4 className="text-lg md:text-xl font-satoshi-bold mb-2 md:mb-3 text-gray-900 dark:text-white">
-                        {step.number === 3 ? <>Build</> : step.title}
-                      </h4>
-                      <p className="text-gray-700 dark:text-gray-300 font-satoshi-regular text-base md:text-lg">
-                        {step.number === 3 ? (
-                          <>
-                            We develop with precision, integrating{" "}
-                            <span style={aiGradientStyle}>AI capabilities</span> that
-                            enhance functionality.
-                          </>
-                        ) : (
-                          step.description
-                        )}
+                    <div className="flex-1">
+                      <div className="flex items-baseline mb-2">
+                        <h4 className="text-lg md:text-xl font-mgs2-menu text-mgs-white uppercase tracking-wider mr-3">
+                          {step.title}
+                        </h4>
+                        <span className="text-xs text-mgs-green/60 font-tactical uppercase">
+                          {step.phase}
+                        </span>
+                      </div>
+                      <p className="text-mgs-white/60 font-roboto text-sm md:text-base">
+                        {step.description}
                       </p>
                     </div>
                   </div>
@@ -288,121 +251,136 @@ const About = () => {
             </div>
           </div>
 
-          {/* Team */}
-          <div className="mt-16 md:mt-32">
-            <h3 className="text-xl md:text-2xl font-satoshi-bold text-center mb-10 md:mb-16 text-gray-900 dark:text-white">
-              Our Team
+          {/* Operative Profile */}
+          <div
+            className={`mt-16 md:mt-32 transition-all duration-1000 delay-800 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <h3 className="text-xl md:text-2xl font-mgs2-menu text-center mb-10 md:mb-16 text-mgs-white uppercase tracking-widest">
+              Command <span className="text-mgs-green">Structure</span>
             </h3>
             <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-2xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-neutral-600 rounded-3xl overflow-hidden hover:shadow-md transition-shadow">
-                <div
-                  className="h-[35rem] md:h-[40rem] overflow-hidden relative"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
+              {/* Operative Card */}
+              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green to-transparent" />
+
+                <div className="h-[35rem] md:h-[40rem] overflow-hidden relative border-2 border-mgs-green p-4">
                   <Image
-                    src="/gibme.png"
-                    alt="CEO"
-                    className={`w-full h-full object-cover object-top absolute top-0 left-0 transition-opacity duration-500 ease-in-out ${
-                      isHovered ? "opacity-0" : "opacity-100"
-                    }`}
-                    width={500}
-                    height={700}
-                  />
-                  <Image
-                    src="/kier2.jpg"
-                    alt="CEO Alternative"
-                    className={`w-full h-full object-cover object-top absolute top-0 left-0 transition-opacity duration-500 ease-in-out ${
-                      isHovered ? "opacity-100" : "opacity-0"
-                    }`}
+                    src="/kieran-bb.png"
+                    alt="Operative Profile"
+                    className="w-full h-full object-contain"
                     width={500}
                     height={700}
                   />
                 </div>
-                <div className="p-6 md:p-8">
-                  <h4 className="text-lg md:text-xl font-satoshi-bold mb-1 text-gray-900 dark:text-white">
-                    Kieran O&apos;Leary
-                  </h4>
-                  <p className="text-gray-500 dark:text-gray-400 font-satoshi-medium mb-3 md:mb-4 text-sm md:text-base">
-                    CEO & Founder
-                  </p>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
-                    Entrepreneur and technology leader with a proven track record of
-                    building successful ventures. One of the first contributors to ShipBob
-                    (now valued at $4B), founder of RCR Recording Studio, and founder of
-                    EmpowerEd (education advocacy). Co-founder of Banya (a bathhouse in
-                    Chinatown), partner at RW Projects (construction management), and
-                    instrumental in launching a new location for GoodBuy Gear.
-                  </p>
+
+                <div className="p-4 sm:p-6 md:p-8 relative">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h4 className="text-lg md:text-xl font-mgs2-menu mb-1 text-mgs-white uppercase tracking-wider">
+                        Kieran O'Leary
+                      </h4>
+                      <p className="text-mgs-green font-tactical text-sm uppercase">
+                        Codename Big Boss
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-mgs-white/60 font-tactical uppercase">
+                        Rank
+                      </p>
+                      <p className="text-sm text-mgs-green font-mgs2-menu">CEO</p>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-mgs-gray/50 pt-4">
+                    <p className="text-mgs-white/70 text-sm md:text-base font-roboto mb-4">
+                      <span className="text-mgs-green font-tactical uppercase text-xs">
+                        Mission Record
+                      </span>
+                    </p>
+                    <p className="text-mgs-white/60 text-sm leading-relaxed font-roboto">
+                      Tactical entrepreneur and technology commander. First operative at
+                      ShipBob (now valued at $4B), established RCR Recording Studio,
+                      founded EmpowerEd (education ops). Co-founder of Banya (stealth
+                      bathhouse operations), partner at RW Projects (construction
+                      tactics), instrumental in GoodBuy Gear expansion.
+                    </p>
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between text-xs">
+                    <span className="text-mgs-green/60 font-tactical uppercase">
+                      Security Clearance x Maximum
+                    </span>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-mgs-green rounded-full animate-pulse mr-2" />
+                      <span className="text-mgs-green/60 font-tactical uppercase">
+                        Active
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Company Logos */}
+              {/* Allied Units */}
               <div className="mt-8 md:mt-12">
-                <h4 className="text-lg md:text-xl font-satoshi-bold text-center mb-6 md:mb-8 text-gray-900 dark:text-white">
-                  Ventures & <span style={aiGradientStyle}>Partnerships</span>
+                <h4 className="text-lg md:text-xl font-mgs2-menu text-center mb-3 text-mgs-white uppercase tracking-wider">
+                  Allied <span className="text-mgs-green">Operations</span>
                 </h4>
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 items-center justify-items-center">
-                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
-                    <Image
-                      src="/shipbob.jpeg"
-                      alt="ShipBob"
-                      className="max-h-10 max-w-full"
-                      width={100}
-                      height={40}
-                    />
-                  </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
-                    <Image
-                      src="/RCR2.png"
-                      alt="RCR Recording Studio"
-                      className="max-h-10 max-w-full"
-                      width={100}
-                      height={40}
-                    />
-                  </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
-                    <Image
-                      src="/empowered.png"
-                      alt="EmpowerEd"
-                      className="max-h-10 max-w-full"
-                      width={100}
-                      height={40}
-                    />
-                  </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
-                    <Image
-                      src="/banya.png"
-                      alt="Banya"
-                      className="max-h-10 max-w-full"
-                      width={100}
-                      height={40}
-                    />
-                  </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
-                    <Image
-                      src="/rwprojects.png"
-                      alt="RW Projects"
-                      className="max-h-10 max-w-full"
-                      width={100}
-                      height={40}
-                    />
-                  </div>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-xl h-16 w-full flex items-center justify-center">
-                    <Image
-                      src="/GBG.png"
-                      alt="GoodBuy Gear"
-                      className="max-h-10 max-w-full"
-                      width={100}
-                      height={40}
-                    />
-                  </div>
+                <p className="text-sm text-mgs-white/60 text-center mb-6 md:mb-8 font-roboto">
+                  Projects we have built or currently operate
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+                  {[
+                    { src: "/shipbob.jpeg", alt: "ShipBob", code: "SB", link: "https://shipbob.com" },
+                    { src: "/RCR2.png", alt: "RCR Recording", code: "RC", link: "https://www.redconvertiblerecording.com" },
+                    { src: "/empowered.png", alt: "EmpowerEd", code: "EP", link: "https://empoweredae.com" },
+                    { src: "/banya.png", alt: "Banya", code: "BN", link: "https://banyachinatown.com" },
+                    { src: "/rwprojects.png", alt: "RW Projects", code: "RW", link: "https://rwprojectsinc.com" },
+                    { src: "/GBG.png", alt: "GoodBuy Gear", code: "GB", link: "https://goodbuygear.com" },
+                    { src: "/logos/keeptouch.png", alt: "KeepTouch", code: "KT", link: "https://keeptouch.app" },
+                    { src: "/logos/vibebreath.png", alt: "VibeBreath", code: "VB", link: "https://vibebreath.com" },
+                    { src: "/logos/workshop.png", alt: "Workshop GR", code: "WG", link: "https://workshopgr.com" },
+                    { src: "/logos/talisen.jpeg", alt: "Talisen Construction", code: "TC", link: "https://talisenconstructioncorp.com" },
+                  ].map((ally, index) => (
+                    <div key={index} className="relative group">
+                      {ally.link ? (
+                        <a href={ally.link} target="_blank" rel="noopener noreferrer" className="block">
+                          <div className="p-6 md:p-8 bg-mgs-dark-gray/80 border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 h-32 md:h-40 w-full flex items-center justify-center cursor-pointer">
+                            <Image
+                              src={ally.src}
+                              alt={ally.alt}
+                              className="max-h-20 md:max-h-24 max-w-full filter brightness-75 group-hover:brightness-100 transition-all duration-300"
+                              width={180}
+                              height={100}
+                            />
+                          </div>
+                        </a>
+                      ) : (
+                        <div className="p-6 md:p-8 bg-mgs-dark-gray/80 border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 h-32 md:h-40 w-full flex items-center justify-center">
+                          <Image
+                            src={ally.src}
+                            alt={ally.alt}
+                            className="max-h-20 md:max-h-24 max-w-full filter brightness-75 group-hover:brightness-100 transition-all duration-300"
+                            width={180}
+                            height={100}
+                          />
+                        </div>
+                      )}
+                      <p className="text-sm text-mgs-green/60 font-mgs2-menu text-center mt-2 uppercase">
+                        {ally.code}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent" />
     </div>
   );
 };

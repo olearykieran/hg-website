@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ThemeToggle } from "./ThemeToggle";
 
 /* AI gradient styles - Removed as no longer used in this file */
 // const aiGradientStyle = {
@@ -14,10 +13,15 @@ import { ThemeToggle } from "./ThemeToggle";
 //   animation: "gradientFlow 3s linear infinite",
 // };
 
-const gradientButtonStyle = {
-  background: "linear-gradient(135deg, #5A5A5A, #404040, #2A2A2A, #1A1A1A, #0A0A0A)",
-  backgroundSize: "200% auto",
-  animation: "gradientFlow 3s linear infinite",
+const mgsButtonStyle = {
+  background: "hsl(var(--mgs-green))",
+  border: "2px solid hsl(var(--mgs-green))",
+  color: "hsl(var(--mgs-black))",
+  fontFamily: "'MGS2 Menu', sans-serif",
+  textTransform: "uppercase",
+  letterSpacing: "0.1em",
+  position: "relative",
+  overflow: "hidden",
 };
 
 const Navbar = () => {
@@ -57,27 +61,32 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 mgs-noise ${
         scrolled
-          ? "bg-white dark:bg-[#1c1a18]/20 dark:backdrop-blur-sm shadow-sm py-2 md:py-3"
-          : "bg-white dark:bg-[#1c1a18]/10 dark:backdrop-blur-sm py-3 md:py-5"
+          ? "bg-mgs-black/95 backdrop-blur-sm border-b-2 border-mgs-green py-2 md:py-3"
+          : "bg-mgs-black/90 backdrop-blur-sm py-3 md:py-5"
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <div className="relative h-16 w-16 md:h-24 md:w-24 mr-2 rounded-full overflow-hidden">
+        <Link href="/" className="flex items-center group">
+          <div className="relative h-16 w-16 md:h-20 md:w-20 mr-3 overflow-hidden mgs-codec">
             <Image
-              src="/final-logo.png"
+              src="/logos/HGS-mgs-logo.png"
               alt="Holy Grail Studio"
               className="w-full h-full object-contain"
               width={80}
               height={80}
             />
           </div>
-          <span className="text-base md:text-lg font-satoshi-medium tracking-tight text-gray-900 dark:text-white">
-            Holy Grail Studio
-          </span>
+          <div className="flex flex-col">
+            <span className="text-base md:text-lg font-mgs2-menu tracking-widest text-mgs-green uppercase">
+              Holy Grail
+            </span>
+            <span className="text-xs md:text-sm font-tactical tracking-wider text-mgs-white/80 uppercase">
+              Studio
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -86,28 +95,29 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-satoshi-medium transition-colors duration-200 ${
+              className={`text-sm font-mgs2-menu uppercase tracking-wider transition-all duration-200 relative ${
                 activeLink === link.name
-                  ? "text-black dark:text-white" // Active state color
-                  : "text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white" // Default state color
+                  ? "text-mgs-green" // Active state color
+                  : "text-mgs-white/80 hover:text-mgs-green" // Default state color
+              } after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-mgs-green after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 ${
+                activeLink === link.name ? "after:scale-x-100" : ""
               }`}
             >
               {link.name}
             </Link>
           ))}
-          <ThemeToggle />
           <Link
             href="#contact"
-            className="rounded-full text-sm font-satoshi-medium px-6 py-2 text-white"
-            style={gradientButtonStyle}
+            className="text-sm px-6 py-2 transition-all duration-300 hover:shadow-glow-green"
+            style={mgsButtonStyle}
           >
-            Get Started
+            <span className="relative z-10">Get Started</span>
+            <div className="absolute inset-0 bg-mgs-green-dark transform scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100" />
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-4">
-          <ThemeToggle />
+        <div className="md:hidden flex items-center">
           <button
             className="text-foreground p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -144,7 +154,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white/80 backdrop-blur-md dark:bg-[#1c1a18]/95 shadow-sm transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 w-full bg-mgs-black/95 backdrop-blur-md border-b-2 border-mgs-green shadow-lg transition-all duration-300 overflow-hidden mgs-noise ${
           mobileMenuOpen ? "max-h-screen" : "max-h-0"
         }`}
       >
@@ -153,10 +163,10 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-satoshi-medium py-3 border-b border-gray-100/30 dark:border-neutral-700/30 transition-colors duration-200 ${
+              className={`text-sm font-mgs2-menu uppercase tracking-wider py-3 border-b border-mgs-gray/30 transition-colors duration-200 ${
                 activeLink === link.name
-                  ? "text-black dark:text-white"
-                  : "text-gray-700 dark:text-gray-300"
+                  ? "text-mgs-green"
+                  : "text-mgs-white/80 hover:text-mgs-green"
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -166,8 +176,8 @@ const Navbar = () => {
           <div className="pt-2">
             <Link
               href="#contact"
-              className="inline-block rounded-full text-[10px] py-2.5 px-4 text-center font-satoshi-medium w-auto mx-auto text-white"
-              style={gradientButtonStyle}
+              className="inline-block text-[10px] py-2.5 px-4 text-center w-auto mx-auto transition-all duration-300"
+              style={mgsButtonStyle}
               onClick={() => setMobileMenuOpen(false)}
             >
               Get Started

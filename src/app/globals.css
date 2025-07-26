@@ -1,70 +1,114 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap");
+
+/* Metal Gear Solid Font Declarations */
+@font-face {
+  font-family: 'Metal Gear';
+  src: url('/font/METAG___.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MGS2';
+  src: url('/font/MGS2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MGS2 Menu';
+  src: url('/font/MGS2MENU.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tactical Espionage';
+  src: url('/font/Tactical Espionage Action.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  /* Metal Gear Solid Theme Colors */
+  --mgs-green: 156 34% 58%; /* #6ABD8C - MGS1 green */
+  --mgs-green-dark: 156 34% 48%; /* Darker variant */
+  --mgs-black: 0 0% 4%; /* #0A0A0A */
+  --mgs-dark-gray: 0 0% 10%; /* #1A1A1A */
+  --mgs-gray: 0 0% 20%; /* #333333 */
+  --mgs-military-green: 120 11% 35%; /* #4A5F4A */
+  --mgs-red: 0 100% 40%; /* #CC0000 */
+  --mgs-white: 0 0% 95%; /* #F2F2F2 */
 
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --background: var(--mgs-black);
+  --foreground: var(--mgs-white);
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --card: var(--mgs-dark-gray);
+  --card-foreground: var(--mgs-white);
 
-  --primary: 189 64% 52%; /* custom-blue */
-  --primary-foreground: 210 40% 98%;
+  --popover: var(--mgs-dark-gray);
+  --popover-foreground: var(--mgs-white);
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --primary: var(--mgs-green);
+  --primary-foreground: var(--mgs-black);
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --secondary: var(--mgs-gray);
+  --secondary-foreground: var(--mgs-white);
 
-  --accent: 189 64% 52%; /* custom-blue */
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --muted: var(--mgs-gray);
+  --muted-foreground: 0 0% 65%;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --accent: var(--mgs-green);
+  --accent-foreground: var(--mgs-black);
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 189 64% 52%; /* custom-blue */
+  --destructive: var(--mgs-red);
+  --destructive-foreground: var(--mgs-white);
 
-  --radius: 0.5rem;
+  --border: var(--mgs-gray);
+  --input: var(--mgs-gray);
+  --ring: var(--mgs-green);
+
+  --radius: 0rem; /* Sharp corners for MGS style */
 }
 
 .dark {
-  --background: 220 13% 18%;
-  --foreground: 210 40% 98%;
+  /* Dark mode with night vision green accents */
+  --background: var(--mgs-black);
+  --foreground: var(--mgs-white);
 
-  --card: 220 13% 23%;
-  --card-foreground: 210 40% 98%;
+  --card: var(--mgs-dark-gray);
+  --card-foreground: var(--mgs-white);
 
-  --popover: 220 13% 23%;
-  --popover-foreground: 210 40% 98%;
+  --popover: var(--mgs-dark-gray);
+  --popover-foreground: var(--mgs-white);
 
-  --primary: 189 64% 52%; /* custom-blue */
-  --primary-foreground: 210 40% 98%;
+  --primary: var(--mgs-green);
+  --primary-foreground: var(--mgs-black);
 
-  --secondary: 217.2 19% 27%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: var(--mgs-gray);
+  --secondary-foreground: var(--mgs-white);
 
-  --muted: 217.2 19% 27%;
-  --muted-foreground: 215 20.2% 75.1%;
+  --muted: var(--mgs-gray);
+  --muted-foreground: 0 0% 65%;
 
-  --accent: 189 64% 52%; /* custom-blue */
-  --accent-foreground: 210 40% 98%;
+  --accent: var(--mgs-green); /* MGS1 green accent */
+  --accent-foreground: var(--mgs-black);
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: var(--mgs-red);
+  --destructive-foreground: var(--mgs-white);
 
-  --border: 217.2 19% 27%;
-  --input: 217.2 19% 27%;
-  --ring: 189 64% 52%; /* custom-blue */
+  --border: var(--mgs-gray);
+  --input: var(--mgs-gray);
+  --ring: var(--mgs-green);
 }
 
 @layer base {
@@ -73,7 +117,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Satoshi", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
 
   h1,
@@ -83,42 +127,46 @@
   h5,
   h6 {
     @apply font-medium;
-    font-family: "Satoshi", sans-serif;
+    font-family: "Metal Gear", "MGS2", sans-serif;
+    text-transform: uppercase;
   }
 
   h1 {
     @apply text-4xl font-bold;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
   }
 
   h2 {
     @apply text-3xl font-bold;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.04em;
   }
 
   h3 {
     @apply text-2xl font-medium;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.03em;
   }
 
   h4 {
     @apply text-xl font-medium;
+    letter-spacing: 0.02em;
   }
 
   p {
-    font-family: "Satoshi", sans-serif;
+    font-family: "Roboto", sans-serif;
     @apply text-base leading-relaxed;
   }
 
   .display-text {
-    font-family: "Satoshi", sans-serif;
-    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
-    letter-spacing: -0.03em;
+    font-family: "Metal Gear", "MGS2", sans-serif;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .subtitle {
-    font-family: "Satoshi", sans-serif;
-    @apply text-lg text-gray-600 dark:text-gray-300 font-normal;
+    font-family: "Roboto", sans-serif;
+    @apply text-base sm:text-lg font-normal;
+    color: hsl(var(--mgs-green));
   }
 
   /* Satoshi font utility classes */
@@ -162,25 +210,57 @@
   }
 
   .card {
-    @apply bg-card text-gray-800 dark:text-gray-200 rounded-xl shadow-sm;
+    @apply bg-card shadow-sm;
+    border: 2px solid hsl(var(--mgs-gray));
+    color: hsl(var(--mgs-white));
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+    @apply inline-flex items-center justify-center text-sm font-medium transition-all 
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 
-    disabled:pointer-events-none ring-offset-background;
+    disabled:pointer-events-none ring-offset-background uppercase tracking-wider;
+    font-family: "MGS2 Menu", sans-serif;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
   }
 
   .btn-primary {
-    @apply bg-custom-blue text-white dark:bg-custom-blue dark:text-white hover:bg-custom-blue/90 dark:hover:bg-custom-blue/90 px-6 py-3;
+    @apply px-6 py-3;
+    background: hsl(var(--mgs-green));
+    color: hsl(var(--mgs-black));
+    border-color: hsl(var(--mgs-green));
+  }
+
+  .btn-primary:hover {
+    background: hsl(var(--mgs-green-dark));
+    border-color: hsl(var(--mgs-green-dark));
+    box-shadow: 0 0 20px hsl(var(--mgs-green) / 0.5);
   }
 
   .btn-secondary {
-    @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200/80 dark:hover:bg-gray-800/80 px-6 py-3;
+    @apply px-6 py-3;
+    background: hsl(var(--mgs-gray));
+    color: hsl(var(--mgs-white));
+    border-color: hsl(var(--mgs-gray));
+  }
+
+  .btn-secondary:hover {
+    background: hsl(var(--mgs-dark-gray));
+    border-color: hsl(var(--mgs-green));
+    color: hsl(var(--mgs-green));
   }
 
   .btn-outline {
-    @apply border-2 border-custom-blue text-custom-blue dark:border-custom-blue dark:text-custom-blue hover:bg-custom-blue/10 dark:hover:bg-custom-blue/10 px-6 py-3;
+    @apply px-6 py-3;
+    background: transparent;
+    color: hsl(var(--mgs-green));
+    border-color: hsl(var(--mgs-green));
+  }
+
+  .btn-outline:hover {
+    background: hsl(var(--mgs-green) / 0.1);
+    box-shadow: inset 0 0 20px hsl(var(--mgs-green) / 0.2);
   }
 
   .glass {
@@ -206,6 +286,55 @@
   background: var(--muted);
 }
 
+/* MGS Animations */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(-2px);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translateX(2px);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translateX(-1px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes alertPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 hsl(var(--mgs-red));
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 20px 5px hsl(var(--mgs-red) / 0.5);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* AI gradient animation */
 @keyframes gradientFlow {
   0% {
@@ -217,6 +346,72 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* MGS UI Classes */
+.mgs-scanline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, hsl(var(--mgs-green) / 0.8), transparent);
+  animation: scanline 3s linear infinite;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.mgs-glitch {
+  animation: glitch 3s infinite;
+}
+
+.mgs-codec {
+  border: 2px solid hsl(var(--mgs-green));
+  position: relative;
+  overflow: hidden;
+}
+
+.mgs-codec::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    hsl(var(--mgs-green) / 0.5) 50%, 
+    transparent 70%);
+  animation: gradientFlow 2s linear infinite;
+  z-index: -1;
+}
+
+.mgs-alert {
+  animation: alertPulse 1.5s infinite;
+}
+
+.mgs-grid-bg {
+  background-image: 
+    linear-gradient(hsl(var(--mgs-green) / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--mgs-green) / 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.mgs-noise {
+  position: relative;
+}
+
+.mgs-noise::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZmlsdGVyIGlkPSJub2lzZSI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC45IiBudW1PY3RhdmVzPSI0IiAvPgogIDwvZmlsdGVyPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+');
+  pointer-events: none;
+  opacity: 0.05;
 }
 
 /* Animation classes */
@@ -352,32 +547,8 @@
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-.btn {
-  @apply px-6 py-3 rounded-lg bg-custom-blue font-medium transition-all duration-300 inline-flex items-center justify-center;
-}
-
-.btn-primary {
-  @apply bg-custom-blue text-white dark:bg-custom-blue dark:text-white hover:bg-custom-blue/90 dark:hover:bg-custom-blue/90;
-}
-
-.btn-secondary {
-  @apply bg-gray-200 text-black dark:bg-gray-800 dark:text-white hover:bg-gray-200/80 dark:hover:bg-gray-800/80;
-}
-
-.btn-outline {
-  @apply border-2 border-custom-blue text-custom-blue dark:border-custom-blue dark:text-custom-blue hover:bg-custom-blue/10 dark:hover:bg-custom-blue/10;
-}
-
-.btn-glass {
-  @apply glass text-white dark:text-black hover:bg-white dark:hover:bg-black hover:bg-opacity-20 dark:hover:bg-opacity-20;
-}
-
 .section {
   @apply py-20;
-}
-
-.card {
-  @apply bg-card text-gray-800 dark:text-gray-200 rounded-xl p-6 shadow-lg;
 }
 
 /* Responsive typography */
