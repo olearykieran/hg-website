@@ -87,7 +87,7 @@ const Solutions = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="text-center w-full max-w-5xl mx-auto px-4 md:px-6">
+        <div className="text-center w-full px-8 lg:px-12 xl:px-16">
           {/* MGS Codec Header */}
           <div className="inline-block mb-8">
             <div className="mgs-codec px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-mgs-black/80 backdrop-blur">
@@ -111,9 +111,9 @@ const Solutions = () => {
       </div>
 
       {/* Solutions Content */}
-      <div className="w-full px-4 md:px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      <div className="w-full px-8 lg:px-12 xl:px-20 2xl:px-32 relative z-10">
+        <div className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12 lg:gap-16 xl:gap-20">
             {solutions.map((solution: Solution, index: number) => (
               <div
                 key={index}
@@ -124,7 +124,7 @@ const Solutions = () => {
                 }`}
               >
                 {/* Card with MGS styling */}
-                <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 p-4 sm:p-6 md:p-8">
+                <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 p-6 sm:p-8 md:p-10 lg:p-12">
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-mgs-green/0 to-mgs-green/0 group-hover:from-mgs-green/10 group-hover:to-transparent transition-all duration-500" />
 
@@ -146,16 +146,16 @@ const Solutions = () => {
                         />
                       </div>
                       <div>
-                        <h3 className="text-base md:text-lg font-mgs2-menu text-mgs-white uppercase tracking-normal">
+                        <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-mgs2-menu text-mgs-white uppercase tracking-normal">
                           {solution.title}
                         </h3>
-                        <p className="text-xs text-mgs-green font-mgs2-menu uppercase mt-1">
+                        <p className="text-xs lg:text-sm xl:text-base text-mgs-green font-mgs2-menu uppercase mt-1">
                           {solution.codename}
                         </p>
                       </div>
                     </div>
 
-                    <p className="text-mgs-white/70 mb-6 font-roboto text-sm leading-relaxed">
+                    <p className="text-mgs-white/70 mb-6 font-roboto text-sm lg:text-base xl:text-lg leading-relaxed">
                       {solution.description}
                     </p>
 
@@ -164,7 +164,7 @@ const Solutions = () => {
                       {solution.features.map((feature: string, featureIndex: number) => (
                         <li
                           key={featureIndex}
-                          className="flex items-center text-mgs-white/60 font-roboto text-sm group-hover:text-mgs-white/80 transition-colors duration-300"
+                          className="flex items-center text-mgs-white/60 font-roboto text-sm lg:text-base xl:text-lg group-hover:text-mgs-white/80 transition-colors duration-300"
                         >
                           <span className="text-mgs-green mr-3 text-lg">▸</span>
                           {feature}
@@ -174,7 +174,7 @@ const Solutions = () => {
 
                     {/* MGS Status indicator */}
                     <div className="mt-6 pt-4 border-t border-mgs-gray/50">
-                      <div className="flex items-center justify-between text-xs">
+                      <div className="flex items-center justify-between text-xs lg:text-sm xl:text-base">
                         <span className="text-mgs-green/60 font-mgs2-menu uppercase">
                           Status: Active
                         </span>

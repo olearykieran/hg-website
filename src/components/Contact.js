@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { useSoundContext } from "@/components/SoundProvider";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const Contact = () => {
 
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const { playSound } = useSoundContext();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,6 +49,9 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Play sound when submitting
+    playSound("engage");
 
     // Set loading state
     setFormStatus({
@@ -84,6 +89,7 @@ const Contact = () => {
         });
       } else {
         // Error response from server
+        playSound("error");
         setFormStatus({
           submitted: true,
           success: false,
@@ -92,6 +98,7 @@ const Contact = () => {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      playSound("error");
       setFormStatus({
         submitted: true,
         success: false,
@@ -113,11 +120,11 @@ const Contact = () => {
       {/* Scanline effect */}
       <div className="mgs-scanline" />
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-8 lg:px-12 xl:px-16 relative z-10">
         <div className="flex flex-col items-center">
           {/* Header */}
           <div
-            className={`max-w-3xl mx-auto text-center mb-10 md:mb-16 w-full transition-all duration-1000 ${
+            className={`w-full text-center mb-10 md:mb-16 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
@@ -134,7 +141,7 @@ const Contact = () => {
             </div>
 
             <h2 className="display-text mb-6 md:mb-8 text-center text-mgs-white">
-              ESTABLISH <span className="text-mgs-green">CONTACT</span>
+              <span className="text-mgs-white">CONTACT</span>
             </h2>
             <p className="subtitle text-lg md:text-xl text-center">
               Ready to deploy{" "}

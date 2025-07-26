@@ -93,7 +93,7 @@ const About = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="text-center w-full max-w-5xl mx-auto px-4 md:px-6">
+        <div className="text-center w-full px-8 lg:px-12 xl:px-16">
           {/* MGS Codec Header */}
           <div className="inline-block mb-8">
             <div className="mgs-codec px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-mgs-black/80 backdrop-blur">
@@ -118,8 +118,8 @@ const About = () => {
       </div>
 
       {/* About Content */}
-      <div className="w-full px-4 md:px-6 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      <div className="w-full px-8 lg:px-12 xl:px-20 2xl:px-32 relative z-10 overflow-hidden">
+        <div className="w-full">
           {/* Mission and Intel */}
           <div
             className={`grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-32 transition-all duration-1000 delay-200 ${
@@ -191,7 +191,7 @@ const About = () => {
             <h3 className="text-sm sm:text-xl md:text-2xl font-mgs2-menu text-center mb-6 sm:mb-10 md:mb-16 text-mgs-white uppercase tracking-wide sm:tracking-widest">
               Unit <span className="text-mgs-green">Specializations</span>
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-6 md:gap-8 lg:gap-10 xl:gap-12">
               {values.map((value, index) => (
                 <div
                   key={index}
@@ -223,7 +223,7 @@ const About = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="max-w-4xl mx-auto">
+            <div className="w-full">
               <h3 className="text-lg sm:text-xl md:text-2xl font-mgs2-menu text-center mb-6 sm:mb-10 md:mb-16 text-mgs-white uppercase tracking-wide sm:tracking-widest">
                 Operation <span className="text-mgs-green">Protocol</span>
               </h3>
@@ -260,39 +260,40 @@ const About = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h3 className="text-lg sm:text-xl md:text-2xl font-mgs2-menu text-center mb-6 sm:mb-10 md:mb-16 text-mgs-white uppercase tracking-wide sm:tracking-widest">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-mgs2-menu text-center mb-6 sm:mb-10 md:mb-16 text-mgs-white uppercase tracking-wide sm:tracking-widest">
               Command <span className="text-mgs-green">Structure</span>
             </h3>
-            <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-2xl mx-auto">
-              {/* Operative Card */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-16 xl:gap-20">
+              {/* Left Column - Operative Card */}
+              <div className="lg:col-span-1">
               <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green to-transparent" />
 
-                <div className="h-[35rem] md:h-[40rem] overflow-hidden relative border-2 border-mgs-green p-4">
+                <div className="h-[35rem] md:h-[40rem] lg:h-[45rem] xl:h-[50rem] overflow-hidden relative border-2 border-mgs-green p-4 lg:p-6 xl:p-8">
                   <Image
                     src="/kieran-bb.png"
                     alt="Operative Profile"
                     className="w-full h-full object-contain"
-                    width={500}
-                    height={700}
+                    width={800}
+                    height={1000}
                   />
                 </div>
 
                 <div className="p-4 sm:p-6 md:p-8 relative">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h4 className="text-lg md:text-xl font-mgs2-menu mb-1 text-mgs-white uppercase tracking-wider">
+                      <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-mgs2-menu mb-1 text-mgs-white uppercase tracking-wider">
                         Kieran O&apos;Leary
                       </h4>
-                      <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm uppercase">
+                      <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm lg:text-base xl:text-lg uppercase">
                         Codename Big Boss
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs text-mgs-white/60 font-tactical uppercase">
+                      <p className="text-xs lg:text-sm xl:text-base text-mgs-white/60 font-tactical uppercase">
                         Rank
                       </p>
-                      <p className="text-sm text-mgs-green font-mgs2-menu">CEO</p>
+                      <p className="text-sm lg:text-base xl:text-lg text-mgs-green font-mgs2-menu">CEO</p>
                     </div>
                   </div>
 
@@ -302,7 +303,7 @@ const About = () => {
                         Mission Record
                       </span>
                     </p>
-                    <p className="text-mgs-white/60 text-sm leading-relaxed font-roboto">
+                    <p className="text-mgs-white/60 text-sm lg:text-base xl:text-lg leading-relaxed font-roboto">
                       Tactical entrepreneur and technology commander. First operative at
                       ShipBob (now valued at $4B), established RCR Recording Studio,
                       founded EmpowerEd (education ops). Co-founder of Banya (stealth
@@ -324,16 +325,17 @@ const About = () => {
                   </div>
                 </div>
               </div>
+              </div>
 
-              {/* Allied Units */}
-              <div className="mt-8 md:mt-12">
-                <h4 className="text-lg md:text-xl font-mgs2-menu text-center mb-3 text-mgs-white uppercase tracking-wider">
+              {/* Right Column - Allied Units */}
+              <div className="lg:col-span-1 mt-12 md:mt-16 lg:mt-0">
+                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-mgs2-menu text-center lg:text-left mb-3 text-mgs-white uppercase tracking-wider">
                   Allied <span className="text-mgs-green">Operations</span>
                 </h4>
-                <p className="text-sm text-mgs-white/60 text-center mb-6 md:mb-8 font-roboto">
+                <p className="text-sm lg:text-base xl:text-lg text-mgs-white/60 text-center lg:text-left mb-8 md:mb-12 font-roboto">
                   Projects we have built or currently operate
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
                   {[
                     {
                       src: "/shipbob.jpeg",
@@ -404,28 +406,28 @@ const About = () => {
                           rel="noopener noreferrer"
                           className="block"
                         >
-                          <div className="bg-mgs-dark-gray/80 border border-mgs-gray hover:border-mgs-green transition-all duration-300 aspect-square w-full relative cursor-pointer">
+                          <div className="bg-white border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 aspect-square w-full relative cursor-pointer">
                             <Image
                               src={ally.src}
                               alt={ally.alt}
-                              className="w-full h-full object-contain p-4 filter brightness-75 group-hover:brightness-100 transition-all duration-300"
-                              width={300}
-                              height={300}
+                              className="w-full h-full object-contain p-3 lg:p-4 xl:p-5 transition-all duration-300"
+                              width={400}
+                              height={400}
                             />
                           </div>
                         </a>
                       ) : (
-                        <div className="bg-mgs-dark-gray/80 border border-mgs-gray hover:border-mgs-green transition-all duration-300 aspect-square w-full relative">
+                        <div className="bg-white border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 aspect-square w-full relative">
                           <Image
                             src={ally.src}
                             alt={ally.alt}
-                            className="w-full h-full object-contain p-4 filter brightness-75 group-hover:brightness-100 transition-all duration-300"
-                            width={300}
-                            height={300}
+                            className="w-full h-full object-contain p-3 lg:p-4 xl:p-5 transition-all duration-300"
+                            width={400}
+                            height={400}
                           />
                         </div>
                       )}
-                      <p className="text-sm text-mgs-green/60 font-mgs2-menu text-center mt-2 uppercase">
+                      <p className="text-sm lg:text-base xl:text-xl text-mgs-green/60 font-mgs2-menu text-center mt-3 lg:mt-4 uppercase">
                         {ally.code}
                       </p>
                     </div>

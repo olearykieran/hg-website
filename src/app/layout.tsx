@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import ClientWrapper from "@/components/ClientWrapper";
 
 // Load fonts
 const inter = Inter({
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark scroll-smooth">
       <body className="min-h-screen bg-background font-roboto antialiased overflow-x-hidden">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );

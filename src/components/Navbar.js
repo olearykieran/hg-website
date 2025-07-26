@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSoundContext } from "@/components/SoundProvider";
 
 /* AI gradient styles - Removed as no longer used in this file */
 // const aiGradientStyle = {
@@ -28,6 +29,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Home");
+  const { playSound, toggleMute, isMuted } = useSoundContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,9 +69,13 @@ const Navbar = () => {
           : "bg-mgs-black/90 backdrop-blur-sm py-3 md:py-5"
       }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="w-full px-8 lg:px-12 xl:px-16 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="flex items-center group">
+        <Link 
+          href="/" 
+          className="flex items-center group"
+          onClick={() => playSound("return")}
+        >
           <div className="relative h-16 w-16 md:h-20 md:w-20 mr-3 overflow-hidden mgs-codec">
             <Image
               src="/logos/HGS-mgs-logo.png"
@@ -102,10 +108,32 @@ const Navbar = () => {
               } after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-mgs-green after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 ${
                 activeLink === link.name ? "after:scale-x-100" : ""
               }`}
+              onClick={() => playSound("dropdown")}
             >
               {link.name}
             </Link>
           ))}
+          
+          {/* Mute Button */}
+          <button
+            onClick={toggleMute}
+            className="p-2 text-mgs-white/80 hover:text-mgs-green transition-colors duration-200"
+            aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
+          >
+            {isMuted ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M19.07 4.93C20.9447 6.80453 21.9979 9.34836 21.9979 12C21.9979 14.6516 20.9447 17.1955 19.07 19.07M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
+          </button>
+          
           <Link
             href="#contact"
             className="text-sm px-6 py-2 transition-all duration-300 hover:shadow-glow-green"
@@ -168,7 +196,10 @@ const Navbar = () => {
                   ? "text-mgs-green"
                   : "text-mgs-white/80 hover:text-mgs-green"
               }`}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                playSound("dropdown");
+                setMobileMenuOpen(false);
+              }}
             >
               {link.name}
             </Link>
