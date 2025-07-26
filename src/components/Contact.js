@@ -104,7 +104,7 @@ const Contact = () => {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative bg-mgs-black py-16 md:py-32 overflow-hidden"
+      className="relative bg-mgs-black py-16 md:py-32 overflow-x-hidden"
     >
       {/* MGS Grid Background */}
       <div className="absolute inset-0 mgs-grid-bg opacity-20" />
@@ -123,8 +123,8 @@ const Contact = () => {
           >
             {/* MGS Codec Header */}
             <div className="inline-block mb-8">
-              <div className="mgs-codec px-8 py-4 bg-mgs-black/80 backdrop-blur">
-                <p className="text-mgs-green font-mgs2-menu text-sm tracking-widest uppercase">
+              <div className="mgs-codec px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-mgs-black/80 backdrop-blur">
+                <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm tracking-wide sm:tracking-widest uppercase">
                   Communications Protocol
                 </p>
                 <h2 className="text-mgs-white/60 font-tactical text-xs mt-1 uppercase">

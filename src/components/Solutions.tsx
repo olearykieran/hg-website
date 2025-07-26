@@ -73,7 +73,7 @@ const Solutions = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="relative bg-mgs-black py-16 md:py-32" id="solutions">
+    <div ref={sectionRef} className="relative bg-mgs-black py-16 md:py-32 overflow-x-hidden" id="solutions">
       {/* MGS Grid Background */}
       <div className="absolute inset-0 mgs-grid-bg opacity-20" />
       <div className="absolute inset-0 mgs-noise opacity-10" />
@@ -90,8 +90,8 @@ const Solutions = () => {
         <div className="text-center w-full max-w-5xl mx-auto px-4 md:px-6">
           {/* MGS Codec Header */}
           <div className="inline-block mb-8">
-            <div className="mgs-codec px-8 py-4 bg-mgs-black/80 backdrop-blur">
-              <p className="text-mgs-green font-mgs2-menu text-sm tracking-widest uppercase">
+            <div className="mgs-codec px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-mgs-black/80 backdrop-blur">
+              <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm tracking-wide sm:tracking-widest uppercase">
                 Mission Capabilities
               </p>
               <h2 className="text-mgs-white/60 font-tactical text-xs mt-1 uppercase">
@@ -111,7 +111,7 @@ const Solutions = () => {
       </div>
 
       {/* Solutions Content */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 md:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {solutions.map((solution: Solution, index: number) => (

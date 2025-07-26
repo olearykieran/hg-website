@@ -25,25 +25,6 @@ const HeroSection = () => {
     return () => clearInterval(typingInterval);
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleScroll = () => {
-        const scrollY = window.scrollY;
-        const heroElement = heroRef.current;
-
-        if (heroElement) {
-          const heroContent = heroElement.querySelector(".hero-content") as HTMLElement;
-          if (heroContent) {
-            heroContent.style.transform = `translateY(${scrollY * 0.2}px)`;
-            heroContent.style.opacity = `${1 - scrollY * 0.002}`;
-          }
-        }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
-  }, []);
 
   return (
     <section
@@ -67,7 +48,7 @@ const HeroSection = () => {
             }`}
           >
             <div className="mgs-codec px-8 py-4 bg-mgs-black/80 backdrop-blur">
-              <p className="text-mgs-green font-mgs2-menu text-sm tracking-widest uppercase">
+              <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm tracking-wide sm:tracking-widest uppercase">
                 Mission Briefing
               </p>
               <h2 className="text-mgs-white/60 font-tactical text-xs mt-1">
@@ -121,7 +102,7 @@ const HeroSection = () => {
             }`}
           >
             <div className="bg-mgs-black/80 backdrop-blur border-2 border-mgs-green p-6">
-              <h3 className="text-mgs-green font-mgs2-menu text-lg mb-4 uppercase tracking-widest">
+              <h3 className="text-mgs-green font-mgs2-menu text-base sm:text-lg mb-4 uppercase tracking-wide sm:tracking-widest">
                 Operational Statistics
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

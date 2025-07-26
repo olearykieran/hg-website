@@ -78,7 +78,11 @@ const About = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="relative bg-mgs-black py-16 md:py-32" id="about">
+    <div
+      ref={sectionRef}
+      className="relative bg-mgs-black py-16 md:py-32 overflow-x-hidden"
+      id="about"
+    >
       {/* MGS Grid Background */}
       <div className="absolute inset-0 mgs-grid-bg opacity-20" />
       <div className="absolute inset-0 mgs-noise opacity-10" />
@@ -92,8 +96,8 @@ const About = () => {
         <div className="text-center w-full max-w-5xl mx-auto px-4 md:px-6">
           {/* MGS Codec Header */}
           <div className="inline-block mb-8">
-            <div className="mgs-codec px-8 py-4 bg-mgs-black/80 backdrop-blur">
-              <p className="text-mgs-green font-mgs2-menu text-sm tracking-widest uppercase">
+            <div className="mgs-codec px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-mgs-black/80 backdrop-blur">
+              <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm tracking-wide sm:tracking-widest uppercase">
                 Unit Information
               </p>
               <h2 className="text-mgs-white/60 font-tactical text-xs mt-1 uppercase">
@@ -114,7 +118,7 @@ const About = () => {
       </div>
 
       {/* About Content */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 md:px-6 relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Mission and Intel */}
           <div
@@ -133,8 +137,8 @@ const About = () => {
                   Whether launching your MVP, scaling your platform, or crafting something
                   never seen before — we execute with precision and speed.
                 </p>
-                <div className="mt-4 text-xs text-mgs-green/60 font-tactical uppercase">
-                  [CLASSIFIED LEVEL FIVE CLEARANCE]
+                <div className="mt-4 text-xs text-mgs-green/60 font-mgs2-menu uppercase">
+                  [CLASSIFIED - LV5]
                 </div>
               </div>
 
@@ -157,8 +161,8 @@ const About = () => {
             </div>
 
             {/* Operative Image */}
-            <div className="lg:col-span-7 mt-8 lg:mt-0">
-              <div className="relative h-full">
+            <div className="lg:col-span-7 mt-8 lg:mt-0 overflow-hidden">
+              <div className="relative h-full overflow-hidden">
                 <div className="overflow-hidden h-full border-2 border-mgs-gray">
                   <Image
                     src="/aitech.jpeg"
@@ -169,10 +173,9 @@ const About = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-mgs-black/60 to-transparent" />
                 </div>
-                <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-mgs-black border-2 border-mgs-green py-3 px-5 md:py-4 md:px-8">
-                  <p className="font-mgs2-menu text-sm md:text-base text-mgs-white uppercase tracking-wider">
-                    Transforming intel into{" "}
-                    <span className="text-mgs-green">tactical advantage</span>
+                <div className="absolute bottom-2 right-2 sm:-bottom-4 sm:-right-4 md:-bottom-6 md:-right-6 bg-mgs-black border border-mgs-green py-2 px-3 sm:py-3 sm:px-5 md:py-4 md:px-8">
+                  <p className="font-mgs2-menu text-xs sm:text-sm md:text-base text-mgs-white uppercase">
+                    Intel to <span className="text-mgs-green">advantage</span>
                   </p>
                 </div>
               </div>
@@ -185,7 +188,7 @@ const About = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h3 className="text-xl md:text-2xl font-mgs2-menu text-center mb-10 md:mb-16 text-mgs-white uppercase tracking-widest">
+            <h3 className="text-sm sm:text-xl md:text-2xl font-mgs2-menu text-center mb-6 sm:mb-10 md:mb-16 text-mgs-white uppercase tracking-wide sm:tracking-widest">
               Unit <span className="text-mgs-green">Specializations</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -216,12 +219,12 @@ const About = () => {
 
           {/* Approach - Mission Phases */}
           <div
-            className={`bg-mgs-dark-gray/50 backdrop-blur border-2 border-mgs-gray p-8 md:p-16 transition-all duration-1000 delay-600 ${
+            className={`bg-mgs-dark-gray/50 backdrop-blur border-2 border-mgs-gray p-4 sm:p-6 md:p-8 lg:p-16 transition-all duration-1000 delay-600 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-mgs2-menu text-center mb-10 md:mb-16 text-mgs-white uppercase tracking-widest">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-mgs2-menu text-center mb-6 sm:mb-10 md:mb-16 text-mgs-white uppercase tracking-wide sm:tracking-widest">
                 Operation <span className="text-mgs-green">Protocol</span>
               </h3>
               <div className="space-y-8 md:space-y-12">
@@ -233,11 +236,11 @@ const About = () => {
                       </span>
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-baseline mb-2">
-                        <h4 className="text-lg md:text-xl font-mgs2-menu text-mgs-white uppercase tracking-wider mr-3">
+                      <div className="flex flex-col sm:flex-row sm:items-baseline mb-2">
+                        <h4 className="text-xs sm:text-base md:text-xl font-mgs2-menu text-mgs-white uppercase tracking-normal sm:tracking-wider sm:mr-3">
                           {step.title}
                         </h4>
-                        <span className="text-xs text-mgs-green/60 font-tactical uppercase">
+                        <span className="text-xs text-mgs-green/60 font-mgs2-menu uppercase mt-1 sm:mt-0">
                           {step.phase}
                         </span>
                       </div>
@@ -257,7 +260,7 @@ const About = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h3 className="text-xl md:text-2xl font-mgs2-menu text-center mb-10 md:mb-16 text-mgs-white uppercase tracking-widest">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-mgs2-menu text-center mb-6 sm:mb-10 md:mb-16 text-mgs-white uppercase tracking-wide sm:tracking-widest">
               Command <span className="text-mgs-green">Structure</span>
             </h3>
             <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-2xl mx-auto">
@@ -281,7 +284,7 @@ const About = () => {
                       <h4 className="text-lg md:text-xl font-mgs2-menu mb-1 text-mgs-white uppercase tracking-wider">
                         Kieran O&apos;Leary
                       </h4>
-                      <p className="text-mgs-green font-tactical text-sm uppercase">
+                      <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm uppercase">
                         Codename Big Boss
                       </p>
                     </div>
@@ -330,40 +333,95 @@ const About = () => {
                 <p className="text-sm text-mgs-white/60 text-center mb-6 md:mb-8 font-roboto">
                   Projects we have built or currently operate
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
                   {[
-                    { src: "/shipbob.jpeg", alt: "ShipBob", code: "SB", link: "https://shipbob.com" },
-                    { src: "/RCR2.png", alt: "RCR Recording", code: "RC", link: "https://www.redconvertiblerecording.com" },
-                    { src: "/empowered.png", alt: "EmpowerEd", code: "EP", link: "https://empoweredae.com" },
-                    { src: "/banya.png", alt: "Banya", code: "BN", link: "https://banyachinatown.com" },
-                    { src: "/rwprojects.png", alt: "RW Projects", code: "RW", link: "https://rwprojectsinc.com" },
-                    { src: "/GBG.png", alt: "GoodBuy Gear", code: "GB", link: "https://goodbuygear.com" },
-                    { src: "/logos/keeptouch.png", alt: "KeepTouch", code: "KT", link: "https://keeptouch.app" },
-                    { src: "/logos/vibebreath.png", alt: "VibeBreath", code: "VB", link: "https://vibebreath.com" },
-                    { src: "/logos/workshop.png", alt: "Workshop GR", code: "WG", link: "https://workshopgr.com" },
-                    { src: "/logos/talisen.jpeg", alt: "Talisen Construction", code: "TC", link: "https://talisenconstructioncorp.com" },
+                    {
+                      src: "/shipbob.jpeg",
+                      alt: "ShipBob",
+                      code: "SB",
+                      link: "https://shipbob.com",
+                    },
+                    {
+                      src: "/RCR2.png",
+                      alt: "RCR Recording",
+                      code: "RC",
+                      link: "https://www.redconvertiblerecording.com",
+                    },
+                    {
+                      src: "/empowered.png",
+                      alt: "EmpowerEd",
+                      code: "EP",
+                      link: "https://empoweredae.com",
+                    },
+                    {
+                      src: "/banya.png",
+                      alt: "Banya",
+                      code: "BN",
+                      link: "https://banyachinatown.com",
+                    },
+                    {
+                      src: "/rwprojects.png",
+                      alt: "RW Projects",
+                      code: "RW",
+                      link: "https://rwprojectsinc.com",
+                    },
+                    {
+                      src: "/GBG.png",
+                      alt: "GoodBuy Gear",
+                      code: "GB",
+                      link: "https://goodbuygear.com",
+                    },
+                    {
+                      src: "/logos/keeptouch.png",
+                      alt: "KeepTouch",
+                      code: "KT",
+                      link: "https://keeptouch.app",
+                    },
+                    {
+                      src: "/logos/vibebreath.png",
+                      alt: "VibeBreath",
+                      code: "VB",
+                      link: "https://vibebreath.com",
+                    },
+                    {
+                      src: "/logos/workshop.png",
+                      alt: "Workshop GR",
+                      code: "WG",
+                      link: "https://workshopgr.com",
+                    },
+                    {
+                      src: "/logos/talisen.jpeg",
+                      alt: "Talisen Construction",
+                      code: "TC",
+                      link: "https://talisenconstructioncorp.com",
+                    },
                   ].map((ally, index) => (
                     <div key={index} className="relative group">
                       {ally.link ? (
-                        <a href={ally.link} target="_blank" rel="noopener noreferrer" className="block">
-                          <div className="p-6 md:p-8 bg-mgs-dark-gray/80 border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 h-32 md:h-40 w-full flex items-center justify-center cursor-pointer">
+                        <a
+                          href={ally.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block"
+                        >
+                          <div className="bg-mgs-dark-gray/80 border border-mgs-gray hover:border-mgs-green transition-all duration-300 aspect-square w-full relative cursor-pointer">
                             <Image
                               src={ally.src}
                               alt={ally.alt}
-                              className="max-h-20 md:max-h-24 max-w-full filter brightness-75 group-hover:brightness-100 transition-all duration-300"
-                              width={180}
-                              height={100}
+                              className="w-full h-full object-contain p-4 filter brightness-75 group-hover:brightness-100 transition-all duration-300"
+                              width={300}
+                              height={300}
                             />
                           </div>
                         </a>
                       ) : (
-                        <div className="p-6 md:p-8 bg-mgs-dark-gray/80 border-2 border-mgs-gray hover:border-mgs-green transition-all duration-300 h-32 md:h-40 w-full flex items-center justify-center">
+                        <div className="bg-mgs-dark-gray/80 border border-mgs-gray hover:border-mgs-green transition-all duration-300 aspect-square w-full relative">
                           <Image
                             src={ally.src}
                             alt={ally.alt}
-                            className="max-h-20 md:max-h-24 max-w-full filter brightness-75 group-hover:brightness-100 transition-all duration-300"
-                            width={180}
-                            height={100}
+                            className="w-full h-full object-contain p-4 filter brightness-75 group-hover:brightness-100 transition-all duration-300"
+                            width={300}
+                            height={300}
                           />
                         </div>
                       )}
@@ -380,7 +438,7 @@ const About = () => {
       </div>
 
       {/* Bottom accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-mgs-green/50 to-transparent pointer-events-none" />
     </div>
   );
 };

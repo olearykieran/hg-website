@@ -61,7 +61,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 mgs-noise ${
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 mgs-noise ${
         scrolled
           ? "bg-mgs-black/95 backdrop-blur-sm border-b-2 border-mgs-green py-2 md:py-3"
           : "bg-mgs-black/90 backdrop-blur-sm py-3 md:py-5"
@@ -80,7 +80,7 @@ const Navbar = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-base md:text-lg font-mgs2-menu tracking-widest text-mgs-green uppercase">
+            <span className="text-sm sm:text-base md:text-lg font-mgs2-menu tracking-wide sm:tracking-widest text-mgs-green uppercase">
               Holy Grail
             </span>
             <span className="text-xs md:text-sm font-tactical tracking-wider text-mgs-white/80 uppercase">

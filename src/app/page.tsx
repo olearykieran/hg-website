@@ -16,7 +16,7 @@ import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-mgs-black">
+    <div className="relative min-h-screen bg-mgs-black overflow-x-hidden">
       {/* Background Layer */}
       <div className="fixed inset-0 bg-mgs-black mgs-grid-bg">
         {/* Animated scanline overlay */}
@@ -38,7 +38,7 @@ export default function Home() {
         <footer className="relative py-8 text-mgs-white/60 text-sm border-t-2 border-mgs-green bg-mgs-black/90 backdrop-blur-sm">
           <div className="w-full flex flex-col items-center justify-center">
             <div className="mb-4 flex items-center justify-center">
-              <span className="text-base font-mgs2-menu text-mgs-green uppercase tracking-widest">
+              <span className="text-sm sm:text-base font-mgs2-menu text-mgs-green uppercase tracking-wide sm:tracking-widest">
                 Holy Grail Studio
               </span>
             </div>
