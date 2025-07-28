@@ -84,13 +84,31 @@ export const useSoundEffects = () => {
       // Reset the audio to start
       audio.currentTime = 0;
       
-      // Play with error handling
-      audio.play().catch((error) => {
-        // Ignore autoplay policy errors silently
-        if (error.name !== "NotAllowedError") {
-          console.error(`Error playing sound ${type}:`, error);
-        }
-      });
+      // Create a promise for playing audio that handles mobile/production constraints
+      const playPromise = audio.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          // Auto-play was prevented
+          if (error.name === "NotAllowedError") {
+            console.warn(`Autoplay prevented for: ${type}. Will play on next interaction.`);
+            
+            // Try to play again on next user interaction
+            const retryPlay = () => {
+              audio.play().catch(() => {
+                // Still failed, give up silently
+              });
+            };
+            
+            // Add one-time listeners for various interaction types
+            document.addEventListener("click", retryPlay, { once: true, passive: true });
+            document.addEventListener("touchstart", retryPlay, { once: true, passive: true });
+            document.addEventListener("touchend", retryPlay, { once: true, passive: true });
+          } else {
+            console.error(`Error playing sound ${type}:`, error);
+          }
+        });
+      }
     }
   };
 

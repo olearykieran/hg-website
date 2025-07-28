@@ -30,12 +30,6 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
   const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
-    // Try to play immediately if sounds are loaded
-    if (isLoaded && !hasInteracted) {
-      playSound("main");
-      setHasInteracted(true);
-    }
-
     // Also try to play on first user interaction (for autoplay policy)
     const handleFirstInteraction = () => {
       if (isLoaded && !hasInteracted) {
@@ -45,18 +39,41 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
       // Remove listeners after first interaction
       document.removeEventListener("click", handleFirstInteraction);
       document.removeEventListener("touchstart", handleFirstInteraction);
+      document.removeEventListener("touchend", handleFirstInteraction);
       document.removeEventListener("keydown", handleFirstInteraction);
+      document.removeEventListener("mousedown", handleFirstInteraction);
     };
 
     // Add listeners for various interaction types (including mobile touch)
-    document.addEventListener("click", handleFirstInteraction);
-    document.addEventListener("touchstart", handleFirstInteraction);
-    document.addEventListener("keydown", handleFirstInteraction);
+    document.addEventListener("click", handleFirstInteraction, { passive: true });
+    document.addEventListener("touchstart", handleFirstInteraction, { passive: true });
+    document.addEventListener("touchend", handleFirstInteraction, { passive: true });
+    document.addEventListener("keydown", handleFirstInteraction, { passive: true });
+    document.addEventListener("mousedown", handleFirstInteraction, { passive: true });
+
+    // Try to play immediately after a short delay (works better in production)
+    if (isLoaded && !hasInteracted) {
+      const timer = setTimeout(() => {
+        playSound("main");
+        setHasInteracted(true);
+      }, 500);
+      
+      return () => {
+        clearTimeout(timer);
+        document.removeEventListener("click", handleFirstInteraction);
+        document.removeEventListener("touchstart", handleFirstInteraction);
+        document.removeEventListener("touchend", handleFirstInteraction);
+        document.removeEventListener("keydown", handleFirstInteraction);
+        document.removeEventListener("mousedown", handleFirstInteraction);
+      };
+    }
 
     return () => {
       document.removeEventListener("click", handleFirstInteraction);
       document.removeEventListener("touchstart", handleFirstInteraction);
+      document.removeEventListener("touchend", handleFirstInteraction);
       document.removeEventListener("keydown", handleFirstInteraction);
+      document.removeEventListener("mousedown", handleFirstInteraction);
     };
   }, [isLoaded, playSound, hasInteracted]);
 
