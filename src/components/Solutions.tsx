@@ -36,7 +36,7 @@ const Solutions = () => {
   const solutions: Solution[] = [
     {
       title: "Web Development",
-      codename: "OPERATION: WEB SNAKE",
+      codename: "OPERATION: SOLID WEB",
       description: "Tactical web deployment with stealth optimization.",
       features: [
         "Responsive Infiltration",
@@ -73,7 +73,11 @@ const Solutions = () => {
   ];
 
   return (
-    <div ref={sectionRef} className="relative bg-mgs-black py-16 md:py-32 overflow-x-hidden" id="solutions">
+    <div
+      ref={sectionRef}
+      className="relative bg-mgs-black py-16 md:py-32 overflow-x-hidden"
+      id="solutions"
+    >
       {/* MGS Grid Background */}
       <div className="absolute inset-0 mgs-grid-bg opacity-20" />
       <div className="absolute inset-0 mgs-noise opacity-10" />
@@ -146,7 +150,7 @@ const Solutions = () => {
                         />
                       </div>
                       <div>
-                        <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-mgs2-menu text-mgs-white uppercase tracking-normal">
+                        <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-tactical text-mgs-white uppercase tracking-normal">
                           {solution.title}
                         </h3>
                         <p className="text-xs lg:text-sm xl:text-base text-mgs-green font-mgs2-menu uppercase mt-1">

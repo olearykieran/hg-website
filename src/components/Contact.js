@@ -49,7 +49,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Play sound when submitting
     playSound("engage");
 
@@ -319,7 +319,9 @@ const Contact = () => {
                       type="submit"
                       className="btn btn-primary px-8 py-3 relative group overflow-hidden"
                     >
-                      <span className="relative z-10">TRANSMIT MESSAGE</span>
+                      <span className="relative font-tactical lg:text-3xl z-10">
+                        TRANSMIT MESSAGE
+                      </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-mgs-green to-mgs-green-dark transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
                     </button>
                   </div>

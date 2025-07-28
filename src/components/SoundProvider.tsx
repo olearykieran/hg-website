@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useSoundEffects, SoundType } from "@/hooks/useSoundEffects";
 
 interface SoundContextType {
@@ -27,18 +27,38 @@ interface SoundProviderProps {
 export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
   const soundEffects = useSoundEffects();
   const { playSound, isLoaded } = soundEffects;
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
-    // Play the main theme when the page loads and sounds are ready
-    if (isLoaded) {
-      // Small delay to ensure everything is ready
-      const timer = setTimeout(() => {
-        playSound("main");
-      }, 500);
-
-      return () => clearTimeout(timer);
+    // Try to play immediately if sounds are loaded
+    if (isLoaded && !hasInteracted) {
+      playSound("main");
+      setHasInteracted(true);
     }
-  }, [isLoaded, playSound]);
+
+    // Also try to play on first user interaction (for autoplay policy)
+    const handleFirstInteraction = () => {
+      if (isLoaded && !hasInteracted) {
+        playSound("main");
+        setHasInteracted(true);
+      }
+      // Remove listeners after first interaction
+      document.removeEventListener("click", handleFirstInteraction);
+      document.removeEventListener("touchstart", handleFirstInteraction);
+      document.removeEventListener("keydown", handleFirstInteraction);
+    };
+
+    // Add listeners for various interaction types (including mobile touch)
+    document.addEventListener("click", handleFirstInteraction);
+    document.addEventListener("touchstart", handleFirstInteraction);
+    document.addEventListener("keydown", handleFirstInteraction);
+
+    return () => {
+      document.removeEventListener("click", handleFirstInteraction);
+      document.removeEventListener("touchstart", handleFirstInteraction);
+      document.removeEventListener("keydown", handleFirstInteraction);
+    };
+  }, [isLoaded, playSound, hasInteracted]);
 
   return (
     <SoundContext.Provider value={soundEffects}>

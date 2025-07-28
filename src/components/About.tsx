@@ -130,7 +130,7 @@ const About = () => {
               {/* Mission Brief */}
               <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-green p-4 sm:p-6 md:p-8 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green to-transparent" />
-                <h3 className="text-xl md:text-2xl font-mgs2-menu mb-4 md:mb-6 text-mgs-white uppercase tracking-wider">
+                <h3 className="text-xl md:text-2xl font-tactical mb-4 md:mb-6 text-mgs-white uppercase tracking-wider">
                   Mission <span className="text-mgs-green">Directive</span>
                 </h3>
                 <p className="text-mgs-white/70 font-roboto text-sm md:text-base leading-relaxed">
@@ -144,7 +144,7 @@ const About = () => {
 
               {/* Tactical Approach */}
               <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray p-4 sm:p-6 md:p-8">
-                <h3 className="text-xl md:text-2xl font-mgs2-menu mb-4 md:mb-6 text-mgs-white uppercase tracking-wider">
+                <h3 className="text-xl md:text-2xl font-tactical mb-4 md:mb-6 text-mgs-white uppercase tracking-wider">
                   Tactical Protocol
                 </h3>
                 <p className="text-mgs-white/70 font-roboto text-sm md:text-base leading-relaxed">
@@ -203,7 +203,7 @@ const About = () => {
                     <span className="text-mgs-green font-bold text-lg">{index + 1}</span>
                   </div>
 
-                  <h4 className="text-sm md:text-base font-mgs2-menu mb-2 text-mgs-white uppercase">
+                  <h4 className="text-lg md:text-base font-tactical mb-2 text-mgs-white uppercase">
                     {value.title}
                   </h4>
                   <p className="text-xs text-mgs-green/60 font-tactical uppercase mb-3">
@@ -237,7 +237,7 @@ const About = () => {
                     </div>
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-baseline mb-2">
-                        <h4 className="text-xs sm:text-base md:text-xl font-mgs2-menu text-mgs-white uppercase tracking-normal sm:tracking-wider sm:mr-3">
+                        <h4 className="text-base sm:text-xl md:text-3xl font-tactical text-mgs-white uppercase tracking-normal sm:tracking-wider sm:mr-3">
                           {step.title}
                         </h4>
                         <span className="text-xs text-mgs-green/60 font-mgs2-menu uppercase mt-1 sm:mt-0">
@@ -266,65 +266,72 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-16 xl:gap-20">
               {/* Left Column - Operative Card */}
               <div className="lg:col-span-1">
-              <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green to-transparent" />
+                <div className="relative bg-mgs-dark-gray/80 backdrop-blur border-2 border-mgs-gray overflow-hidden group">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-mgs-green to-transparent" />
 
-                <div className="h-[35rem] md:h-[40rem] lg:h-[45rem] xl:h-[50rem] overflow-hidden relative border-2 border-mgs-green p-4 lg:p-6 xl:p-8">
-                  <Image
-                    src="/kieran-bb.png"
-                    alt="Operative Profile"
-                    className="w-full h-full object-contain"
-                    width={800}
-                    height={1000}
-                  />
-                </div>
-
-                <div className="p-4 sm:p-6 md:p-8 relative">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-mgs2-menu mb-1 text-mgs-white uppercase tracking-wider">
-                        Kieran O&apos;Leary
-                      </h4>
-                      <p className="text-mgs-green font-mgs2-menu text-xs sm:text-sm lg:text-base xl:text-lg uppercase">
-                        Codename Big Boss
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs lg:text-sm xl:text-base text-mgs-white/60 font-tactical uppercase">
-                        Rank
-                      </p>
-                      <p className="text-sm lg:text-base xl:text-lg text-mgs-green font-mgs2-menu">CEO</p>
+                  <div className="h-[35rem] md:h-[40rem] lg:h-[45rem] xl:h-[50rem] overflow-hidden relative border-2 border-mgs-green">
+                    <div className="w-full h-full relative overflow-hidden">
+                      <Image
+                        src="/kieran-bb.png"
+                        alt="Operative Profile"
+                        className="w-full h-full object-cover object-[center_20%] sm:object-contain sm:object-top sm:h-[120%]"
+                        width={800}
+                        height={1000}
+                      />
                     </div>
                   </div>
 
-                  <div className="border-t border-mgs-gray/50 pt-4">
-                    <p className="text-mgs-white/70 text-sm md:text-base font-roboto mb-4">
-                      <span className="text-mgs-green font-tactical uppercase text-xs">
-                        Mission Record
-                      </span>
-                    </p>
-                    <p className="text-mgs-white/60 text-sm lg:text-base xl:text-lg leading-relaxed font-roboto">
-                      Tactical entrepreneur and technology commander. First operative at
-                      ShipBob (now valued at $4B), established RCR Recording Studio,
-                      founded EmpowerEd (education ops). Co-founder of Banya (stealth
-                      bathhouse operations), partner at RW Projects (construction
-                      tactics), instrumental in GoodBuy Gear expansion.
-                    </p>
-                  </div>
+                  <div className="p-4 sm:p-6 md:p-8 relative">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-mgs2-menu mb-1 text-mgs-white uppercase tracking-wider">
+                          Kieran O&apos;Leary
+                        </h4>
+                        <p className="text-mgs-green font-tactical text-xs sm:text-sm lg:text-base xl:text-lg uppercase">
+                          Big Boss
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xs lg:text-sm xl:text-base text-mgs-white/60 font-tactical uppercase">
+                          Rank
+                        </p>
+                        <p className="text-sm lg:text-base xl:text-lg text-mgs-green font-mgs2-menu">
+                          CEO
+                        </p>
+                      </div>
+                    </div>
 
-                  <div className="mt-4 flex items-center justify-between text-xs">
-                    <span className="text-mgs-green/60 font-tactical uppercase">
-                      Security Clearance x Maximum
-                    </span>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-mgs-green rounded-full animate-pulse mr-2" />
+                    <div className="border-t border-mgs-gray/50 pt-4">
+                      <p className="text-mgs-white/70 text-sm md:text-base font-roboto mb-4">
+                        <span className="text-mgs-green font-tactical uppercase text-xs">
+                          Mission Record
+                        </span>
+                      </p>
+                      <p className="text-mgs-white/60 text-sm lg:text-base xl:text-lg leading-relaxed font-roboto">
+                        Tactical entrepreneur and technology commander. First operative at
+                        ShipBob (now valued at $4B). Established RCR Recording Studio.
+                        Founded EmpowerEd to reform education logistics. Co-founder of
+                        Banya (stealth bathhouse operations) and partner at RW Projects
+                        (construction tactics). Creator of VibeBreath (nervous system
+                        training protocol) and KeepTouch (AI-powered relationship
+                        tracker). Director at Workshop GR, designing and executing
+                        high-end wellness infrastructure across NYC and beyond.
+                      </p>
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-between text-xs">
                       <span className="text-mgs-green/60 font-tactical uppercase">
-                        Active
+                        Security Clearance x Maximum
                       </span>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-mgs-green rounded-full animate-pulse mr-2" />
+                        <span className="text-mgs-green/60 font-tactical uppercase">
+                          Active
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
               </div>
 
               {/* Right Column - Allied Units */}

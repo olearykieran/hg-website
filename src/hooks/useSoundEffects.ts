@@ -14,7 +14,7 @@ interface SoundConfig {
 }
 
 const soundConfig: SoundConfig = {
-  main: { path: "/sounds/main.mp3", volume: 0.3 },
+  main: { path: "/sounds/main.mp3", volume: 0.1 }, // Much lower volume
   "codec-freq": { path: "/sounds/codec-freq.mp3", volume: 0.5 },
   dropdown: { path: "/sounds/dropdown.mp3", volume: 0.4 },
   engage: { path: "/sounds/engage.mp3", volume: 0.5 },
@@ -40,6 +40,9 @@ export const useSoundEffects = () => {
         const audio = new Audio(config.path);
         audio.volume = config.volume;
         audio.preload = "auto";
+        
+        // Enable for mobile/iOS
+        audio.crossOrigin = "anonymous";
         
         // Create a promise that resolves when the audio can play
         const loadPromise = new Promise((resolve) => {

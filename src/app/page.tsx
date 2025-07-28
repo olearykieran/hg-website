@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import Solutions from "@/components/Solutions";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 /* AI gradient styles - Removed as no longer used in this file */
 // const aiGradientStyle: CSSProperties = {
@@ -35,21 +36,7 @@ export default function Home() {
           <Contact />
         </main>
 
-        <footer className="relative py-8 text-mgs-white/60 text-sm border-t-2 border-mgs-green bg-mgs-black/90 backdrop-blur-sm">
-          <div className="w-full px-8 lg:px-12 xl:px-16 flex flex-col items-center justify-center">
-            <div className="mb-4 flex items-center justify-center">
-              <span className="text-sm sm:text-base font-mgs2-menu text-mgs-green uppercase tracking-wide sm:tracking-widest">
-                Holy Grail Studio
-              </span>
-            </div>
-            <p className="text-center text-mgs-white/60 font-tactical">
-              Holy Grail Studio * All rights reserved
-            </p>
-            <p className="text-center mt-2 text-mgs-green/60 font-mgs2 text-xs uppercase tracking-wider">
-              [ TACTICAL SOFTWARE DEVELOPMENT ]
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

@@ -138,6 +138,7 @@ const Navbar = () => {
             href="#contact"
             className="text-sm px-6 py-2 transition-all duration-300 hover:shadow-glow-green"
             style={mgsButtonStyle}
+            onClick={() => playSound("engage")}
           >
             <span className="relative z-10">Get Started</span>
             <div className="absolute inset-0 bg-mgs-green-dark transform scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100" />
@@ -209,7 +210,10 @@ const Navbar = () => {
               href="#contact"
               className="inline-block text-[10px] py-2.5 px-4 text-center w-auto mx-auto transition-all duration-300"
               style={mgsButtonStyle}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                playSound("engage");
+                setMobileMenuOpen(false);
+              }}
             >
               Get Started
             </Link>

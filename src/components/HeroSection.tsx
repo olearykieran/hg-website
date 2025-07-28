@@ -79,6 +79,7 @@ const HeroSection = () => {
               <Link
                 href="#solutions"
                 className="btn btn-primary w-full sm:w-auto text-sm lg:text-lg xl:text-xl 2xl:text-2xl px-6 lg:px-10 xl:px-14 py-3 lg:py-5 xl:py-6 text-center relative group overflow-hidden"
+                onClick={() => playSound("engage")}
               >
                 <span className="relative z-10">ENGAGE MISSION</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-mgs-green to-mgs-green-dark transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
