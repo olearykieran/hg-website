@@ -274,7 +274,7 @@ const About = () => {
                       <Image
                         src="/kieran-bb.png"
                         alt="Operative Profile"
-                        className="w-full h-full object-cover object-[center_20%] sm:object-contain sm:object-top sm:h-[120%]"
+                        className="w-full h-full object-cover object-[center_15%] sm:object-contain sm:object-top sm:h-[120%]"
                         width={800}
                         height={1000}
                       />

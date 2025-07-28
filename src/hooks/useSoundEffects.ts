@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export type SoundType = "main" | "codec-freq" | "dropdown" | "engage" | "return" | "error";
 
 interface SoundConfig {
-  main: { path: "/sounds/main.mp3"; volume: 0.3 };
+  main: { path: "/sounds/main.mp3"; volume: 0.1 };
   "codec-freq": { path: "/sounds/codec-freq.mp3"; volume: 0.5 };
   dropdown: { path: "/sounds/dropdown.mp3"; volume: 0.4 };
   engage: { path: "/sounds/engage.mp3"; volume: 0.5 };

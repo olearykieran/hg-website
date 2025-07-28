@@ -49,8 +49,16 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Check if form is valid
+    const form = e.target;
+    if (!form.checkValidity()) {
+      // Play error sound for validation failure
+      playSound("error");
+      return;
+    }
 
-    // Play sound when submitting
+    // Play sound when submitting valid form
     playSound("engage");
 
     // Set loading state
@@ -256,8 +264,9 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all"
-                        placeholder="Enter codename..."
+                        placeholder="Enter name"
                         required
+                        onInvalid={() => playSound("error")}
                       />
                     </div>
                     <div>
@@ -274,8 +283,9 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all"
-                        placeholder="codec@frequency.com"
+                        placeholder="Enter email"
                         required
+                        onInvalid={() => playSound("error")}
                       />
                     </div>
                   </div>
@@ -293,7 +303,7 @@ const Contact = () => {
                       value={formData.company}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all"
-                      placeholder="Unit designation..."
+                      placeholder="Enter company"
                     />
                   </div>
                   <div>
@@ -310,8 +320,9 @@ const Contact = () => {
                       onChange={handleChange}
                       rows={4}
                       className="w-full px-4 py-3 bg-mgs-black/50 border border-mgs-gray text-mgs-white font-roboto placeholder-mgs-white/30 focus:ring-2 focus:ring-mgs-green focus:border-transparent transition-all resize-none"
-                      placeholder="Describe your operation..."
+                      placeholder="Describe your project"
                       required
+                      onInvalid={() => playSound("error")}
                     ></textarea>
                   </div>
                   <div className="flex justify-center">
