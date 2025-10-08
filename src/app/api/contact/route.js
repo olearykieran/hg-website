@@ -16,12 +16,41 @@ const transporter = nodemailer.createTransport({
 export async function POST(request) {
   try {
     const data = await request.json();
-    const { name, email, company, message } = data;
-    
+    const { name, email, company, message, recaptchaToken } = data;
+
     // Validate required fields
     if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ success: false, message: "Missing required fields" }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Verify reCAPTCHA token
+    if (!recaptchaToken) {
+      return new Response(
+        JSON.stringify({ success: false, message: "reCAPTCHA verification required" }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Verify reCAPTCHA with Google
+    const recaptchaResponse = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+      }
+    );
+
+    const recaptchaResult = await recaptchaResponse.json();
+
+    if (!recaptchaResult.success) {
+      return new Response(
+        JSON.stringify({ success: false, message: "reCAPTCHA verification failed. Please try again." }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { useSoundContext } from "@/components/SoundProvider";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,9 @@ const Contact = () => {
   });
 
   const [isVisible, setIsVisible] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
   const sectionRef = useRef(null);
+  const recaptchaRef = useRef(null);
   const { playSound } = useSoundContext();
 
   useEffect(() => {
@@ -47,14 +50,33 @@ const Contact = () => {
     }));
   };
 
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+    // Clear any previous error messages related to reCAPTCHA
+    if (formStatus.message === "Please complete the reCAPTCHA verification.") {
+      setFormStatus({ submitted: false, success: false, message: "" });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Check if form is valid
     const form = e.target;
     if (!form.checkValidity()) {
       // Play error sound for validation failure
       playSound("error");
+      return;
+    }
+
+    // Validate reCAPTCHA
+    if (!recaptchaToken) {
+      playSound("error");
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message: "Please complete the reCAPTCHA verification.",
+      });
       return;
     }
 
@@ -75,7 +97,10 @@ const Contact = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken,
+        }),
       });
 
       const result = await response.json();
@@ -95,6 +120,12 @@ const Contact = () => {
           company: "",
           message: "",
         });
+
+        // Reset reCAPTCHA
+        setRecaptchaToken(null);
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       } else {
         // Error response from server
         playSound("error");
@@ -325,6 +356,18 @@ const Contact = () => {
                       onInvalid={() => playSound("error")}
                     ></textarea>
                   </div>
+
+                  {/* reCAPTCHA */}
+                  <div className="flex justify-center">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      onChange={handleRecaptchaChange}
+                      onExpired={() => setRecaptchaToken(null)}
+                      theme="dark"
+                    />
+                  </div>
+
                   <div className="flex justify-center">
                     <button
                       type="submit"
